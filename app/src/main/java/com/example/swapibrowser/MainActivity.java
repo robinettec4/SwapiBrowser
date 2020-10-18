@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import java.util.concurrent.ExecutionException;
 
@@ -27,20 +25,26 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    //base url, append any query to this
-    //will remove '/people/' from the end of the baseUrl to allow for searching of other categories as well
     String baseUrl = "https://swapi.dev/api/people/";
-    //this will hold the full url after the query
     String url;
-
-    //placeholder hardcoded query
     String place = "https://swapi.dev/api/people/1/";
 
-    private TextView mTextView;
-    private EditText mEditText;
+    private TextView name;
+    private TextView height;
+    private TextView mass;
+    private TextView hairColor;
+    private TextView skinColor;
+    private TextView eyeColor;
+    private TextView birthYear;
+    private TextView gender;
+    private TextView homeworld;
+    private EditText searchText;
 
 
     @Override
@@ -48,27 +52,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView = findViewById(R.id.textView);
-        //change the edit text id to something more reasonable
-        mEditText = findViewById(R.id.editTextTextPersonName);
-
+        name = findViewById(R.id.name);
+        height = findViewById(R.id.height);
+        mass = findViewById(R.id.mass);
+        hairColor = findViewById(R.id.hairColor);
+        skinColor = findViewById(R.id.skinColor);
+        eyeColor = findViewById(R.id.eyeColor);
+        birthYear = findViewById(R.id.birthYear);
+        gender = findViewById(R.id.gender);
+        homeworld = findViewById(R.id.homeworld);
+        searchText = findViewById(R.id.searchNumber);
     }
 
     public void searchResult(View view) {
-
-        //the final result to be placed in the text view
         String result;
-
         String request;
-
-        String search = mEditText.getText().toString();
+        String search = searchText.getText().toString();
 
         request = baseUrl + search + "/";
         Log.d("Value", "Search = " + request + "/");
-        //create HttpGetRequest object
         HttpGetRequest getRequest = new HttpGetRequest();
 
-        //send a request for url "place" and put result into "result"
         try {
             result = getRequest.execute(request).get();
         } catch (ExecutionException e) {
@@ -81,7 +85,20 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("Value", "result = " + result);
 
-        //display result in textView
-        mTextView.setText(result);
+        JSONObject jsonResult;
+        try {
+            jsonResult = new JSONObject(result);
+            name.setText(jsonResult.getString("name"));
+            height.setText(jsonResult.getString("height"));
+            mass.setText(jsonResult.getString("mass"));
+            hairColor.setText(jsonResult.getString("hair_color"));
+            skinColor.setText(jsonResult.getString("skin_color"));
+            eyeColor.setText(jsonResult.getString("eye_color"));
+            birthYear.setText(jsonResult.getString("birth_year"));
+            gender.setText(jsonResult.getString("gender"));
+            homeworld.setText(jsonResult.getString("homeworld"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
