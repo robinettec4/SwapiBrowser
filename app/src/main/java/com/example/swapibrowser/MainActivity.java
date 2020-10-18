@@ -22,18 +22,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import java.util.concurrent.ExecutionException;
+
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     //base url, append any query to this
-    String baseUrl = "https://swapi.dev/api/";
+    //will remove '/people/' from the end of the baseUrl to allow for searching of other categories as well
+    String baseUrl = "https://swapi.dev/api/people/";
     //this will hold the full url after the query
     String url;
 
     //placeholder hardcoded query
     String place = "https://swapi.dev/api/people/1/";
+
+    private TextView mTextView;
+    private EditText mEditText;
 
 
     @Override
@@ -41,17 +48,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView textView = (TextView) findViewById(R.id.textView);
+        mTextView = findViewById(R.id.textView);
+        //change the edit text id to something more reasonable
+        mEditText = findViewById(R.id.editTextTextPersonName);
+
+    }
+
+    public void searchResult(View view) {
 
         //the final result to be placed in the text view
         String result;
 
+        String request;
+
+        String search = mEditText.getText().toString();
+
+        request = baseUrl + search + "/";
+        Log.d("Value", "Search = " + request + "/");
         //create HttpGetRequest object
         HttpGetRequest getRequest = new HttpGetRequest();
 
         //send a request for url "place" and put result into "result"
         try {
-            result = getRequest.execute(place).get();
+            result = getRequest.execute(request).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
             result = null;
@@ -63,6 +82,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Value", "result = " + result);
 
         //display result in textView
-        textView.setText(result);
+        mTextView.setText(result);
     }
 }
