@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SwapiBrowser</string>
+    <string-array name="topicArray">
+        <item>films</item>
+        <item>people</item>
+        <item>planet</item>
+        <item>species</item>
+        <item>starship</item>
+        <item>vehicle</item>
+    </string-array>
 </resources>

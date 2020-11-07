@@ -22,18 +22,21 @@ import android.util.Log;
 import java.util.concurrent.ExecutionException;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String baseUrl = "https://swapi.dev/api/people/";
+    String baseUrl = "https://swapi.dev/api/";
     String url;
-    String place = "https://swapi.dev/api/people/1/";
 
     private TextView name;
     private TextView height;
@@ -45,13 +48,24 @@ public class MainActivity extends AppCompatActivity {
     private TextView gender;
     private TextView homeworld;
     private EditText searchText;
-
+    private String topic = "films";
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Spinner spinner = findViewById(R.id.spinner);
+        if (spinner != null){
+            spinner.setOnItemSelectedListener(this);
+        }
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.topicArray, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        if(spinner != null){
+            spinner.setAdapter(adapter);
+        }
+        //TODO: PROGRAMATICALLY DETERMINE THE JSON HEADERS AND POPULATE THEM BASED ON THE FIELDS OF EACH TOPIC
         name = findViewById(R.id.name);
         height = findViewById(R.id.height);
         mass = findViewById(R.id.mass);
@@ -69,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         String request;
         String search = searchText.getText().toString();
 
-        request = baseUrl + search + "/";
+        request = baseUrl + topic + "/" + search + "/";
         Log.d("Value", "Search = " + request + "/");
         HttpGetRequest getRequest = new HttpGetRequest();
 
@@ -100,5 +114,25 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void displayToast(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    //change topic based on the selected drop down option
+    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id){
+        String spinnerLabel = adapterView.getItemAtPosition(pos).toString();
+        topic = spinnerLabel;
+        Log.d("topic", "topic = " + topic);
+        displayToast(spinnerLabel);
+    }
+    public void onNothingSelected(AdapterView<?> adapterView){
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
