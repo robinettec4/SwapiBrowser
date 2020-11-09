@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/searchNumber"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -20,22 +20,34 @@
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Button"
-        android:onClick="searchResult"/>
+        android:onClick="searchResult"
+        android:text="Button" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_toStartOf="@+id/button"
         android:layout_toLeftOf="@+id/button"
         android:layout_toEndOf="@+id/searchNumber"
         android:layout_toRightOf="@+id/searchNumber" />
 
+<!-- todo: make it scroll -->
+    <LinearLayout
+
+        android:id="@+id/insertPoint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <!--
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -230,5 +242,6 @@
             app:layout_constraintTop_toBottomOf="@+id/gender" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    !-->
 
 </RelativeLayout>

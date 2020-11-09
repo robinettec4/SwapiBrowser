@@ -16,12 +16,17 @@ package com.example.swapibrowser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.util.Log;
+
+import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -38,18 +43,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String baseUrl = "https://swapi.dev/api/";
     String url;
 
-    private TextView name;
-    private TextView height;
-    private TextView mass;
-    private TextView hairColor;
-    private TextView skinColor;
-    private TextView eyeColor;
-    private TextView birthYear;
-    private TextView gender;
-    private TextView homeworld;
     private EditText searchText;
     private String topic = "films";
-    private Spinner spinner;
+
+    //use iterator to determine fields
+    private <T> Iterable<T> iterate(final Iterator<T> i) {
+        return new Iterable<T>() {
+            @Override
+            public Iterator<T> iterator() {
+                return i;
+            }
+        };
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,24 +62,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         Spinner spinner = findViewById(R.id.spinner);
-        if (spinner != null){
+        if (spinner != null) {
             spinner.setOnItemSelectedListener(this);
         }
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.topicArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        if(spinner != null){
+        if (spinner != null) {
             spinner.setAdapter(adapter);
         }
-        //TODO: PROGRAMATICALLY DETERMINE THE JSON HEADERS AND POPULATE THEM BASED ON THE FIELDS OF EACH TOPIC
-        name = findViewById(R.id.name);
-        height = findViewById(R.id.height);
-        mass = findViewById(R.id.mass);
-        hairColor = findViewById(R.id.hairColor);
-        skinColor = findViewById(R.id.skinColor);
-        eyeColor = findViewById(R.id.eyeColor);
-        birthYear = findViewById(R.id.birthYear);
-        gender = findViewById(R.id.gender);
-        homeworld = findViewById(R.id.homeworld);
+
         searchText = findViewById(R.id.searchNumber);
     }
 
@@ -84,8 +80,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String search = searchText.getText().toString();
 
         request = baseUrl + topic + "/" + search + "/";
-        Log.d("Value", "Search = " + request + "/");
+        Log.d("Value", "Search = " + request);
         HttpGetRequest getRequest = new HttpGetRequest();
+
+        //TODO: THIS DOESN'T WORK
+        //IT SHOULD CLEAR THE VIEW BEFORE POPULATING IT WITH INFORMATION SO AS TO CLEAR PREVIOUS INFORMATION
+        removeView();
 
         try {
             result = getRequest.execute(request).get();
@@ -102,32 +102,43 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         JSONObject jsonResult;
         try {
             jsonResult = new JSONObject(result);
-            name.setText(jsonResult.getString("name"));
-            height.setText(jsonResult.getString("height"));
-            mass.setText(jsonResult.getString("mass"));
-            hairColor.setText(jsonResult.getString("hair_color"));
-            skinColor.setText(jsonResult.getString("skin_color"));
-            eyeColor.setText(jsonResult.getString("eye_color"));
-            birthYear.setText(jsonResult.getString("birth_year"));
-            gender.setText(jsonResult.getString("gender"));
-            homeworld.setText(jsonResult.getString("homeworld"));
+            //TODO: PUSHES PREVIOUS LINES DOWN THE SCREEN EACH TIME IT WRITES NEW DATA, LEAVES IMPORTANT DATA AT THE BOTTOM. NEED TO REVERSE THIS
+            for (String key : iterate(jsonResult.keys())) {
+                Toast.makeText(this, "" + key, Toast.LENGTH_SHORT).show();
+                String data = jsonResult.getString(key);
+                inflateView(key, data);
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public void displayToast(String message){
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
-
     //change topic based on the selected drop down option
-    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id){
+    public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
         String spinnerLabel = adapterView.getItemAtPosition(pos).toString();
         topic = spinnerLabel;
         Log.d("topic", "topic = " + topic);
-        displayToast(spinnerLabel);
     }
-    public void onNothingSelected(AdapterView<?> adapterView){
+
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    public void inflateView(String name, String data){
+        LayoutInflater vi = getLayoutInflater();
+        View v = vi.inflate(R.layout.field_list, null);
+        TextView textView = (TextView) v.findViewById(R.id.text1);
+        //TODO: parse the links within the data to not show up really weird at least. maybe cut out the link and just leave the number at the end? idk
+        String text = name + ": " + data;
+        textView.setText(text);
+        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.insertPoint);
+        insertPoint.addView(v, 0);
+    }
+
+    public void removeView(){
+        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.insertPoint);
+        insertPoint.removeView(insertPoint);
 
     }
 

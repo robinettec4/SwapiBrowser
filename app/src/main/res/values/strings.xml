@@ -3,9 +3,9 @@
     <string-array name="topicArray">
         <item>films</item>
         <item>people</item>
-        <item>planet</item>
+        <item>planets</item>
         <item>species</item>
-        <item>starship</item>
-        <item>vehicle</item>
+        <item>starships</item>
+        <item>vehicles</item>
     </string-array>
 </resources>
