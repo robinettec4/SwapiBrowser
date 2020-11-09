@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String result;
         String request;
         String search = searchText.getText().toString();
+        int i = 0;
 
         request = baseUrl + topic + "/" + search + "/";
         Log.d("Value", "Search = " + request);
@@ -104,9 +105,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             jsonResult = new JSONObject(result);
             //TODO: PUSHES PREVIOUS LINES DOWN THE SCREEN EACH TIME IT WRITES NEW DATA, LEAVES IMPORTANT DATA AT THE BOTTOM. NEED TO REVERSE THIS
             for (String key : iterate(jsonResult.keys())) {
-                Toast.makeText(this, "" + key, Toast.LENGTH_SHORT).show();
                 String data = jsonResult.getString(key);
-                inflateView(key, data);
+                inflateView(key, data, i);
+                i++;
             }
 
         } catch (JSONException e) {
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void inflateView(String name, String data){
+    public void inflateView(String name, String data, int index){
         LayoutInflater vi = getLayoutInflater();
         View v = vi.inflate(R.layout.field_list, null);
         TextView textView = (TextView) v.findViewById(R.id.text1);
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String text = name + ": " + data;
         textView.setText(text);
         ViewGroup insertPoint = (ViewGroup) findViewById(R.id.insertPoint);
-        insertPoint.addView(v, 0);
+        insertPoint.addView(v, index);
     }
 
     public void removeView(){
