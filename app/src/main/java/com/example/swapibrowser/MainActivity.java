@@ -84,12 +84,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d("Value", "Search = " + request);
         HttpGetRequest getRequest = new HttpGetRequest();
 
-        //TODO: THIS DOESN'T WORK
-        //IT SHOULD CLEAR THE VIEW BEFORE POPULATING IT WITH INFORMATION SO AS TO CLEAR PREVIOUS INFORMATION
         removeView();
 
         try {
             result = getRequest.execute(request).get();
+            Log.d("Value", "result = " + result);
         } catch (ExecutionException e) {
             e.printStackTrace();
             result = null;
@@ -101,17 +100,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d("Value", "result = " + result);
 
         JSONObject jsonResult;
-        try {
-            jsonResult = new JSONObject(result);
-            //TODO: PUSHES PREVIOUS LINES DOWN THE SCREEN EACH TIME IT WRITES NEW DATA, LEAVES IMPORTANT DATA AT THE BOTTOM. NEED TO REVERSE THIS
-            for (String key : iterate(jsonResult.keys())) {
-                String data = jsonResult.getString(key);
-                inflateView(key, data, i);
-                i++;
-            }
+        if(result != null) {
+            try {
+                jsonResult = new JSONObject(result);
+                for (String key : iterate(jsonResult.keys())) {
+                    String data = jsonResult.getString(key);
+                    inflateView(key, data, i);
+                    i++;
+                }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            removeView();
+            inflateError(search);
         }
     }
 
@@ -137,10 +141,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         insertPoint.addView(v, index);
     }
 
+    public void inflateError(String string){
+        LayoutInflater vi = getLayoutInflater();
+        View v = vi.inflate(R.layout.field_list, null);
+        TextView textView = v.findViewById(R.id.text1);
+        String text = "Error, could not find a result for " + topic + " '" + string + "'";
+        textView.setText(text);
+        ViewGroup insertPoint = findViewById(R.id.insertPoint);
+        insertPoint.addView(v, 0);
+    }
+
     public void removeView(){
         ViewGroup insertPoint = (ViewGroup) findViewById(R.id.insertPoint);
-        insertPoint.removeView(insertPoint);
-
+        insertPoint.removeAllViews();
     }
 
     @Override
