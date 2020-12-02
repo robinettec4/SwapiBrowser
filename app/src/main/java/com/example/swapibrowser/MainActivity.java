@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import android.view.LayoutInflater;
@@ -32,10 +33,15 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -44,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String url;
 
     private EditText searchText;
-    private String topic = "films";
+    private String topic;
 
     //use iterator to determine fields
     private <T> Iterable<T> iterate(final Iterator<T> i) {
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d("Value", "Search = " + request);
         HttpGetRequest getRequest = new HttpGetRequest();
 
+        //clear view before populating it
         removeView();
 
         try {
@@ -134,7 +141,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         LayoutInflater vi = getLayoutInflater();
         View v = vi.inflate(R.layout.field_list, null);
         TextView textView = (TextView) v.findViewById(R.id.text1);
-        //TODO: parse the links within the data to not show up really weird at least. maybe cut out the link and just leave the number at the end? idk
+        //TODO: CHECK IF DATA HAS A LINK, IF IT DOES FOLLOW THE LINK FOR THE NAME OF THE PAGE
+        data = cleanString(data);
+        name = cleanString(name);
         String text = name + ": " + data;
         textView.setText(text);
         ViewGroup insertPoint = (ViewGroup) findViewById(R.id.insertPoint);
@@ -160,4 +169,37 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+    public String cleanString(String clean){
+        clean = clean.replaceAll("\\\\","");
+        clean = clean.replaceAll("\"","");
+        clean = clean.replaceAll("\\[", "");
+        clean = clean.replaceAll("\\]", "");
+        clean = clean.replaceAll("_", " ");
+        return clean;
+    }
+    /* commented so it still works before full implementation
+    private void initializeData(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://swapi.dev/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiService service = retrofit.create(ApiService.class);
+        Call<List<Data>> call = service.getData(topic, search);
+
+        //TODO: DO THE CALL STUFF
+        call.enqueue(new Callback<List<Data>>(){
+
+            @Override
+            public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Data>> call, Throwable t) {
+
+            }
+        });
+    }
+     */
 }
