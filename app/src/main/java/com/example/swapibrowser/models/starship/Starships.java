@@ -1,5 +1,3 @@
-//James Rudisell
-
 package com.example.swapibrowser.models.starship;
 
 import java.util.List;

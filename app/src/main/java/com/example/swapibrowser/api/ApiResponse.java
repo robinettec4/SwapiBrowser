@@ -1,5 +1,3 @@
-//James Rudisell
-
 package com.example.swapibrowser.api;
 
 import androidx.annotation.NonNull;

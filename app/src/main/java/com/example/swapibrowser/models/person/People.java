@@ -1,5 +1,3 @@
-//James Rudisell
-
 package com.example.swapibrowser.models.person;
 
 import java.util.List;

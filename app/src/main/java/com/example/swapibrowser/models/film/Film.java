@@ -1,5 +1,3 @@
-//James Rudisell
-
 package com.example.swapibrowser.models.film;
 
 import java.util.List;
