@@ -1,5 +1,3 @@
-//James Rudisell
-
 package com.example.swapibrowser.searchers;
 
 import com.example.swapibrowser.api.ApiService;
@@ -14,6 +12,10 @@ public class PersonSearcher {
 
     public void getPersonBySearch(String searchText, ApiResponseListener<People> listener){
         api.getPeople("people/?search=" + searchText).enqueue(new ApiResponse<>(listener));
+    }
+
+    public void getPersonById(String id, ApiResponseListener<People> listener){
+        api.getPeople("people/" + id).enqueue(new ApiResponse<>(listener));
     }
 
     public void getPeopleByPage(String searchText, ApiResponseListener<People> listener) {

@@ -1,5 +1,3 @@
-//James Rudisell
-
 package com.example.swapibrowser.models.species;
 
 import java.util.List;

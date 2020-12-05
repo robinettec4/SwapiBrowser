@@ -1,5 +1,3 @@
-//James Rudisell
-
 package com.example.swapibrowser.api;
 
 public interface ApiResponseListener<ResponseType> {
