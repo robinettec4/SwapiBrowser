@@ -1,3 +1,5 @@
+//James Rudisell
+
 package com.example.swapibrowser.utils;
 
 import android.content.Context;

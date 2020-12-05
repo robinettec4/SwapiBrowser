@@ -1,3 +1,5 @@
+//James Rudisell
+
 package com.example.swapibrowser.searchers;
 
 import com.example.swapibrowser.api.ApiService;
@@ -7,6 +9,7 @@ import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 
 public class PersonSearcher {
+
     private ApiService api = RetroClient.getApiService();
 
     public void getPersonBySearch(String searchText, ApiResponseListener<People> listener){
@@ -21,7 +24,7 @@ public class PersonSearcher {
         api.getPeople("people/").enqueue(new ApiResponse<>(listener));
     }
 
-    public void getAllPeoplePageHelper(String searchText, ApiResponseListener<People> listener) {
+    public void getAllPeopleByPageHelper(String searchText, ApiResponseListener<People> listener) {
         api.getPeople(searchText).enqueue(new ApiResponse<>(listener));
     }
 }

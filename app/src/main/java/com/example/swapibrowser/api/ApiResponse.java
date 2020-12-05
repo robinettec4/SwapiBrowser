@@ -1,3 +1,5 @@
+//James Rudisell
+
 package com.example.swapibrowser.api;
 
 import androidx.annotation.NonNull;
@@ -9,6 +11,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ApiResponse<ResponseType> implements Callback<ResponseType> {
+
     private WeakReference<ApiResponseListener<ResponseType>> listener;
 
     public ApiResponse(ApiResponseListener<ResponseType> listener){
@@ -25,7 +28,7 @@ public class ApiResponse<ResponseType> implements Callback<ResponseType> {
     @Override
     public void onFailure(@NonNull Call<ResponseType> call, @NonNull Throwable t) {
         if (listener != null && listener.get() != null){
-            listener.get().onError();
+            listener.get().onError(t);
         }
     }
 }
