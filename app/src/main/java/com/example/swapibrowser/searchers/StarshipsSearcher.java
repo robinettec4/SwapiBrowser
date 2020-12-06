@@ -6,27 +6,27 @@ import com.example.swapibrowser.retrofit.RetroClient;
 import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 
-public class StarshipSearcher {
+public class StarshipsSearcher implements Searcher<Starships> {
 
     private ApiService api = RetroClient.getApiService();
 
-    public void getStarshipBySearch(String searchText, ApiResponseListener<Starships> listener){
+    public void getBySearch(String searchText, ApiResponseListener<Starships> listener){
         api.getStarships("starships/?search=" + searchText).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getStarshipById(String id, ApiResponseListener<Starships> listener){
+    public void getByFullUrl(String url, ApiResponseListener<Starships> listener) {
+        api.getStarships(url).enqueue(new ApiResponse<>(listener));
+    }
+
+    public void getById(String id, ApiResponseListener<Starships> listener){
         api.getStarships("starships/" + id).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getStarshipsByPage(String searchText, ApiResponseListener<Starships> listener) {
+    public void getByPage(String searchText, ApiResponseListener<Starships> listener) {
         api.getStarships("starships/?page=" + searchText).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getAllStarships(ApiResponseListener<Starships> listener) {
+    public void getAll(ApiResponseListener<Starships> listener) {
         api.getStarships("starships/").enqueue(new ApiResponse<>(listener));
-    }
-
-    public void getAllStarshipsByPageHelper(String searchText, ApiResponseListener<Starships> listener) {
-        api.getStarships(searchText).enqueue(new ApiResponse<>(listener));
     }
 }

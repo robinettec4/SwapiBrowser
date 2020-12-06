@@ -6,27 +6,27 @@ import com.example.swapibrowser.retrofit.RetroClient;
 import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 
-public class PlanetSearcher {
+public class PlanetsSearcher implements Searcher<Planets> {
 
     private ApiService api = RetroClient.getApiService();
 
-    public void getPlanetBySearch(String searchText, ApiResponseListener<Planets> listener){
+    public void getBySearch(String searchText, ApiResponseListener<Planets> listener){
         api.getPlanets("planets/?search=" + searchText).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getPlanetById(String id, ApiResponseListener<Planets> listener){
+    public void getByFullUrl(String url, ApiResponseListener<Planets> listener) {
+        api.getPlanets(url).enqueue(new ApiResponse<>(listener));
+    }
+
+    public void getById(String id, ApiResponseListener<Planets> listener){
         api.getPlanets("planets/" + id).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getPlanetsByPage(String searchText, ApiResponseListener<Planets> listener) {
+    public void getByPage(String searchText, ApiResponseListener<Planets> listener) {
         api.getPlanets("planets/?page=" + searchText).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getAllPlanets(ApiResponseListener<Planets> listener) {
+    public void getAll(ApiResponseListener<Planets> listener) {
         api.getPlanets("planets/").enqueue(new ApiResponse<>(listener));
-    }
-
-    public void getAllPlanetsByPageHelper(String searchText, ApiResponseListener<Planets> listener) {
-        api.getPlanets(searchText).enqueue(new ApiResponse<>(listener));
     }
 }
