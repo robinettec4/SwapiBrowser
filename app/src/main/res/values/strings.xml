@@ -20,4 +20,5 @@
     <string name="films">Films</string>
     <string name="starships">Starships</string>
     <string name="textview">TextView</string>
+    <string name="random_page">Random Page</string>
 </resources>

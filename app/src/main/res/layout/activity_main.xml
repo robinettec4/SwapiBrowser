@@ -5,4 +5,12 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".activities.MainActivity" />
+    tools:context=".activities.MainActivity" >
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goToRandomPageActivity"
+        android:text="Button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

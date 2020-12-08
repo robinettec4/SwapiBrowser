@@ -1,6 +1,7 @@
 package com.example.swapibrowser.adapters.min;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,7 @@ public class MinFilmAdapter extends RecyclerView.Adapter<FilmHolder> {
         ApiResponseListener<Film> filmListener = new ApiResponseListener<Film>() {
             @Override
             public void onResponseReceived(Film response) {
+                Log.d("progress", "Film added");
                 films.add(response);
                 notifyItemInserted(films.size() - 1);
             }

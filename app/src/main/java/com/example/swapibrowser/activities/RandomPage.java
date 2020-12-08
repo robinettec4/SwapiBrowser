@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.PersonAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.PeopleGenerator;
 import com.example.swapibrowser.generators.PersonGenerator;
 import com.example.swapibrowser.models.person.People;
 import com.example.swapibrowser.models.person.Person;
+import com.example.swapibrowser.searchers.PeopleSearcher;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -80,21 +80,23 @@ public class RandomPage extends AppCompatActivity {
     }
 
     private void loadPeopleData() {
-        final PeopleGenerator peopleGenerator = new PeopleGenerator();
+        final PeopleSearcher peopleSearcher = new PeopleSearcher();
+        final PersonGenerator personGenerator = new PersonGenerator();
         final ApiResponseListener<People> bigListener = new ApiResponseListener<People>() {
             @Override
             public void onResponseReceived(People response) {
+                Log.d("progress", "People onResponseReceived()");
                 int entries = response.getCount();
                 Random random = new Random();
                 int entry = random.nextInt(entries);
 
                 final ArrayList<Person> persons = new ArrayList<>();
 
-                final PersonGenerator personGenerator = new PersonGenerator();
                 final ApiResponseListener<Person> listener = new ApiResponseListener<Person>() {
 
                     @Override
                     public void onResponseReceived(Person response) {
+                        Log.d("progress", "Person OnResponseReceived");
                         persons.add(response);
                         randomRecycler.setAdapter(new PersonAdapter(persons, RandomPage.this));
                         randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
@@ -105,13 +107,14 @@ public class RandomPage extends AppCompatActivity {
                         System.out.println(error.getMessage());
                     }
                 };
+                Log.d("progress", "call personGenerator");
                 personGenerator.getById(String.valueOf(entry), listener);
             }
             @Override
             public void onError(Throwable error) { System.out.println(error.getMessage()); }
         };
-        peopleGenerator.get(bigListener);
-
+        Log.d("progress", "call peopleGenerator");
+        peopleSearcher.getAll(bigListener);
     }
 
     private void loadFilmsData() {

@@ -19,9 +19,7 @@ public class People {
     @Expose
     private List<Person> people = null;
 
-    public Integer getCount() {
-        return count;
-    }
+    public Integer getCount() { return count; }
 
     public void setCount(Integer count) {
         this.count = count;

@@ -1,5 +1,7 @@
 package com.example.swapibrowser.generators;
 
+import android.util.Log;
+
 import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.api.ApiService;
