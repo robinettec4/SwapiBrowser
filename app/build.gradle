@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.swapibrowser"
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,13 +32,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
 
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
 }
