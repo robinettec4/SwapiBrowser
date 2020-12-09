@@ -6,7 +6,7 @@ import com.example.swapibrowser.retrofit.RetroClient;
 import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 
-public class FilmsSearcher implements Searcher<Films> {
+public class FilmsSearcher implements ISearcher<Films> {
 
     private ApiService api = RetroClient.getApiService();
 

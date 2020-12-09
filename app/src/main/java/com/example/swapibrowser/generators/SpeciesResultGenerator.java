@@ -6,7 +6,7 @@ import com.example.swapibrowser.api.ApiService;
 import com.example.swapibrowser.models.species.SpeciesResult;
 import com.example.swapibrowser.retrofit.RetroClient;
 
-public class SpeciesResultGenerator implements Generator<SpeciesResult>{
+public class SpeciesResultGenerator implements IGenerator<SpeciesResult> {
 
     private ApiService api = RetroClient.getApiService();
 

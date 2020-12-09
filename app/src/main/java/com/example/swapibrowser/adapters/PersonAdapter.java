@@ -42,10 +42,10 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonHolder> {
 
         Person person = list.get(position);
 
+        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(person.getFilms(), context);
         MinSpeciesResultAdapter minSpeciesResultAdapter = new MinSpeciesResultAdapter(person.getSpecies(), context);
         MinVehicleAdapter minVehicleAdapter = new MinVehicleAdapter(person.getVehicles(), context);
         MinStarshipAdapter minStarshipAdapter = new MinStarshipAdapter(person.getStarships(), context);
-        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(person.getFilms(), context);
 
         holder.personName.setText(person.getName());
         holder.personHeight.setText(person.getHeight());

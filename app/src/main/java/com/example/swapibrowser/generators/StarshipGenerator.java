@@ -6,7 +6,7 @@ import com.example.swapibrowser.api.ApiService;
 import com.example.swapibrowser.models.starship.Starship;
 import com.example.swapibrowser.retrofit.RetroClient;
 
-public class StarshipGenerator implements Generator<Starship>{
+public class StarshipGenerator implements IGenerator<Starship> {
 
     private ApiService api = RetroClient.getApiService();
 

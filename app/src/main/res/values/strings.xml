@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">SwapiBrowser</string>
     <string-array name="topicArray">
-        <item>Films</item>
-        <item>People</item>
-        <item>Planets</item>
+        <item>Film</item>
+        <item>Person</item>
+        <item>Planet</item>
         <item>Species</item>
-        <item>Starships</item>
-        <item>Vehicles</item>
+        <item>Starship</item>
+        <item>Vehicle</item>
     </string-array>
     <string name="title_activity_recently_updated">RecentlyUpdated</string>
     <!--
