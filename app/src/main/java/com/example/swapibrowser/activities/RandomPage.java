@@ -253,7 +253,6 @@ public class RandomPage extends AppCompatActivity {
         final ApiResponseListener<People> bigListener = new ApiResponseListener<People>() {
             @Override
             public void onResponseReceived(People response) {
-                Log.d("progress", "People onResponseReceived()");
                 int entries = response.getCount();
                 Random random = new Random();
                 int entry = random.nextInt(entries);
@@ -262,7 +261,6 @@ public class RandomPage extends AppCompatActivity {
 
                     @Override
                     public void onResponseReceived(Person response) {
-                        Log.d("progress", "Person OnResponseReceived");
                         persons.add(response);
                         randomRecycler.setAdapter(new PersonAdapter(persons, RandomPage.this));
                         randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
@@ -273,13 +271,11 @@ public class RandomPage extends AppCompatActivity {
                         System.out.println(error.getMessage());
                     }
                 };
-                Log.d("progress", "call personGenerator");
                 personGenerator.getById(String.valueOf(entry), listener);
             }
             @Override
             public void onError(Throwable error) { System.out.println(error.getMessage()); }
         };
-        Log.d("progress", "call peopleGenerator");
         peopleSearcher.getAll(bigListener);
     }
 
