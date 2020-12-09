@@ -11,12 +11,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.PersonAdapter;
+import com.example.swapibrowser.adapters.StarshipAdapter;
+import com.example.swapibrowser.adapters.VehicleAdapter;
+import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.PersonGenerator;
+import com.example.swapibrowser.generators.StarshipGenerator;
+import com.example.swapibrowser.generators.VehicleGenerator;
 import com.example.swapibrowser.models.person.People;
 import com.example.swapibrowser.models.person.Person;
+import com.example.swapibrowser.models.starship.Starship;
+import com.example.swapibrowser.models.starship.Starships;
+import com.example.swapibrowser.models.vehicle.Vehicle;
+import com.example.swapibrowser.models.vehicle.Vehicles;
 import com.example.swapibrowser.searchers.PeopleSearcher;
+import com.example.swapibrowser.searchers.StarshipsSearcher;
+import com.example.swapibrowser.searchers.VehiclesSearcher;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -29,7 +41,7 @@ public class RandomPage extends AppCompatActivity {
         randomRecycler = findViewById(R.id.recently_updated_recycler);
         int field = decideField();
 
-        decideEntry(1);
+        decideEntry(4);
     }
 
     public int decideField(){
@@ -64,11 +76,81 @@ public class RandomPage extends AppCompatActivity {
     }
 
     private void loadVehiclesData() {
+        final VehiclesSearcher vehicleSearch = new VehiclesSearcher();
+        final VehicleGenerator vehicleGenerator = new VehicleGenerator();
+        final ArrayList<Vehicle> vehicles = new ArrayList<>();
+        final ApiResponseListener<Vehicles> bigListener = new ApiResponseListener<Vehicles>() {
+            @Override
+            public void onResponseReceived(Vehicles response) {
+                int entries = response.getCount();
+                Random random = new Random();
+                int entry = random.nextInt(entries);
+                final ApiResponseListener<Vehicle> listener = new ApiResponseListener<Vehicle>() {
+                    @Override
+                    public void onResponseReceived(Vehicle response) {
+                        if (response!=null) {
+                            vehicles.add(response);
+                            randomRecycler.setAdapter(new VehicleAdapter(vehicles, RandomPage.this));
+                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                        }
+                        else{
+                            loadVehiclesData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                        }
+                    }
 
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                };
+                vehicleGenerator.getById(String.valueOf(entry), listener);
+            }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        };
+        vehicleSearch.getAll(bigListener);
     }
 
     private void loadStarshipsData() {
+        final StarshipsSearcher shipSearch = new StarshipsSearcher();
+        final StarshipGenerator shipGenerator = new StarshipGenerator();
+        final ArrayList<Starship> starships = new ArrayList<>();
+        final ApiResponseListener<Starships> bigListener = new ApiResponseListener<Starships>() {
+            @Override
+            public void onResponseReceived(Starships response) {
+                int entries = response.getCount();
+                Random random = new Random();
+                int entry = random.nextInt(entries);
+                final ApiResponseListener<Starship> listener = new ApiResponseListener<Starship>() {
+                    @Override
+                    public void onResponseReceived(Starship response) {
+                        if (response!=null) {
+                            starships.add(response);
+                            randomRecycler.setAdapter(new StarshipAdapter(starships, RandomPage.this));
+                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                        }
+                        else{
+                            loadStarshipsData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                        }
+                    }
 
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                };
+                shipGenerator.getById(String.valueOf(entry), listener);
+            }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        };
+        shipSearch.getAll(bigListener);
     }
 
     private void loadSpeciesData() {
@@ -82,6 +164,7 @@ public class RandomPage extends AppCompatActivity {
     private void loadPeopleData() {
         final PeopleSearcher peopleSearcher = new PeopleSearcher();
         final PersonGenerator personGenerator = new PersonGenerator();
+        final ArrayList<Person> persons = new ArrayList<>();
         final ApiResponseListener<People> bigListener = new ApiResponseListener<People>() {
             @Override
             public void onResponseReceived(People response) {
@@ -89,8 +172,6 @@ public class RandomPage extends AppCompatActivity {
                 int entries = response.getCount();
                 Random random = new Random();
                 int entry = random.nextInt(entries);
-
-                final ArrayList<Person> persons = new ArrayList<>();
 
                 final ApiResponseListener<Person> listener = new ApiResponseListener<Person>() {
 
