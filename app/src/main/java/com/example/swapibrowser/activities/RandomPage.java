@@ -10,21 +10,36 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
+import com.example.swapibrowser.adapters.FilmAdapter;
 import com.example.swapibrowser.adapters.PersonAdapter;
+import com.example.swapibrowser.adapters.PlanetAdapter;
+import com.example.swapibrowser.adapters.SpeciesResultAdapter;
 import com.example.swapibrowser.adapters.StarshipAdapter;
 import com.example.swapibrowser.adapters.VehicleAdapter;
 import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
+import com.example.swapibrowser.generators.FilmGenerator;
 import com.example.swapibrowser.generators.PersonGenerator;
+import com.example.swapibrowser.generators.PlanetGenerator;
+import com.example.swapibrowser.generators.SpeciesResultGenerator;
 import com.example.swapibrowser.generators.StarshipGenerator;
 import com.example.swapibrowser.generators.VehicleGenerator;
+import com.example.swapibrowser.models.film.Film;
+import com.example.swapibrowser.models.film.Films;
 import com.example.swapibrowser.models.person.People;
 import com.example.swapibrowser.models.person.Person;
+import com.example.swapibrowser.models.planet.Planet;
+import com.example.swapibrowser.models.planet.Planets;
+import com.example.swapibrowser.models.species.Species;
+import com.example.swapibrowser.models.species.SpeciesResult;
 import com.example.swapibrowser.models.starship.Starship;
 import com.example.swapibrowser.models.starship.Starships;
 import com.example.swapibrowser.models.vehicle.Vehicle;
 import com.example.swapibrowser.models.vehicle.Vehicles;
+import com.example.swapibrowser.searchers.FilmsSearcher;
 import com.example.swapibrowser.searchers.PeopleSearcher;
+import com.example.swapibrowser.searchers.PlanetsSearcher;
+import com.example.swapibrowser.searchers.SpeciesSearcher;
 import com.example.swapibrowser.searchers.StarshipsSearcher;
 import com.example.swapibrowser.searchers.VehiclesSearcher;
 
@@ -41,7 +56,7 @@ public class RandomPage extends AppCompatActivity {
         randomRecycler = findViewById(R.id.recently_updated_recycler);
         int field = decideField();
 
-        decideEntry(4);
+        decideEntry(field);
     }
 
     public int decideField(){
@@ -154,11 +169,81 @@ public class RandomPage extends AppCompatActivity {
     }
 
     private void loadSpeciesData() {
+        final SpeciesSearcher speciesSearch = new SpeciesSearcher();
+        final SpeciesResultGenerator speciesGenerator = new SpeciesResultGenerator();
+        final ArrayList<SpeciesResult> species = new ArrayList<>();
+        final ApiResponseListener<Species> bigListener = new ApiResponseListener<Species>() {
+            @Override
+            public void onResponseReceived(Species response) {
+                int entries = response.getCount();
+                Random random = new Random();
+                int entry = random.nextInt(entries);
+                final ApiResponseListener<SpeciesResult> listener = new ApiResponseListener<SpeciesResult>() {
+                    @Override
+                    public void onResponseReceived(SpeciesResult response) {
+                        if (response!=null) {
+                            species.add(response);
+                            randomRecycler.setAdapter(new SpeciesResultAdapter(species, RandomPage.this));
+                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                        }
+                        else{
+                            loadSpeciesData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                        }
+                    }
 
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                };
+                speciesGenerator.getById(String.valueOf(entry), listener);
+            }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        };
+        speciesSearch.getAll(bigListener);
     }
 
     private void loadPlanetsData() {
+        final PlanetsSearcher planetSearch = new PlanetsSearcher();
+        final PlanetGenerator planetGenerator = new PlanetGenerator();
+        final ArrayList<Planet> planets = new ArrayList<>();
+        final ApiResponseListener<Planets> bigListener = new ApiResponseListener<Planets>() {
+            @Override
+            public void onResponseReceived(Planets response) {
+                int entries = response.getCount();
+                Random random = new Random();
+                int entry = random.nextInt(entries);
+                final ApiResponseListener<Planet> listener = new ApiResponseListener<Planet>() {
+                    @Override
+                    public void onResponseReceived(Planet response) {
+                        if (response!=null) {
+                            planets.add(response);
+                            randomRecycler.setAdapter(new PlanetAdapter(planets, RandomPage.this));
+                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                        }
+                        else{
+                            loadPlanetsData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                        }
+                    }
 
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                };
+                planetGenerator.getById(String.valueOf(entry), listener);
+            }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        };
+        planetSearch.getAll(bigListener);
     }
 
     private void loadPeopleData() {
@@ -199,7 +284,42 @@ public class RandomPage extends AppCompatActivity {
     }
 
     private void loadFilmsData() {
+        final FilmsSearcher filmSearch = new FilmsSearcher();
+        final FilmGenerator filmGenerator = new FilmGenerator();
+        final ArrayList<Film> films = new ArrayList<>();
+        final ApiResponseListener<Films> bigListener = new ApiResponseListener<Films>() {
+            @Override
+            public void onResponseReceived(Films response) {
+                int entries = response.getCount();
+                Random random = new Random();
+                int entry = random.nextInt(entries);
+                final ApiResponseListener<Film> listener = new ApiResponseListener<Film>() {
+                    @Override
+                    public void onResponseReceived(Film response) {
+                        if (response!=null) {
+                            films.add(response);
+                            randomRecycler.setAdapter(new FilmAdapter(films, RandomPage.this));
+                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                        }
+                        else{
+                            loadFilmsData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                        }
+                    }
 
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                };
+                filmGenerator.getById(String.valueOf(entry), listener);
+            }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        };
+        filmSearch.getAll(bigListener);
     }
 
     public void reload(View view){
