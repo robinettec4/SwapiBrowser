@@ -21,4 +21,6 @@
     <string name="starships">Starships</string>
     <string name="textview">TextView</string>
     <string name="random_page">Random Page</string>
+    <string name="recently_updated">Recently Updated</string>
+    <string name="search">Search</string>
 </resources>
