@@ -109,7 +109,7 @@ public class RandomPage extends AppCompatActivity {
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
                         else{
-                            loadVehiclesData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                            loadVehiclesData();
                         }
                     }
 
@@ -148,7 +148,7 @@ public class RandomPage extends AppCompatActivity {
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
                         else{
-                            loadStarshipsData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                            loadStarshipsData();
                         }
                     }
 
@@ -187,7 +187,7 @@ public class RandomPage extends AppCompatActivity {
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
                         else{
-                            loadSpeciesData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                            loadSpeciesData();
                         }
                     }
 
@@ -226,7 +226,7 @@ public class RandomPage extends AppCompatActivity {
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
                         else{
-                            loadPlanetsData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                            loadPlanetsData();
                         }
                     }
 
@@ -261,9 +261,14 @@ public class RandomPage extends AppCompatActivity {
 
                     @Override
                     public void onResponseReceived(Person response) {
-                        persons.add(response);
-                        randomRecycler.setAdapter(new PersonAdapter(persons, RandomPage.this));
-                        randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                        if (response!=null) {
+                            persons.add(response);
+                            randomRecycler.setAdapter(new PersonAdapter(persons, RandomPage.this));
+                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                        }
+                        else{
+                            loadPeopleData();
+                        }
                     }
 
                     @Override
@@ -298,7 +303,7 @@ public class RandomPage extends AppCompatActivity {
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
                         else{
-                            loadFilmsData(); //not a great implementation if there was a higher chance of failure, but it'll work for now
+                            loadFilmsData();
                         }
                     }
 
