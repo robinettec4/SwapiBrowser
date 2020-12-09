@@ -6,27 +6,27 @@ import com.example.swapibrowser.retrofit.RetroClient;
 import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 
-public class VehicleSearcher {
+public class VehiclesSearcher implements ISearcher<Vehicles> {
 
     private ApiService api = RetroClient.getApiService();
 
-    public void getVehicleBySearch(String searchText, ApiResponseListener<Vehicles> listener){
+    public void getBySearch(String searchText, ApiResponseListener<Vehicles> listener){
         api.getVehicles("vehicles/?search=" + searchText).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getVehicleById(String id, ApiResponseListener<Vehicles> listener){
+    public void getByFullUrl(String url, ApiResponseListener<Vehicles> listener) {
+        api.getVehicles(url).enqueue(new ApiResponse<>(listener));
+    }
+
+    public void getById(String id, ApiResponseListener<Vehicles> listener){
         api.getVehicles("vehicles/" + id).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getVehiclesByPage(String searchText, ApiResponseListener<Vehicles> listener) {
+    public void getByPage(String searchText, ApiResponseListener<Vehicles> listener) {
         api.getVehicles("vehicles/?page=" + searchText).enqueue(new ApiResponse<>(listener));
     }
 
-    public void getAllVehicles(ApiResponseListener<Vehicles> listener) {
+    public void getAll(ApiResponseListener<Vehicles> listener) {
         api.getVehicles("vehicles/").enqueue(new ApiResponse<>(listener));
-    }
-
-    public void getAllVehiclesByPageHelper(String searchText, ApiResponseListener<Vehicles> listener) {
-        api.getVehicles(searchText).enqueue(new ApiResponse<>(listener));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.swapibrowser.models.person;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -41,10 +42,10 @@ public class Person {
     private List<String> species = null;
     @SerializedName("vehicles")
     @Expose
-    private List<Object> vehicles = null;
+    private List<String> vehicles = null;
     @SerializedName("starships")
     @Expose
-    private List<Object> starships = null;
+    private List<String> starships = null;
     @SerializedName("created")
     @Expose
     private String created;
@@ -143,19 +144,19 @@ public class Person {
         this.species = species;
     }
 
-    public List<Object> getVehicles() {
+    public List<String> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(List<Object> vehicles) {
+    public void setVehicles(List<String> vehicles) {
         this.vehicles = vehicles;
     }
 
-    public List<Object> getStarships() {
+    public List<String> getStarships() {
         return starships;
     }
 
-    public void setStarships(List<Object> starships) {
+    public void setStarships(List<String> starships) {
         this.starships = starships;
     }
 
