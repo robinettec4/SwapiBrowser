@@ -13,7 +13,6 @@ import com.example.swapibrowser.R;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.SpeciesResultGenerator;
 import com.example.swapibrowser.holders.SpeciesResultHolder;
-import com.example.swapibrowser.models.person.Person;
 import com.example.swapibrowser.models.species.SpeciesResult;
 
 import java.util.ArrayList;

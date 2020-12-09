@@ -6,7 +6,7 @@ import com.example.swapibrowser.api.ApiService;
 import com.example.swapibrowser.models.film.Film;
 import com.example.swapibrowser.retrofit.RetroClient;
 
-public class FilmGenerator implements Generator<Film>{
+public class FilmGenerator implements IGenerator<Film> {
 
     private ApiService api = RetroClient.getApiService();
 

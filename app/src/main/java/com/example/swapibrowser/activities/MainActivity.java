@@ -23,5 +23,9 @@ public class MainActivity extends AppCompatActivity {
     public void goToRandomPageActivity(View view){
         Intent intent = new Intent(MainActivity.this, RandomPage.class);
         startActivity(intent);
+      
+    public void goToRecentlyUpdatedActivity(View view){
+        Intent intent = new Intent(MainActivity.this, RecentlyUpdated.class);
+        MainActivity.this.startActivity(intent);
     }
 }

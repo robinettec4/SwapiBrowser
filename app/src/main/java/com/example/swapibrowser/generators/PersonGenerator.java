@@ -8,7 +8,7 @@ import com.example.swapibrowser.api.ApiService;
 import com.example.swapibrowser.models.person.Person;
 import com.example.swapibrowser.retrofit.RetroClient;
 
-public class PersonGenerator implements Generator<Person> {
+public class PersonGenerator implements IGenerator<Person> {
 
     private ApiService api = RetroClient.getApiService();
 
