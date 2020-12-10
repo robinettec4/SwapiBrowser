@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class PageSaver {
 
@@ -31,6 +32,50 @@ public class PageSaver {
                 }
             }
         }
+    }
+
+    public void saveFavorite(Context c, String url) {
+        FileOutputStream fos = null;
+        String urlN = url + "\n";
+        try {
+            fos = c.openFileOutput("favorites.txt", c.MODE_APPEND);
+            fos.write(urlN.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try{
+                    fos.close();
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public ArrayList<String> readFavorite(Context c) {
+        FileInputStream fis = null;
+        ArrayList<String> faves = new ArrayList<>();
+        try {
+            fis = c.openFileInput("favorites.txt");
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+
+            while((text = br.readLine()) != null){
+                sb.append(text);
+                faves.add(sb.toString());
+            }
+            return faves;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return faves;
     }
 
     public String read(Context c){
