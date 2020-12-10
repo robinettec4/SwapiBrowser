@@ -33,7 +33,7 @@ public class PageSaver {
         }
     }
 
-    public void read(Context c){
+    public String read(Context c){
         FileInputStream fis = null;
         try {
             fis = c.openFileInput("lastPage.txt");
@@ -43,8 +43,9 @@ public class PageSaver {
             String text;
 
             while((text = br.readLine()) != null){
-                sb.append(text).append("\n");
+                sb.append(text);
             }
+            return sb.toString();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -58,5 +59,6 @@ public class PageSaver {
                 }
             }
         }
+        return "";
     }
 }
