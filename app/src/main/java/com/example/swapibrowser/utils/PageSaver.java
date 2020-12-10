@@ -62,12 +62,9 @@ public class PageSaver {
             fis = c.openFileInput("favorites.txt");
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
             String text;
-
             while((text = br.readLine()) != null){
-                sb.append(text);
-                faves.add(sb.toString());
+                faves.add(text);
             }
             return faves;
         } catch (FileNotFoundException e) {
