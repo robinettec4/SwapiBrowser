@@ -42,7 +42,7 @@ public class MinSpeciesResultAdapter extends RecyclerView.Adapter<SpeciesResultH
     @Override
     public void onBindViewHolder(@NonNull SpeciesResultHolder holder, int position) {
         if(!speciesResults.isEmpty()) {
-            holder.speciesName.setText(speciesResults.get(position).getName());
+            holder.speciesNameMin.setText(speciesResults.get(position).getName());
         }
     }
 
@@ -51,7 +51,7 @@ public class MinSpeciesResultAdapter extends RecyclerView.Adapter<SpeciesResultH
         return speciesResults.size();
     }
 
-    public void getSpecies(List<String> list){
+    public void getSpecies(List<String> list) {
 
         ApiResponseListener<SpeciesResult> speciesListener = new ApiResponseListener<SpeciesResult>() {
             @Override

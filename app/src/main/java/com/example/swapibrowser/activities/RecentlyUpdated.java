@@ -56,7 +56,6 @@ public class RecentlyUpdated extends AppCompatActivity {
             @Override
             public void onResponseReceived(Film response) {
                 items.add(response);
-                Log.d("ResponseOutput", items.getClass().getName());
                 recentlyUpdatedRecycler.setAdapter(new FilmAdapter(items, RecentlyUpdated.this));
                 recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
             }
@@ -66,7 +65,7 @@ public class RecentlyUpdated extends AppCompatActivity {
                 Log.e("ResponseError", error.getMessage());
             }
         };
-        filmGenerator.getById("1", listener);
+        filmGenerator.getByFullUrl("http://swapi.dev/api/films/1/", listener);
     }
 
     public void loadPersonData(String itemUrl){
@@ -77,7 +76,6 @@ public class RecentlyUpdated extends AppCompatActivity {
             @Override
             public void onResponseReceived(Person response) {
                 items.add(response);
-                Log.d("ResponseOutput", items.getClass().getName());
                 recentlyUpdatedRecycler.setAdapter(new PersonAdapter(items, RecentlyUpdated.this));
                 recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
             }

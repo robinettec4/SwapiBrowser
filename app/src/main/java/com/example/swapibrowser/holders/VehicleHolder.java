@@ -10,10 +10,10 @@ import com.example.swapibrowser.R;
 
 public class VehicleHolder extends RecyclerView.ViewHolder {
 
-    public TextView vehicleName;
+    public TextView vehicleNameMin;
 
     public VehicleHolder(@NonNull View itemView) {
         super(itemView);
-        vehicleName = itemView.findViewById(R.id.vehicle_name_min);
+        vehicleNameMin = itemView.findViewById(R.id.vehicle_name_min);
     }
 }

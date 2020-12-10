@@ -41,7 +41,7 @@ public class MinVehicleAdapter extends RecyclerView.Adapter<VehicleHolder> {
     @Override
     public void onBindViewHolder(@NonNull VehicleHolder holder, int position) {
         if(!vehicles.isEmpty()) {
-            holder.vehicleName.setText(vehicles.get(position).getName());
+            holder.vehicleNameMin.setText(vehicles.get(position).getName());
         }
     }
 

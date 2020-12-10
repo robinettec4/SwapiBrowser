@@ -41,7 +41,7 @@ public class MinStarshipAdapter extends RecyclerView.Adapter<StarshipHolder> {
     @Override
     public void onBindViewHolder(@NonNull StarshipHolder holder, int position) {
         if(!starships.isEmpty()) {
-            holder.starshipName.setText(starships.get(position).getName());
+            holder.starshipNameMin.setText(starships.get(position).getName());
         }
     }
 

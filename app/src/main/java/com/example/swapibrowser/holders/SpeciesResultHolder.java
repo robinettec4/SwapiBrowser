@@ -10,10 +10,10 @@ import com.example.swapibrowser.R;
 
 public class SpeciesResultHolder extends RecyclerView.ViewHolder {
 
-    public TextView speciesName;
+    public TextView speciesNameMin;
 
     public SpeciesResultHolder(@NonNull View itemView) {
         super(itemView);
-        speciesName = itemView.findViewById(R.id.species_name_min);
+        speciesNameMin = itemView.findViewById(R.id.species_name_min);
     }
 }
