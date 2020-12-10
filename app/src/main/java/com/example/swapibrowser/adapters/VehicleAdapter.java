@@ -11,12 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinSpeciesResultAdapter;
-import com.example.swapibrowser.adapters.min.MinStarshipAdapter;
-import com.example.swapibrowser.adapters.min.MinVehicleAdapter;
-import com.example.swapibrowser.holders.FilmHolder;
+import com.example.swapibrowser.adapters.min.MinPersonAdapter;
 import com.example.swapibrowser.holders.VehicleHolder;
-import com.example.swapibrowser.models.vehicle.Vehicle;
 import com.example.swapibrowser.models.vehicle.Vehicle;
 
 import java.util.Collections;
@@ -43,6 +39,29 @@ public class VehicleAdapter  extends RecyclerView.Adapter<VehicleHolder> {
     public void onBindViewHolder(@NonNull VehicleHolder holder, int position) {
 
         Vehicle vehicle = list.get(position);
+
+        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(vehicle.getFilms(), context);
+        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(vehicle.getPilots(), context);
+
+        holder.vehicleName.setText(vehicle.getName());
+        holder.vehicleModel.setText(vehicle.getModel());
+        holder.vehicleManufacturer.setText(vehicle.getManufacturer());
+        holder.vehicleCost.setText(vehicle.getCostInCredits());
+        holder.vehicleLength.setText(vehicle.getLength());
+        holder.vehicleMaxSpeed.setText(vehicle.getMaxAtmospheringSpeed());
+        holder.vehicleCreated.setText(vehicle.getCrew());
+        holder.vehiclePassengers.setText(vehicle.getPassengers());
+        holder.vehicleCargo.setText(vehicle.getCargoCapacity());
+        holder.vehicleConsumables.setText(vehicle.getConsumables());
+        holder.vehicleClass.setText(vehicle.getVehicleClass());
+        holder.vehicleEdited.setText(vehicle.getEdited());
+        holder.vehicleCreated.setText(vehicle.getCreated());
+
+        holder.vehicleFilms.setAdapter(minFilmAdapter);
+        holder.vehiclePilots.setAdapter(minPersonAdapter);
+
+        holder.vehicleFilms.setLayoutManager(new LinearLayoutManager(context));
+        holder.vehiclePilots.setLayoutManager(new LinearLayoutManager(context));
     }
 
     @Override

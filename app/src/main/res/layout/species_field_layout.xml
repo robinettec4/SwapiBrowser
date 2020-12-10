@@ -139,6 +139,7 @@
             app:layout_constraintTop_toBottomOf="@+id/species_people_label" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/species_films_recycler"
             android:layout_width="175dp"
             android:layout_height="100dp"
             android:layout_marginTop="5dp"

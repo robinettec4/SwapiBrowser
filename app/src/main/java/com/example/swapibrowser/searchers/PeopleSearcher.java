@@ -8,7 +8,7 @@ import com.example.swapibrowser.api.ApiResponseListener;
 
 public class PeopleSearcher implements ISearcher<People> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     public void getBySearch(String searchText, ApiResponseListener<People> listener){
         api.getPeople("people/?search=" + searchText).enqueue(new ApiResponse<>(listener));

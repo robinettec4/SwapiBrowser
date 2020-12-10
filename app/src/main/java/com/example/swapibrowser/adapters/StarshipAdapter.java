@@ -11,12 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinSpeciesResultAdapter;
-import com.example.swapibrowser.adapters.min.MinStarshipAdapter;
-import com.example.swapibrowser.adapters.min.MinVehicleAdapter;
-import com.example.swapibrowser.holders.FilmHolder;
+import com.example.swapibrowser.adapters.min.MinPersonAdapter;
 import com.example.swapibrowser.holders.StarshipHolder;
-import com.example.swapibrowser.models.starship.Starship;
 import com.example.swapibrowser.models.starship.Starship;
 
 import java.util.Collections;
@@ -43,6 +39,31 @@ public class StarshipAdapter  extends RecyclerView.Adapter<StarshipHolder> {
     public void onBindViewHolder(@NonNull StarshipHolder holder, int position) {
 
         Starship starship = list.get(position);
+
+        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(starship.getFilms(), context);
+        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(starship.getPilots(), context);
+
+        holder.starshipName.setText(starship.getName());
+        holder.starshipModel.setText(starship.getModel());
+        holder.starshipManufacturer.setText(starship.getManufacturer());
+        holder.starshipCost.setText(starship.getCostInCredits());
+        holder.starshipLength.setText(starship.getLength());
+        holder.starshipMaxSpeed.setText(starship.getMaxAtmospheringSpeed());
+        holder.starshipCreated.setText(starship.getCrew());
+        holder.starshipPassengers.setText(starship.getPassengers());
+        holder.starshipCargo.setText(starship.getCargoCapacity());
+        holder.starshipConsumables.setText(starship.getConsumables());
+        holder.starshipHyperDriveRating.setText(starship.getHyperdriveRating());
+        holder.starshipMGLT.setText(starship.getMGLT());
+        holder.starshipClass.setText(starship.getStarshipClass());
+        holder.starshipEdited.setText(starship.getEdited());
+        holder.starshipCreated.setText(starship.getCreated());
+
+        holder.starshipFilms.setAdapter(minFilmAdapter);
+        holder.starshipPilots.setAdapter(minPersonAdapter);
+
+        holder.starshipFilms.setLayoutManager(new LinearLayoutManager(context));
+        holder.starshipPilots.setLayoutManager(new LinearLayoutManager(context));
     }
 
     @Override

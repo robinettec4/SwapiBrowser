@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
 import com.example.swapibrowser.adapters.min.MinPersonAdapter;
 import com.example.swapibrowser.adapters.min.MinPlanetAdapter;
 import com.example.swapibrowser.adapters.min.MinSpeciesResultAdapter;
