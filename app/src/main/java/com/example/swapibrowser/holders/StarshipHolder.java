@@ -10,10 +10,10 @@ import com.example.swapibrowser.R;
 
 public class StarshipHolder extends RecyclerView.ViewHolder {
 
-    public TextView starshipName;
+    public TextView starshipNameMin;
 
     public StarshipHolder(@NonNull View itemView) {
         super(itemView);
-        starshipName = itemView.findViewById(R.id.starship_name_min);
+        starshipNameMin = itemView.findViewById(R.id.starship_name_min);
     }
 }

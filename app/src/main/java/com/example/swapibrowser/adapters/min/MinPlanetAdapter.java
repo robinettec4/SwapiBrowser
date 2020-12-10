@@ -9,20 +9,28 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
+import com.example.swapibrowser.api.ApiResponseListener;
+import com.example.swapibrowser.generators.PlanetGenerator;
+import com.example.swapibrowser.generators.SpeciesResultGenerator;
 import com.example.swapibrowser.holders.PlanetHolder;
 import com.example.swapibrowser.models.planet.Planet;
+import com.example.swapibrowser.models.species.SpeciesResult;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class MinPlanetAdapter extends RecyclerView.Adapter<PlanetHolder> {
 
-    List<Planet> list = Collections.emptyList();
+    List<String> list = Collections.emptyList();
     Context context;
+    PlanetGenerator planetGenerator = new PlanetGenerator();
+    ArrayList<Planet> planets = new ArrayList<>();
 
-    public MinPlanetAdapter(List<Planet> list, Context context) {
+    public MinPlanetAdapter(List<String> list, Context context) {
         this.list = list;
         this.context = context;
+        getPlanets(list);
     }
 
     @NonNull
@@ -34,11 +42,32 @@ public class MinPlanetAdapter extends RecyclerView.Adapter<PlanetHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PlanetHolder holder, int position) {
-        holder.planetName.setText(list.get(position).getName());
+        if(!planets.isEmpty()) {
+            holder.planetNameMin.setText(planets.get(position).getName());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return planets.size();
+    }
+
+    public void getPlanets(List<String> list) {
+
+        ApiResponseListener<Planet> planetListener = new ApiResponseListener<Planet>() {
+            @Override
+            public void onResponseReceived(Planet response) {
+                planets.add(response);
+                notifyItemInserted(planets.size() - 1);
+            }
+            @Override
+            public void onError(Throwable error) {
+                System.out.println(error.getMessage());
+            }
+        };
+
+        for(String s: list) {
+            planetGenerator.getByFullUrl(s, planetListener);
+        }
     }
 }

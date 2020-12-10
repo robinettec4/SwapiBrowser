@@ -42,7 +42,7 @@ public class MinFilmAdapter extends RecyclerView.Adapter<FilmHolder> {
     @Override
     public void onBindViewHolder(@NonNull FilmHolder holder, int position) {
         if(!films.isEmpty()) {
-            holder.filmName.setText(films.get(position).getTitle());
+            holder.filmTitleMin.setText(films.get(position).getTitle());
         }
     }
 
