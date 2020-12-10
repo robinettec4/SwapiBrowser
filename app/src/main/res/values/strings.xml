@@ -23,4 +23,7 @@
     <string name="random_page">Random Page</string>
     <string name="recently_updated">Recently Updated</string>
     <string name="search">Search</string>
+    <string name="search_entries_by">Search entries by</string>
+    <string name="search_button">Search</string>
+    <string name="search_hint">Search</string>
 </resources>
