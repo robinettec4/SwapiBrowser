@@ -1,10 +1,13 @@
 package com.example.swapibrowser.models.starship;
 
+import java.io.Serializable;
 import java.util.List;
+
+import com.example.swapibrowser.models.ISingleModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Starship {
+public class Starship implements ISingleModel {
 
     @SerializedName("name")
     @Expose

@@ -15,17 +15,19 @@ import com.example.swapibrowser.adapters.min.MinSpeciesResultAdapter;
 import com.example.swapibrowser.adapters.min.MinStarshipAdapter;
 import com.example.swapibrowser.adapters.min.MinVehicleAdapter;
 import com.example.swapibrowser.holders.PersonHolder;
+import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.person.Person;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonHolder> {
 
-    List<Person> list = Collections.emptyList();
+    List<ISingleModel> list = Collections.emptyList();
     Context context;
 
-    public PersonAdapter(List<Person> list, Context context) {
+    public PersonAdapter(List<ISingleModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -40,7 +42,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonHolder> {
     @Override
     public void onBindViewHolder(@NonNull PersonHolder holder, int position) {
 
-        Person person = list.get(position);
+        Person person = (Person) list.get(position);
 
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(person.getFilms(), context);
         MinSpeciesResultAdapter minSpeciesResultAdapter = new MinSpeciesResultAdapter(person.getSpecies(), context);

@@ -2,10 +2,13 @@ package com.example.swapibrowser.models.person;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.example.swapibrowser.models.IModel;
+import com.example.swapibrowser.models.ISingleModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class People {
+public class People implements IModel<Person> {
 
     @SerializedName("count")
     @Expose
@@ -42,11 +45,11 @@ public class People {
         this.previous = previous;
     }
 
-    public List<Person> getPeople() {
+    public List<Person> getResults() {
         return people;
     }
 
-    public void setPeople(List<Person> people) {
+    public void setResults(List<Person> people) {
         this.people = people;
     }
 

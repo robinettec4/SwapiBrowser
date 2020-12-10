@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.PersonGenerator;
+import com.example.swapibrowser.generators.PeopleGenerator;
 import com.example.swapibrowser.holders.PersonHolder;
 import com.example.swapibrowser.models.person.Person;
 
@@ -21,7 +21,7 @@ import java.util.List;
 public class MinPersonAdapter extends RecyclerView.Adapter<PersonHolder>{
     List<String> list = Collections.emptyList();
     Context context;
-    PersonGenerator personGenerator = new PersonGenerator();
+    PeopleGenerator peopleGenerator = new PeopleGenerator();
     ArrayList<Person> persons = new ArrayList<>();
 
     public MinPersonAdapter(List<String> list, Context context) {
@@ -64,7 +64,7 @@ public class MinPersonAdapter extends RecyclerView.Adapter<PersonHolder>{
         };
 
         for(String s: list) {
-            personGenerator.getByFullUrl(s, personListener);
+            peopleGenerator.getByFullUrl(s, personListener);
         }
     }
 }

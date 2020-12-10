@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.StarshipGenerator;
+import com.example.swapibrowser.generators.StarshipsGenerator;
 import com.example.swapibrowser.holders.StarshipHolder;
 import com.example.swapibrowser.models.starship.Starship;
 
@@ -22,7 +22,7 @@ public class MinStarshipAdapter extends RecyclerView.Adapter<StarshipHolder> {
 
     List<String> list = Collections.emptyList();
     Context context;
-    StarshipGenerator starshipGenerator = new StarshipGenerator();
+    StarshipsGenerator starshipsGenerator = new StarshipsGenerator();
     ArrayList<Starship> starships = new ArrayList<>();
 
     public MinStarshipAdapter(List<String> list, Context context) {
@@ -65,7 +65,7 @@ public class MinStarshipAdapter extends RecyclerView.Adapter<StarshipHolder> {
         };
 
         for(String s: list) {
-            starshipGenerator.getByFullUrl(s, starshipListener);
+            starshipsGenerator.getByFullUrl(s, starshipListener);
         }
     }
 }

@@ -13,6 +13,7 @@ import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.min.MinFilmAdapter;
 import com.example.swapibrowser.adapters.min.MinPersonAdapter;
 import com.example.swapibrowser.holders.PlanetHolder;
+import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.planet.Planet;
 
 import java.util.Collections;
@@ -20,10 +21,10 @@ import java.util.List;
 
 public class PlanetAdapter  extends RecyclerView.Adapter<PlanetHolder> {
 
-    List<Planet> list = Collections.emptyList();
+    List<ISingleModel> list = Collections.emptyList();
     Context context;
 
-    public PlanetAdapter(List<Planet> list, Context context) {
+    public PlanetAdapter(List<ISingleModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -38,7 +39,7 @@ public class PlanetAdapter  extends RecyclerView.Adapter<PlanetHolder> {
     @Override
     public void onBindViewHolder(@NonNull PlanetHolder holder, int position) {
 
-        Planet planet = list.get(position);
+        Planet planet = (Planet) list.get(position);
 
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(planet.getFilms(), context);
         MinPersonAdapter minPersonAdapter = new MinPersonAdapter(planet.getResidents(), context);

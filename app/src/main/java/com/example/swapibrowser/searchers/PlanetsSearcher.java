@@ -18,6 +18,11 @@ public class PlanetsSearcher implements ISearcher<Planets> {
         api.getPlanets(url).enqueue(new ApiResponse<>(listener));
     }
 
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Planets> listener) {
+        api.getPlanets("planets/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
+    }
+
     public void getById(String id, ApiResponseListener<Planets> listener){
         api.getPlanets("planets/" + id).enqueue(new ApiResponse<>(listener));
     }

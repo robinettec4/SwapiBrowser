@@ -9,37 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.FilmAdapter;
-import com.example.swapibrowser.adapters.PersonAdapter;
-import com.example.swapibrowser.adapters.PlanetAdapter;
-import com.example.swapibrowser.adapters.SpeciesResultAdapter;
-import com.example.swapibrowser.adapters.StarshipAdapter;
-import com.example.swapibrowser.adapters.VehicleAdapter;
+import com.example.swapibrowser.adapters.AdapterFactory;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.FilmGenerator;
-import com.example.swapibrowser.generators.PersonGenerator;
-import com.example.swapibrowser.generators.PlanetGenerator;
-import com.example.swapibrowser.generators.SpeciesResultGenerator;
-import com.example.swapibrowser.generators.StarshipGenerator;
-import com.example.swapibrowser.generators.VehicleGenerator;
-import com.example.swapibrowser.models.film.Film;
-import com.example.swapibrowser.models.film.Films;
-import com.example.swapibrowser.models.person.People;
-import com.example.swapibrowser.models.person.Person;
-import com.example.swapibrowser.models.planet.Planet;
-import com.example.swapibrowser.models.planet.Planets;
-import com.example.swapibrowser.models.species.Species;
-import com.example.swapibrowser.models.species.SpeciesResult;
-import com.example.swapibrowser.models.starship.Starship;
-import com.example.swapibrowser.models.starship.Starships;
-import com.example.swapibrowser.models.vehicle.Vehicle;
-import com.example.swapibrowser.models.vehicle.Vehicles;
-import com.example.swapibrowser.searchers.FilmsSearcher;
-import com.example.swapibrowser.searchers.PeopleSearcher;
-import com.example.swapibrowser.searchers.PlanetsSearcher;
-import com.example.swapibrowser.searchers.SpeciesSearcher;
-import com.example.swapibrowser.searchers.StarshipsSearcher;
-import com.example.swapibrowser.searchers.VehiclesSearcher;
+import com.example.swapibrowser.generators.GeneratorFactory;
+import com.example.swapibrowser.generators.IGenerator;
+import com.example.swapibrowser.models.IModel;
+import com.example.swapibrowser.models.ISingleModel;
+import com.example.swapibrowser.searchers.ISearcher;
+import com.example.swapibrowser.searchers.SearcherFactory;
 import com.example.swapibrowser.utils.PageSaver;
 
 import java.util.ArrayList;
@@ -54,9 +31,8 @@ public class RandomPage extends AppCompatActivity {
         setContentView(R.layout.activity_random_page);
         randomRecycler = findViewById(R.id.recently_updated_recycler);
         int field = decideField();
-
-        decideEntry(field);
-
+        String[] list = new String[]{"people", "films", "planets", "starships", "vehicles"};
+        getItemCount(list[field]);
     }
 
     public int decideField(){
@@ -65,61 +41,19 @@ public class RandomPage extends AppCompatActivity {
         return field;
     }
 
-    public void decideEntry(int field){
-        switch (field) {
-            case 0:
-                loadFilmsData();
-                break;
-            case 1:
-                loadPeopleData();
-                break;
-            case 2:
-                loadPlanetsData();
-                break;
-            case 3:
-                loadSpeciesData();
-                break;
-            case 4:
-                loadStarshipsData();
-                break;
-            case 5:
-                loadVehiclesData();
-                break;
-            default:
-                break;
-        }
-    }
+    private void loadItemData(final String itemType, Integer entry) {
+        final IGenerator generator = new GeneratorFactory().CreateGenerator(itemType);
+        final ArrayList<ISingleModel> items = new ArrayList<>();
 
-    private void loadVehiclesData() {
-        final VehiclesSearcher vehicleSearch = new VehiclesSearcher();
-        final VehicleGenerator vehicleGenerator = new VehicleGenerator();
-        final ArrayList<Vehicle> vehicles = new ArrayList<>();
-        final ApiResponseListener<Vehicles> bigListener = new ApiResponseListener<Vehicles>() {
+        final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
             @Override
-            public void onResponseReceived(Vehicles response) {
-                int entries = response.getCount();
-                Random random = new Random();
-                int entry = random.nextInt(entries);
-                final ApiResponseListener<Vehicle> listener = new ApiResponseListener<Vehicle>() {
-                    @Override
-                    public void onResponseReceived(Vehicle response) {
-                        if (response!=null) {
-                            vehicles.add(response);
-                            save(vehicles.get(0).getUrl());
-                            randomRecycler.setAdapter(new VehicleAdapter(vehicles, RandomPage.this));
-                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
-                        }
-                        else{
-                            loadVehiclesData();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-
-                    }
-                };
-                vehicleGenerator.getById(String.valueOf(entry), listener);
+            public void onResponseReceived(ISingleModel response) {
+                if (response!=null) {
+                    items.add(response);
+                    save(items.get(0).getUrl(), itemType);
+                    randomRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RandomPage.this));
+                    randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
+                }
             }
 
             @Override
@@ -127,39 +61,19 @@ public class RandomPage extends AppCompatActivity {
 
             }
         };
-        vehicleSearch.getAll(bigListener);
+        generator.getById(String.valueOf(entry), listener);
     }
 
-    private void loadStarshipsData() {
-        final StarshipsSearcher shipSearch = new StarshipsSearcher();
-        final StarshipGenerator shipGenerator = new StarshipGenerator();
-        final ArrayList<Starship> starships = new ArrayList<>();
-        final ApiResponseListener<Starships> bigListener = new ApiResponseListener<Starships>() {
+    public void getItemCount(final String itemType){
+        final ISearcher searcher = new SearcherFactory().CreateSearcher(itemType);
+
+        final ApiResponseListener<IModel> bigListener = new ApiResponseListener<IModel>() {
             @Override
-            public void onResponseReceived(Starships response) {
-                int entries = response.getCount();
+            public void onResponseReceived(IModel response) {
+                Integer entries = response.getCount();
                 Random random = new Random();
-                int entry = random.nextInt(entries);
-                final ApiResponseListener<Starship> listener = new ApiResponseListener<Starship>() {
-                    @Override
-                    public void onResponseReceived(Starship response) {
-                        if (response!=null) {
-                            starships.add(response);
-                            save(starships.get(0).getUrl());
-                            randomRecycler.setAdapter(new StarshipAdapter(starships, RandomPage.this));
-                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
-                        }
-                        else{
-                            loadStarshipsData();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-
-                    }
-                };
-                shipGenerator.getById(String.valueOf(entry), listener);
+                Integer entry = random.nextInt(entries);
+                loadItemData(itemType, entry);
             }
 
             @Override
@@ -167,166 +81,7 @@ public class RandomPage extends AppCompatActivity {
 
             }
         };
-        shipSearch.getAll(bigListener);
-    }
-
-    private void loadSpeciesData() {
-        final SpeciesSearcher speciesSearch = new SpeciesSearcher();
-        final SpeciesResultGenerator speciesGenerator = new SpeciesResultGenerator();
-        final ArrayList<SpeciesResult> species = new ArrayList<>();
-        final ApiResponseListener<Species> bigListener = new ApiResponseListener<Species>() {
-            @Override
-            public void onResponseReceived(Species response) {
-                int entries = response.getCount();
-                Random random = new Random();
-                int entry = random.nextInt(entries);
-                final ApiResponseListener<SpeciesResult> listener = new ApiResponseListener<SpeciesResult>() {
-                    @Override
-                    public void onResponseReceived(SpeciesResult response) {
-                        if (response!=null) {
-                            species.add(response);
-                            save(species.get(0).getUrl());
-                            randomRecycler.setAdapter(new SpeciesResultAdapter(species, RandomPage.this));
-                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
-                        }
-                        else{
-                            loadSpeciesData();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-
-                    }
-                };
-                speciesGenerator.getById(String.valueOf(entry), listener);
-            }
-
-            @Override
-            public void onError(Throwable error) {
-
-            }
-        };
-        speciesSearch.getAll(bigListener);
-    }
-
-    private void loadPlanetsData() {
-        final PlanetsSearcher planetSearch = new PlanetsSearcher();
-        final PlanetGenerator planetGenerator = new PlanetGenerator();
-        final ArrayList<Planet> planets = new ArrayList<>();
-        final ApiResponseListener<Planets> bigListener = new ApiResponseListener<Planets>() {
-            @Override
-            public void onResponseReceived(Planets response) {
-                int entries = response.getCount();
-                Random random = new Random();
-                int entry = random.nextInt(entries);
-                final ApiResponseListener<Planet> listener = new ApiResponseListener<Planet>() {
-                    @Override
-                    public void onResponseReceived(Planet response) {
-                        if (response!=null) {
-                            planets.add(response);
-                            save(planets.get(0).getUrl());
-                            randomRecycler.setAdapter(new PlanetAdapter(planets, RandomPage.this));
-                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
-                        }
-                        else{
-                            loadPlanetsData();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-
-                    }
-                };
-                planetGenerator.getById(String.valueOf(entry), listener);
-            }
-
-            @Override
-            public void onError(Throwable error) {
-
-            }
-        };
-        planetSearch.getAll(bigListener);
-    }
-
-    private void loadPeopleData() {
-        final PeopleSearcher peopleSearcher = new PeopleSearcher();
-        final PersonGenerator personGenerator = new PersonGenerator();
-        final ArrayList<Person> persons = new ArrayList<>();
-        final ApiResponseListener<People> bigListener = new ApiResponseListener<People>() {
-            @Override
-            public void onResponseReceived(People response) {
-                int entries = response.getCount();
-                Random random = new Random();
-                int entry = random.nextInt(entries);
-
-                final ApiResponseListener<Person> listener = new ApiResponseListener<Person>() {
-
-                    @Override
-                    public void onResponseReceived(Person response) {
-                        if (response!=null) {
-                            persons.add(response);
-                            save(persons.get(0).getUrl());
-                            randomRecycler.setAdapter(new PersonAdapter(persons, RandomPage.this));
-                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
-                        }
-                        else{
-                            loadPeopleData();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        System.out.println(error.getMessage());
-                    }
-                };
-                personGenerator.getById(String.valueOf(entry), listener);
-            }
-            @Override
-            public void onError(Throwable error) { System.out.println(error.getMessage()); }
-        };
-        peopleSearcher.getAll(bigListener);
-    }
-
-    private void loadFilmsData() {
-        final FilmsSearcher filmSearch = new FilmsSearcher();
-        final FilmGenerator filmGenerator = new FilmGenerator();
-        final ArrayList<Film> films = new ArrayList<>();
-        final ApiResponseListener<Films> bigListener = new ApiResponseListener<Films>() {
-            @Override
-            public void onResponseReceived(Films response) {
-                int entries = response.getCount();
-                Random random = new Random();
-                int entry = random.nextInt(entries);
-                final ApiResponseListener<Film> listener = new ApiResponseListener<Film>() {
-                    @Override
-                    public void onResponseReceived(Film response) {
-                        if (response!=null) {
-                            films.add(response);
-                            save(films.get(0).getUrl());
-                            randomRecycler.setAdapter(new FilmAdapter(films, RandomPage.this));
-                            randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
-                        }
-                        else{
-                            loadFilmsData();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-
-                    }
-                };
-                filmGenerator.getById(String.valueOf(entry), listener);
-            }
-
-            @Override
-            public void onError(Throwable error) {
-
-            }
-        };
-        filmSearch.getAll(bigListener);
+        searcher.getAll(bigListener);
     }
 
     public void reload(View view){
@@ -335,7 +90,7 @@ public class RandomPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void save(String url){
-        saver.save(this, url);
+    public void save(String url, String itemType){
+        saver.save(this, url, itemType);
     }
 }

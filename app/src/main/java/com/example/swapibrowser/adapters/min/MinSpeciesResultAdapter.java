@@ -1,7 +1,6 @@
 package com.example.swapibrowser.adapters.min;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.SpeciesResultGenerator;
+import com.example.swapibrowser.generators.SpeciesGenerator;
 import com.example.swapibrowser.holders.SpeciesResultHolder;
 import com.example.swapibrowser.models.species.SpeciesResult;
 
@@ -23,7 +22,7 @@ public class MinSpeciesResultAdapter extends RecyclerView.Adapter<SpeciesResultH
 
     List<String> list = Collections.emptyList();
     Context context;
-    SpeciesResultGenerator speciesResultGenerator = new SpeciesResultGenerator();
+    SpeciesGenerator speciesGenerator = new SpeciesGenerator();
     ArrayList<SpeciesResult> speciesResults = new ArrayList<>();
 
     public MinSpeciesResultAdapter(List<String> list, Context context) {
@@ -66,7 +65,7 @@ public class MinSpeciesResultAdapter extends RecyclerView.Adapter<SpeciesResultH
         };
 
         for(String s: list) {
-            speciesResultGenerator.getByFullUrl(s, speciesListener);
+            speciesGenerator.getByFullUrl(s, speciesListener);
         }
     }
 }

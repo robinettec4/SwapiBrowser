@@ -18,6 +18,11 @@ public class VehiclesSearcher implements ISearcher<Vehicles> {
         api.getVehicles(url).enqueue(new ApiResponse<>(listener));
     }
 
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Vehicles> listener) {
+        api.getVehicles("vehicles/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
+    }
+
     public void getById(String id, ApiResponseListener<Vehicles> listener){
         api.getVehicles("vehicles/" + id).enqueue(new ApiResponse<>(listener));
     }

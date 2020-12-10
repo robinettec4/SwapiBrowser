@@ -1,10 +1,14 @@
 package com.example.swapibrowser.models.species;
 
+import java.io.Serializable;
 import java.util.List;
+
+import com.example.swapibrowser.models.IModel;
+import com.example.swapibrowser.models.ISingleModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Species {
+public class Species implements IModel<SpeciesResult> {
 
     @SerializedName("count")
     @Expose
@@ -43,7 +47,7 @@ public class Species {
         this.previous = previous;
     }
 
-    public List<SpeciesResult> getSpeciesResults() {
+    public List<SpeciesResult> getResults() {
         return speciesResults;
     }
 

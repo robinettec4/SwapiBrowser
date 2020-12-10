@@ -26,6 +26,11 @@ public class SpeciesSearcher implements ISearcher<Species> {
         api.getSpecies(url).enqueue(new ApiResponse<>(listener));
     }
 
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Species> listener) {
+        api.getSpecies("species/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
+    }
+
     public void getAll(ApiResponseListener<Species> listener) {
         api.getSpecies("species/").enqueue(new ApiResponse<>(listener));
     }

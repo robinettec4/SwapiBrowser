@@ -10,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.PlanetGenerator;
-import com.example.swapibrowser.generators.SpeciesResultGenerator;
+import com.example.swapibrowser.generators.PlanetsGenerator;
 import com.example.swapibrowser.holders.PlanetHolder;
 import com.example.swapibrowser.models.planet.Planet;
-import com.example.swapibrowser.models.species.SpeciesResult;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +22,7 @@ public class MinPlanetAdapter extends RecyclerView.Adapter<PlanetHolder> {
 
     List<String> list = Collections.emptyList();
     Context context;
-    PlanetGenerator planetGenerator = new PlanetGenerator();
+    PlanetsGenerator planetsGenerator = new PlanetsGenerator();
     ArrayList<Planet> planets = new ArrayList<>();
 
     public MinPlanetAdapter(List<String> list, Context context) {
@@ -67,7 +65,7 @@ public class MinPlanetAdapter extends RecyclerView.Adapter<PlanetHolder> {
         };
 
         for(String s: list) {
-            planetGenerator.getByFullUrl(s, planetListener);
+            planetsGenerator.getByFullUrl(s, planetListener);
         }
     }
 }

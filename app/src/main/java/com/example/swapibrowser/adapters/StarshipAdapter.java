@@ -13,17 +13,19 @@ import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.min.MinFilmAdapter;
 import com.example.swapibrowser.adapters.min.MinPersonAdapter;
 import com.example.swapibrowser.holders.StarshipHolder;
+import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.starship.Starship;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
 public class StarshipAdapter  extends RecyclerView.Adapter<StarshipHolder> {
 
-    List<Starship> list = Collections.emptyList();
+    List<ISingleModel> list = Collections.emptyList();
     Context context;
 
-    public StarshipAdapter(List<Starship> list, Context context) {
+    public StarshipAdapter(List<ISingleModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -38,7 +40,7 @@ public class StarshipAdapter  extends RecyclerView.Adapter<StarshipHolder> {
     @Override
     public void onBindViewHolder(@NonNull StarshipHolder holder, int position) {
 
-        Starship starship = list.get(position);
+        Starship starship = (Starship) list.get(position);
 
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(starship.getFilms(), context);
         MinPersonAdapter minPersonAdapter = new MinPersonAdapter(starship.getPilots(), context);

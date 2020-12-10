@@ -26,6 +26,11 @@ public class FilmsSearcher implements ISearcher<Films> {
         api.getFilms(url).enqueue(new ApiResponse<>(listener));
     }
 
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Films> listener) {
+        api.getFilms("films/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
+    }
+
     public void getByPage(String page, ApiResponseListener<Films> listener) {
         api.getFilms("films/?page=" + page).enqueue(new ApiResponse<>(listener));
     }

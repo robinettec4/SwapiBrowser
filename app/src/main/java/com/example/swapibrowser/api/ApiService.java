@@ -1,5 +1,6 @@
 package com.example.swapibrowser.api;
 
+import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.film.Film;
 import com.example.swapibrowser.models.film.Films;
 import com.example.swapibrowser.models.person.People;

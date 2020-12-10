@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.FilmGenerator;
+import com.example.swapibrowser.generators.FilmsGenerator;
 import com.example.swapibrowser.holders.FilmHolder;
 import com.example.swapibrowser.models.film.Film;
 
@@ -24,7 +24,7 @@ public class MinFilmAdapter extends RecyclerView.Adapter<FilmHolder> {
     List<String> list = Collections.emptyList();
     Context context;
     ArrayList<Film> films = new ArrayList<>();
-    FilmGenerator filmGenerator = new FilmGenerator();
+    FilmsGenerator filmsGenerator = new FilmsGenerator();
 
     public MinFilmAdapter(List<String> list, Context context) {
         this.list = list;
@@ -67,7 +67,7 @@ public class MinFilmAdapter extends RecyclerView.Adapter<FilmHolder> {
         };
 
         for(String s: list){
-            filmGenerator.getByFullUrl(s, filmListener);
+            filmsGenerator.getByFullUrl(s, filmListener);
         }
     }
 }

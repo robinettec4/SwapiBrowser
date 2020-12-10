@@ -5,22 +5,22 @@ public class SearcherFactory implements ISearcherFactory {
     @Override
     public ISearcher CreateSearcher(String itemType) {
 
-        if(itemType == "film"){
+        if(itemType.equals("films")){
             return new FilmsSearcher();
         }
-        if(itemType == "person"){
+        if(itemType.equals("people")){
             return new PeopleSearcher();
         }
-        if(itemType == "planet"){
+        if(itemType.equals("planets")){
             return new PlanetsSearcher();
         }
-        if(itemType == "species"){
+        if(itemType.equals("species")){
             return new SpeciesSearcher();
         }
-        if(itemType == "starship"){
+        if(itemType.equals("starships")){
             return new StarshipsSearcher();
         }
-        if(itemType == "vehicle"){
+        if(itemType.equals("vehicles")){
             return new VehiclesSearcher();
         } else {
             throw new UnknownError("Unknown searcher Type");

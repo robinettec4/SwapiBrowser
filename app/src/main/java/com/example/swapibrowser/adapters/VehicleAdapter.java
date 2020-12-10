@@ -13,17 +13,19 @@ import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.min.MinFilmAdapter;
 import com.example.swapibrowser.adapters.min.MinPersonAdapter;
 import com.example.swapibrowser.holders.VehicleHolder;
+import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.vehicle.Vehicle;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
 public class VehicleAdapter  extends RecyclerView.Adapter<VehicleHolder> {
 
-    List<Vehicle> list = Collections.emptyList();
+    List<ISingleModel> list = Collections.emptyList();
     Context context;
 
-    public VehicleAdapter(List<Vehicle> list, Context context) {
+    public VehicleAdapter(List<ISingleModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -38,7 +40,7 @@ public class VehicleAdapter  extends RecyclerView.Adapter<VehicleHolder> {
     @Override
     public void onBindViewHolder(@NonNull VehicleHolder holder, int position) {
 
-        Vehicle vehicle = list.get(position);
+        Vehicle vehicle = (Vehicle) list.get(position);
 
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(vehicle.getFilms(), context);
         MinPersonAdapter minPersonAdapter = new MinPersonAdapter(vehicle.getPilots(), context);

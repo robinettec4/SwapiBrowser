@@ -1,14 +1,12 @@
 package com.example.swapibrowser.generators;
 
-import android.util.Log;
-
 import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.api.ApiService;
 import com.example.swapibrowser.models.person.Person;
 import com.example.swapibrowser.retrofit.RetroClient;
 
-public class PersonGenerator implements IGenerator<Person> {
+public class PeopleGenerator implements IGenerator<Person> {
 
     private final ApiService api = RetroClient.getApiService();
 

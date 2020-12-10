@@ -18,6 +18,11 @@ public class PeopleSearcher implements ISearcher<People> {
         api.getPeople(url).enqueue(new ApiResponse<>(listener));
     }
 
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<People> listener) {
+        api.getPeople("people/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
+    }
+
     public void getById(String id, ApiResponseListener<People> listener){
         api.getPeople("people/" + id).enqueue(new ApiResponse<>(listener));
     }

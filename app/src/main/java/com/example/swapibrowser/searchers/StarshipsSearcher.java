@@ -18,6 +18,11 @@ public class StarshipsSearcher implements ISearcher<Starships> {
         api.getStarships(url).enqueue(new ApiResponse<>(listener));
     }
 
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Starships> listener) {
+        api.getStarships("starships/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
+    }
+
     public void getById(String id, ApiResponseListener<Starships> listener){
         api.getStarships("starships/" + id).enqueue(new ApiResponse<>(listener));
     }

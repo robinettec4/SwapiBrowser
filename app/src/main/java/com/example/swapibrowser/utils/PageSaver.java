@@ -13,12 +13,16 @@ import java.util.ArrayList;
 
 public class PageSaver {
 
-    public void save(Context c, String url) {
+    public void save(Context c, String url, String itemType) {
         FileOutputStream fos = null;
 
         try {
+            StringBuilder builder = new StringBuilder();
+            builder.append(url);
+            builder.append(" :");
+            builder.append(itemType);
             fos = c.openFileOutput("lastPage.txt", Context.MODE_PRIVATE);
-            fos.write(url.getBytes());
+            fos.write(builder.toString().getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

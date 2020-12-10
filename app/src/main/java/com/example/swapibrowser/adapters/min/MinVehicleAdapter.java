@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.VehicleGenerator;
+import com.example.swapibrowser.generators.VehiclesGenerator;
 import com.example.swapibrowser.holders.VehicleHolder;
 import com.example.swapibrowser.models.vehicle.Vehicle;
 
@@ -22,7 +22,7 @@ public class MinVehicleAdapter extends RecyclerView.Adapter<VehicleHolder> {
 
     List<String> list = Collections.emptyList();
     Context context;
-    VehicleGenerator vehicleGenerator = new VehicleGenerator();
+    VehiclesGenerator vehiclesGenerator = new VehiclesGenerator();
     ArrayList<Vehicle> vehicles = new ArrayList<>();
 
     public MinVehicleAdapter(List<String> list, Context context) {
@@ -65,7 +65,7 @@ public class MinVehicleAdapter extends RecyclerView.Adapter<VehicleHolder> {
         };
 
         for(String s: list) {
-            vehicleGenerator.getByFullUrl(s, vehicleListener);
+            vehiclesGenerator.getByFullUrl(s, vehicleListener);
         }
     }
 }
