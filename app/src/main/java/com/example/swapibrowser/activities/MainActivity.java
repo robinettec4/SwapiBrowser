@@ -3,13 +3,16 @@ package com.example.swapibrowser.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.models.person.People;
 import com.example.swapibrowser.models.person.Person;
+import com.example.swapibrowser.utils.PageSaver;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

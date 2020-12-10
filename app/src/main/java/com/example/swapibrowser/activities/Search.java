@@ -37,6 +37,7 @@ import com.example.swapibrowser.searchers.PlanetsSearcher;
 import com.example.swapibrowser.searchers.SpeciesSearcher;
 import com.example.swapibrowser.searchers.StarshipsSearcher;
 import com.example.swapibrowser.searchers.VehiclesSearcher;
+import com.example.swapibrowser.utils.PageSaver;
 
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class Search extends AppCompatActivity {
     EditText inputText;
     private String field;
     private String input;
+    PageSaver saver = new PageSaver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,7 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(Planets response) {
                 if (response != null){
                     planets.add(response.getPlanets().get(0));
+                    save(planets.get(0).getUrl());
                     searchRecycler.setAdapter(new PlanetAdapter(planets, Search.this));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
@@ -129,6 +132,7 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(Species response) {
                 if (response != null){
                     species.add(response.getSpeciesResults().get(0));
+                    save(species.get(0).getUrl());
                     searchRecycler.setAdapter(new SpeciesResultAdapter(species, Search.this));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
@@ -153,6 +157,7 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(Vehicles response) {
                 if (response != null){
                     vehicles.add(response.getVehicles().get(0));
+                    save(vehicles.get(0).getUrl());
                     searchRecycler.setAdapter(new VehicleAdapter(vehicles, Search.this));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
@@ -177,6 +182,7 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(Starships response) {
                 if (response != null){
                     ships.add(response.getStarships().get(0));
+                    save(ships.get(0).getUrl());
                     searchRecycler.setAdapter(new StarshipAdapter(ships, Search.this));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
@@ -201,6 +207,7 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(Films response) {
                 if (response != null) {
                     films.add(response.getFilms().get(0));
+                    save(films.get(0).getUrl());
                     searchRecycler.setAdapter(new FilmAdapter(films, Search.this));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
@@ -225,6 +232,7 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(People response) {
                 if (response != null) {
                     persons.add(response.getPeople().get(0));
+                    save(persons.get(0).getUrl());
                     searchRecycler.setAdapter(new PersonAdapter(persons, Search.this));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
@@ -239,5 +247,9 @@ public class Search extends AppCompatActivity {
             }
         };
         peopleSearcher.getBySearch(input, listener);
+    }
+
+    public void save(String url){
+        saver.save(this, url);
     }
 }

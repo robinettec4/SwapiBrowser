@@ -42,6 +42,7 @@ import com.example.swapibrowser.searchers.PlanetsSearcher;
 import com.example.swapibrowser.searchers.SpeciesSearcher;
 import com.example.swapibrowser.searchers.StarshipsSearcher;
 import com.example.swapibrowser.searchers.VehiclesSearcher;
+import com.example.swapibrowser.utils.PageSaver;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ import java.util.Random;
 
 public class RandomPage extends AppCompatActivity {
     RecyclerView randomRecycler;
+    PageSaver saver = new PageSaver();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,7 @@ public class RandomPage extends AppCompatActivity {
         int field = decideField();
 
         decideEntry(field);
+
     }
 
     public int decideField(){
@@ -105,6 +108,7 @@ public class RandomPage extends AppCompatActivity {
                     public void onResponseReceived(Vehicle response) {
                         if (response!=null) {
                             vehicles.add(response);
+                            save(vehicles.get(0).getUrl());
                             randomRecycler.setAdapter(new VehicleAdapter(vehicles, RandomPage.this));
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
@@ -144,6 +148,7 @@ public class RandomPage extends AppCompatActivity {
                     public void onResponseReceived(Starship response) {
                         if (response!=null) {
                             starships.add(response);
+                            save(starships.get(0).getUrl());
                             randomRecycler.setAdapter(new StarshipAdapter(starships, RandomPage.this));
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
@@ -183,6 +188,7 @@ public class RandomPage extends AppCompatActivity {
                     public void onResponseReceived(SpeciesResult response) {
                         if (response!=null) {
                             species.add(response);
+                            save(species.get(0).getUrl());
                             randomRecycler.setAdapter(new SpeciesResultAdapter(species, RandomPage.this));
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
@@ -222,6 +228,7 @@ public class RandomPage extends AppCompatActivity {
                     public void onResponseReceived(Planet response) {
                         if (response!=null) {
                             planets.add(response);
+                            save(planets.get(0).getUrl());
                             randomRecycler.setAdapter(new PlanetAdapter(planets, RandomPage.this));
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
@@ -263,6 +270,7 @@ public class RandomPage extends AppCompatActivity {
                     public void onResponseReceived(Person response) {
                         if (response!=null) {
                             persons.add(response);
+                            save(persons.get(0).getUrl());
                             randomRecycler.setAdapter(new PersonAdapter(persons, RandomPage.this));
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
@@ -299,6 +307,7 @@ public class RandomPage extends AppCompatActivity {
                     public void onResponseReceived(Film response) {
                         if (response!=null) {
                             films.add(response);
+                            save(films.get(0).getUrl());
                             randomRecycler.setAdapter(new FilmAdapter(films, RandomPage.this));
                             randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                         }
@@ -327,5 +336,9 @@ public class RandomPage extends AppCompatActivity {
         Intent intent = new Intent(this, RandomPage.class);
         finish();
         startActivity(intent);
+    }
+
+    public void save(String url){
+        saver.save(this, url);
     }
 }
