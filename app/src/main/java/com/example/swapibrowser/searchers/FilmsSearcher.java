@@ -8,7 +8,7 @@ import com.example.swapibrowser.api.ApiResponseListener;
 
 public class FilmsSearcher implements ISearcher<Films> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     public void getBySearch(String searchText, ApiResponseListener<Films> listener){
         api.getFilms("films/?search=" + searchText).enqueue(new ApiResponse<>(listener));

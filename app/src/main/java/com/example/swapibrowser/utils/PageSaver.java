@@ -16,7 +16,7 @@ public class PageSaver {
         FileOutputStream fos = null;
 
         try {
-            fos = c.openFileOutput("lastPage.txt", c.MODE_PRIVATE);
+            fos = c.openFileOutput("lastPage.txt", Context.MODE_PRIVATE);
             fos.write(url.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();

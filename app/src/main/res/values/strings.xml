@@ -23,15 +23,13 @@
     <string name="random_page">Random Page</string>
     <string name="recently_updated">Recently Updated</string>
     <string name="search">Search</string>
-<<<<<<< Updated upstream
     <string name="search_entries_by">Search entries by</string>
     <string name="search_button">Search</string>
     <string name="search_hint">Search</string>
-=======
     <string name="planets">Planets</string>
     <string name="characters">Characters</string>
     <string name="residents">Residents</string>
     <string name="people">People</string>
     <string name="pilots">Pilots</string>
->>>>>>> Stashed changes
+    <string name="title">Title</string>
 </resources>

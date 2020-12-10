@@ -8,7 +8,7 @@ import com.example.swapibrowser.retrofit.RetroClient;
 
 public class StarshipGenerator implements IGenerator<Starship> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     @Override
     public void getById(String id, ApiResponseListener<Starship> listener) {

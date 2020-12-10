@@ -10,7 +10,7 @@ import com.example.swapibrowser.retrofit.RetroClient;
 
 public class PersonGenerator implements IGenerator<Person> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     @Override
     public void getById(String id, ApiResponseListener<Person> listener) {

@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 
-import com.example.swapibrowser.holders.FilmHolder;
+import com.example.swapibrowser.adapters.min.MinFilmAdapter;
+import com.example.swapibrowser.adapters.min.MinPersonAdapter;
 import com.example.swapibrowser.holders.SpeciesResultHolder;
 import com.example.swapibrowser.models.species.SpeciesResult;
 
@@ -39,6 +40,28 @@ public class SpeciesResultAdapter  extends RecyclerView.Adapter<SpeciesResultHol
     public void onBindViewHolder(@NonNull SpeciesResultHolder holder, int position) {
 
         SpeciesResult speciesResult = list.get(position);
+
+        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(speciesResult.getFilms(), context);
+        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(speciesResult.getPeople(), context);
+
+        holder.speciesName.setText(speciesResult.getName());
+        holder.speciesClassification.setText(speciesResult.getClassification());
+        holder.speciesDesignation.setText(speciesResult.getDesignation());
+        holder.speciesAvgHeight.setText(speciesResult.getAverageHeight());
+        holder.speciesSkinColors.setText(speciesResult.getSkinColors());
+        holder.speciesHairColors.setText(speciesResult.getHairColors());
+        holder.speciesEyeColors.setText(speciesResult.getEyeColors());
+        holder.speciesAvgLifespan.setText(speciesResult.getAverageLifespan());
+        holder.speciesHomeworld.setText(speciesResult.getHomeworld());
+        holder.speciesLanguage.setText(speciesResult.getLanguage());
+        holder.speciesEdited.setText(speciesResult.getEdited());
+        holder.speciesCreated.setText(speciesResult.getCreated());
+
+        holder.speciesFilms.setAdapter(minFilmAdapter);
+        holder.speciesPeople.setAdapter(minPersonAdapter);
+
+        holder.speciesFilms.setLayoutManager(new LinearLayoutManager(context));
+        holder.speciesPeople.setLayoutManager(new LinearLayoutManager(context));
     }
 
     @Override

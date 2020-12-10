@@ -19,9 +19,7 @@ import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.generators.IGeneratorFactory;
 import com.example.swapibrowser.models.film.Film;
 import com.example.swapibrowser.models.person.Person;
-import com.example.swapibrowser.generators.PersonGenerator;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RecentlyUpdated extends AppCompatActivity {

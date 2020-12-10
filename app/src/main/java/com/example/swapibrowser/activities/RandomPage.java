@@ -2,7 +2,6 @@ package com.example.swapibrowser.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +15,6 @@ import com.example.swapibrowser.adapters.PlanetAdapter;
 import com.example.swapibrowser.adapters.SpeciesResultAdapter;
 import com.example.swapibrowser.adapters.StarshipAdapter;
 import com.example.swapibrowser.adapters.VehicleAdapter;
-import com.example.swapibrowser.api.ApiResponse;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.FilmGenerator;
 import com.example.swapibrowser.generators.PersonGenerator;
@@ -44,7 +42,6 @@ import com.example.swapibrowser.searchers.StarshipsSearcher;
 import com.example.swapibrowser.searchers.VehiclesSearcher;
 import com.example.swapibrowser.utils.PageSaver;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 

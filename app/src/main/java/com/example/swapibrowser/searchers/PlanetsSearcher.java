@@ -8,7 +8,7 @@ import com.example.swapibrowser.api.ApiResponseListener;
 
 public class PlanetsSearcher implements ISearcher<Planets> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     public void getBySearch(String searchText, ApiResponseListener<Planets> listener){
         api.getPlanets("planets/?search=" + searchText).enqueue(new ApiResponse<>(listener));
