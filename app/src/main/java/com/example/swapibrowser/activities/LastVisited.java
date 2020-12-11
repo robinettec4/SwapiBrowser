@@ -39,29 +39,26 @@ public class LastVisited extends AppCompatActivity {
     }
 
     private void searchItems(final String itemType, String url) {
-        Log.d("progress", url);
         final IGenerator generator = new GeneratorFactory().CreateGenerator(itemType);
         final ArrayList<ISingleModel> items = new ArrayList<>();
         final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
             @Override
             public void onResponseReceived(ISingleModel response) {
-                Log.d("progress", "onResponseReceived");
                 if (response != null) {
                     items.add(response);
                     recentlyViewedRecycler.setAdapter(new ItemAdapter(items, LastVisited.this, itemType.toLowerCase()));
                     recentlyViewedRecycler.setLayoutManager(new LinearLayoutManager(LastVisited.this));
                 }
                 else{
-                    Log.d("response", "no response");
+                    Log.e("ResponseError","Null Response");
                 }
             }
 
             @Override
             public void onError(Throwable error) {
-
+                Log.e("ResponseError", error.getMessage());
             }
         };
-        Log.d("progress", "getBySearch");
         generator.getByFullUrl(url, listener);
     }
 

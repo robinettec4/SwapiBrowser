@@ -1,6 +1,7 @@
 package com.example.swapibrowser.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ public class ItemAdapterMin extends RecyclerView.Adapter<ItemHolder> {
             }
             @Override
             public void onError(Throwable error) {
+                Log.e("ResponseError", error.getMessage());
             }
         };
 

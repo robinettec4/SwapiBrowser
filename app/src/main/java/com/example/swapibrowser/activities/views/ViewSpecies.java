@@ -2,6 +2,7 @@ package com.example.swapibrowser.activities.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,7 +78,7 @@ public class ViewSpecies extends AppCompatActivity {
 
             @Override
             public void onError(Throwable error) {
-
+                Log.e("ResponseError", error.getMessage());
             }
         };
         generator.getByFullUrl(url, listener);

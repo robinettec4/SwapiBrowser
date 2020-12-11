@@ -9,18 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.activities.RandomPage;
-import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.adapters.ItemAdapterMin;
-import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.IGenerator;
-import com.example.swapibrowser.generators.PlanetsGenerator;
-import com.example.swapibrowser.generators.factory.GeneratorFactory;
-import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.film.Film;
-
-import java.nio.channels.IllegalChannelGroupException;
-import java.util.ArrayList;
 
 public class ViewFilm extends AppCompatActivity {
 

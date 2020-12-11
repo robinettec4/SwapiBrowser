@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.swapibrowser.R;
@@ -21,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         PageSaver saver = new PageSaver();
 
         ArrayList<String> test = saver.readFavorite(this);
-        Log.d("empty", "empty");
     }
 
     public void goToRandomPageActivity(View view) {

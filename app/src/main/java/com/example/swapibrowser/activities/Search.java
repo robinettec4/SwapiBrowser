@@ -54,19 +54,16 @@ public class Search extends AppCompatActivity {
     }
 
     public void search(View view){
-        Log.d("progress", "onClick");
         input = inputText.getText().toString().toLowerCase();
         searchItems(field);
     }
 
     private void searchItems(final String itemType) {
-        Log.d("progress", "searchItems");
         final ISearcher searcher = new SearcherFactory().CreateSearcher(itemType);
         final ArrayList<ISingleModel> items = new ArrayList<>();
         final ApiResponseListener<IModel> listener = new ApiResponseListener<IModel>() {
             @Override
             public void onResponseReceived(IModel response) {
-                Log.d("progress", "onResponseReceived");
                 if (response != null) {
                     items.addAll(response.getResults());
                     save(items.get(0).getUrl(), itemType);
@@ -74,16 +71,15 @@ public class Search extends AppCompatActivity {
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
                 else{
-                    Log.d("response", "no response");
+                    Log.e("ResponseError","Null Response");
                 }
             }
 
             @Override
             public void onError(Throwable error) {
-
+                Log.e("ResponseError", error.getMessage());
             }
         };
-        Log.d("progress", "getBySearch");
         searcher.getBySearch(input, listener);
     }
 

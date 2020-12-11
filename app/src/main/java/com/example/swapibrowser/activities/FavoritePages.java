@@ -12,10 +12,7 @@ import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;
-import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
-import com.example.swapibrowser.searchers.ISearcher;
-import com.example.swapibrowser.searchers.factory.SearcherFactory;
 import com.example.swapibrowser.utils.PageSaver;
 
 import java.util.ArrayList;
@@ -55,7 +52,6 @@ public class FavoritePages extends AppCompatActivity {
         final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
             @Override
             public void onResponseReceived(ISingleModel response) {
-                Log.d("progress", "onResponseReceived");
                 if (response != null) {
                     items.add(response);
                     save(items.get(0).getUrl(), itemType);
@@ -63,16 +59,15 @@ public class FavoritePages extends AppCompatActivity {
                     recView.setLayoutManager(new LinearLayoutManager(FavoritePages.this));
                 }
                 else{
-                    Log.d("response", "no response");
+                    Log.e("ResponseError", "Null Response");
                 }
             }
 
             @Override
             public void onError(Throwable error) {
-
+                Log.e("ResponseError", error.getMessage());
             }
         };
-        Log.d("progress", "getBySearch");
         generator.getByFullUrl(url, listener);
     }
 

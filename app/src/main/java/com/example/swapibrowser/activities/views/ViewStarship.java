@@ -22,7 +22,7 @@ public class ViewStarship extends AppCompatActivity {
          TextView starshipName = findViewById(R.id.starship_name);
          TextView starshipModel = findViewById(R.id.starship_model);
          TextView starshipManufacturer = findViewById(R.id.starship_manufacturer);
-         TextView starshipCost = findViewById(R.id.starhship_cost);
+         TextView starshipCost = findViewById(R.id.starship_cost);
          TextView starshipLength = findViewById(R.id.starship_length);
          TextView starshipMaxSpeed = findViewById(R.id.starship_max_speed);
          TextView starshipCrew = findViewById(R.id.starship_crew);

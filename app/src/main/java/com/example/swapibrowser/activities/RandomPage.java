@@ -2,6 +2,7 @@ package com.example.swapibrowser.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,8 +38,7 @@ public class RandomPage extends AppCompatActivity {
 
     public int decideField(){
         Random ran = new Random();
-        int field = ran.nextInt(6);
-        return field;
+        return ran.nextInt(6);
     }
 
     private void loadItemData(final String itemType, Integer entry) {
@@ -58,7 +58,7 @@ public class RandomPage extends AppCompatActivity {
 
             @Override
             public void onError(Throwable error) {
-
+                Log.e("ResponseError", error.getMessage());
             }
         };
         generator.getById(String.valueOf(entry), listener);
@@ -78,7 +78,7 @@ public class RandomPage extends AppCompatActivity {
 
             @Override
             public void onError(Throwable error) {
-
+                Log.e("ResponseError", error.getMessage());
             }
         };
         searcher.getAll(bigListener);
