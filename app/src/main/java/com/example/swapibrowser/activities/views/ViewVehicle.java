@@ -19,22 +19,22 @@ public class ViewVehicle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vehicle_field_layout);
 
-         TextView vehicleName = findViewById(R.id.vehicle_name);
-         TextView vehicleModel = findViewById(R.id.vehicle_model);
-         TextView vehicleManufacturer = findViewById(R.id.vehicle_manufacturer);
-         TextView vehicleCost = findViewById(R.id.vehicle_cost);
-         TextView vehicleLength = findViewById(R.id.vehicle_length);
-         TextView vehicleMaxSpeed = findViewById(R.id.vehicle_max_speed);
-         TextView vehicleCrew = findViewById(R.id.vehicle_crew);
-         TextView vehiclePassengers = findViewById(R.id.vehicle_passengers);
-         TextView vehicleCargo = findViewById(R.id.vehicle_cargo);
-         TextView vehicleConsumables = findViewById(R.id.vehicle_consumables);
-         TextView vehicleClass = findViewById(R.id.vehicle_class);
-         TextView vehicleCreated = findViewById(R.id.vehicle_created);
-         TextView vehicleEdited = findViewById(R.id.vehicle_edited);
+        TextView vehicleName = findViewById(R.id.vehicle_name);
+        TextView vehicleModel = findViewById(R.id.vehicle_model);
+        TextView vehicleManufacturer = findViewById(R.id.vehicle_manufacturer);
+        TextView vehicleCost = findViewById(R.id.vehicle_cost);
+        TextView vehicleLength = findViewById(R.id.vehicle_length);
+        TextView vehicleMaxSpeed = findViewById(R.id.vehicle_max_speed);
+        TextView vehicleCrew = findViewById(R.id.vehicle_crew);
+        TextView vehiclePassengers = findViewById(R.id.vehicle_passengers);
+        TextView vehicleCargo = findViewById(R.id.vehicle_cargo);
+        TextView vehicleConsumables = findViewById(R.id.vehicle_consumables);
+        TextView vehicleClass = findViewById(R.id.vehicle_class);
+        TextView vehicleCreated = findViewById(R.id.vehicle_created);
+        TextView vehicleEdited = findViewById(R.id.vehicle_edited);
 
-         RecyclerView vehiclePilots = findViewById(R.id.vehicle_people_recycler);
-         RecyclerView vehicleFilms = findViewById(R.id.vehicle_films_recycler);
+        RecyclerView vehiclePilots = findViewById(R.id.vehicle_people_recycler);
+        RecyclerView vehicleFilms = findViewById(R.id.vehicle_films_recycler);
 
         Intent intent = getIntent();
         Vehicle vehicle = (Vehicle) intent.getSerializableExtra("vehicles");

@@ -24,21 +24,21 @@ public class ViewSpecies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.species_field_layout);
 
-         TextView speciesName = findViewById(R.id.species_name);
-         TextView speciesClassification = findViewById(R.id.species_classification);
-         TextView speciesDesignation = findViewById(R.id.species_designation);
-         TextView speciesAvgHeight = findViewById(R.id.species_avg_height);
-         TextView speciesAvgLifespan = findViewById(R.id.species_avg_lifespan);
-         TextView speciesSkinColors = findViewById(R.id.species_skin_colors);
-         TextView speciesHairColors = findViewById(R.id.species_hair_colors);
-         TextView speciesEyeColors = findViewById(R.id.species_eye_colors);
-         TextView speciesHomeworld = findViewById(R.id.species_homeworld);
-         TextView speciesLanguage = findViewById(R.id.species_language);
-         TextView speciesEdited = findViewById(R.id.species_edited);
-         TextView speciesCreated = findViewById(R.id.species_created);
+        TextView speciesName = findViewById(R.id.species_name);
+        TextView speciesClassification = findViewById(R.id.species_classification);
+        TextView speciesDesignation = findViewById(R.id.species_designation);
+        TextView speciesAvgHeight = findViewById(R.id.species_avg_height);
+        TextView speciesAvgLifespan = findViewById(R.id.species_avg_lifespan);
+        TextView speciesSkinColors = findViewById(R.id.species_skin_colors);
+        TextView speciesHairColors = findViewById(R.id.species_hair_colors);
+        TextView speciesEyeColors = findViewById(R.id.species_eye_colors);
+        TextView speciesHomeworld = findViewById(R.id.species_homeworld);
+        TextView speciesLanguage = findViewById(R.id.species_language);
+        TextView speciesEdited = findViewById(R.id.species_edited);
+        TextView speciesCreated = findViewById(R.id.species_created);
 
-         RecyclerView speciesPeople = findViewById(R.id.species_people_recycler);
-         RecyclerView speciesFilms = findViewById(R.id.species_films_recycler);
+        RecyclerView speciesPeople = findViewById(R.id.species_people_recycler);
+        RecyclerView speciesFilms = findViewById(R.id.species_films_recycler);
 
         Intent intent = getIntent();
         SpeciesResult speciesResult = (SpeciesResult) intent.getSerializableExtra("species");

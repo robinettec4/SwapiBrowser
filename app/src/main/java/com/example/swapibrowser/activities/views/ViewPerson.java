@@ -24,22 +24,22 @@ public class ViewPerson extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.person_field_layout);
 
-         TextView personName = findViewById(R.id.person_name);
-         TextView personHeight = findViewById(R.id.person_height);
-         TextView personMass = findViewById(R.id.person_mass);
-         TextView personHairColor = findViewById(R.id.person_hair_color);
-         TextView personSkinColor = findViewById(R.id.person_skin_color);
-         TextView personEyeColor = findViewById(R.id.person_eye_color);
-         TextView personBirthYear = findViewById(R.id.person_birth_year);
-         TextView personGender = findViewById(R.id.person_gender);
-         TextView personHomeWorld = findViewById(R.id.person_homeworld);
-         TextView  personCreated = findViewById(R.id.person_created);
-         TextView personEdited = findViewById(R.id.person_edited);
+        TextView personName = findViewById(R.id.person_name);
+        TextView personHeight = findViewById(R.id.person_height);
+        TextView personMass = findViewById(R.id.person_mass);
+        TextView personHairColor = findViewById(R.id.person_hair_color);
+        TextView personSkinColor = findViewById(R.id.person_skin_color);
+        TextView personEyeColor = findViewById(R.id.person_eye_color);
+        TextView personBirthYear = findViewById(R.id.person_birth_year);
+        TextView personGender = findViewById(R.id.person_gender);
+        TextView personHomeWorld = findViewById(R.id.person_homeworld);
+        TextView  personCreated = findViewById(R.id.person_created);
+        TextView personEdited = findViewById(R.id.person_edited);
 
-         RecyclerView personFilms = findViewById(R.id.person_films_recycler);
-         RecyclerView personSpecies = findViewById(R.id.person_species_recycler);
-         RecyclerView personVehicles = findViewById(R.id.person_vehicles_recycler);
-         RecyclerView personStarships = findViewById(R.id.person_starships_recycler);
+        RecyclerView personFilms = findViewById(R.id.person_films_recycler);
+        RecyclerView personSpecies = findViewById(R.id.person_species_recycler);
+        RecyclerView personVehicles = findViewById(R.id.person_vehicles_recycler);
+        RecyclerView personStarships = findViewById(R.id.person_starships_recycler);
 
         Intent intent = getIntent();
         Person person = (Person) intent.getSerializableExtra("people");
