@@ -1,6 +1,5 @@
 package com.example.swapibrowser.models.planet;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.example.swapibrowser.models.ISingleModel;

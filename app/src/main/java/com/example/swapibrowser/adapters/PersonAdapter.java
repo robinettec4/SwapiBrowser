@@ -41,7 +41,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonHolder> {
         final Person person = (Person) list.get(position);
         holder.personCardName.setText(context.getString(R.string.name, person.getName()));
 
-        holder.personCardName.setOnClickListener(new View.OnClickListener() {
+        holder.personCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, activityFactory.CreateActivity("people"));

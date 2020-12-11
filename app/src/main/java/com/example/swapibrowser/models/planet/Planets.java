@@ -1,11 +1,8 @@
 package com.example.swapibrowser.models.planet;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.example.swapibrowser.models.IModel;
-import com.example.swapibrowser.models.ISingleModel;
-import com.example.swapibrowser.models.species.SpeciesResult;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

@@ -23,7 +23,7 @@ public class ViewVehicle extends AppCompatActivity {
          TextView vehicleName = findViewById(R.id.vehicle_name);
          TextView vehicleModel = findViewById(R.id.vehicle_model);
          TextView vehicleManufacturer = findViewById(R.id.vehicle_manufacturer);
-         TextView vehicleCost = findViewById(R.id.starhship_cost);
+         TextView vehicleCost = findViewById(R.id.vehicle_cost);
          TextView vehicleLength = findViewById(R.id.vehicle_length);
          TextView vehicleMaxSpeed = findViewById(R.id.vehicle_max_speed);
          TextView vehicleCrew = findViewById(R.id.vehicle_crew);
