@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SwapiBrowser</string>
+    <string name="default_notification_channel_id">alarm_channel_id_01</string>
     <string-array name="topicArray">
         <item>Film</item>
         <item>Person</item>
@@ -21,4 +22,6 @@
     <string name="starships">Starships</string>
     <string name="textview">TextView</string>
     <string name="random_page">Random Page</string>
+    <string name="notification_title">Recommendations for you</string>
+    <string name="notification_text">Gives you a daily notification that takes you to random page you might be interested in</string>
 </resources>
