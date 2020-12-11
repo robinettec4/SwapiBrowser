@@ -16,7 +16,7 @@
         <receiver
             android:name=".activities.AlarmReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity android:name=".activities.MainActivity">
             <intent-filter>
@@ -25,13 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activities.RandomPage" />
         <activity android:name=".activities.RecentlyUpdated" />
-        <activity android:name=".activities.RandomPage"/>
         <activity android:name=".activities.Search" />
         <activity android:name=".activities.LastVisited" />
         <activity android:name=".activities.views.ViewFilm" />
@@ -42,5 +37,4 @@
         <activity android:name=".activities.views.ViewVehicle" />
         <activity android:name=".activities.FavoritePages"/>
     </application>
-
 </manifest>
