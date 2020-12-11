@@ -20,6 +20,7 @@ import com.example.swapibrowser.searchers.ISearcher;
 import com.example.swapibrowser.searchers.factory.SearcherFactory;
 import com.example.swapibrowser.utils.PageSaver;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,6 +39,16 @@ public class RandomPage extends AppCompatActivity {
 
         field = new Random().nextInt(6);
         getItemCount(list[field]);
+
+        TabLayout tabs = findViewById(R.id.menu_tabs);
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), RandomPage.this); }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) { }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), RandomPage.this); }
+        });
     }
 
     private void loadItemData(final String itemType, Integer entry) {

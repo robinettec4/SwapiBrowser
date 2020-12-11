@@ -1,24 +1,20 @@
 package com.example.swapibrowser.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.utils.PageSaver;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
@@ -33,39 +29,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
-        addnotification();
-        PageSaver saver = new PageSaver();
+        addNotification();
 
-        ArrayList<String> test = saver.readFavorite(this);
+        TabLayout tabs = findViewById(R.id.menu_tabs);
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), MainActivity.this); }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) { }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), MainActivity.this); }
+        });
     }
 
-    public void goToRandomPageActivity(View view) {
-        Intent intent = new Intent(MainActivity.this, RandomPage.class);
-        startActivity(intent);
-    }
-
-    public void goToRecentlyUpdatedActivity(View view){
-        Intent intent = new Intent(MainActivity.this, RecentlyUpdated.class);
-        startActivity(intent);
-    }
-
-    public void goToSearchActivity(View view){
-        Intent intent = new Intent(MainActivity.this, Search.class);
-        startActivity(intent);
-    }
-
-    public void goToRecentlyViewedActivity(View view){
-        Intent intent = new Intent(MainActivity.this, LastVisited.class);
-        startActivity(intent);
-    }
-
-    public void goToFavorite(View view){
-        Intent intent = new Intent(MainActivity.this, FavoritePages.class);
-        startActivity(intent);
-    }
-
-
-    private void addnotification() {
+    private void addNotification() {
         Intent notifyIntent = new Intent(this, AlarmReceiver.class);
         final PendingIntent notifyPendingIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         final AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

@@ -9,13 +9,16 @@
         <item>Starships</item>
         <item>Vehicles</item>
     </string-array>
+    <string-array name="recentArray">
+        <item>Created</item>
+        <item>Edited</item>
+    </string-array>
     <string name="title_activity_recently_updated">RecentlyUpdated</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
-    <string name="search_recently_changed_entries_by">Search recently changed entries by</string>
     <string name="vehicles">Vehicles</string>
     <string name="species">Species</string>
     <string name="films">Films</string>
@@ -82,7 +85,6 @@
     <string name="consumables">Consumables: %1$s</string>
     <string name="recently_viewed">Last Viewed</string>
     <string name="refresh">Refresh</string>
-    <string name="search_recently_created_entry_by">Search recently created entries by</string>
     <string name="search_favorite_pages_by">Search favorite pages by</string>
     <string name="generate">Generate</string>
     <string name="no_data">No Data</string>
@@ -90,4 +92,9 @@
     <string name="favorite">Favorite</string>
     <string name="btn_star">btn_star</string>
     <string name="favorited">Favorited</string>
+    <string name="search_recently">Search recently</string>
+    <string name="recent_page">Recent Page</string>
+    <string name="home">Home</string>
+    <string name="last_visited">Last Visited</string>
+    <string name="favorites_page">Favorites Page</string>
 </resources>

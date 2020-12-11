@@ -19,6 +19,7 @@ import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.searchers.ISearcher;
 import com.example.swapibrowser.searchers.factory.SearcherFactory;
 import com.example.swapibrowser.utils.PageSaver;
+import com.google.android.material.tabs.TabLayout;
 
 
 import java.util.ArrayList;
@@ -50,6 +51,16 @@ public class Search extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+        });
+
+        TabLayout tabs = findViewById(R.id.menu_tabs);
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), Search.this); }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) { }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), Search.this); }
         });
     }
 

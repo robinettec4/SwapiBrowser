@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.RandomPage" />
-        <activity android:name=".activities.RecentlyUpdated" />
+        <activity android:name=".activities.RecentPage" />
         <activity android:name=".activities.Search" />
         <activity android:name=".activities.LastVisited" />
         <activity android:name=".activities.views.ViewFilm" />

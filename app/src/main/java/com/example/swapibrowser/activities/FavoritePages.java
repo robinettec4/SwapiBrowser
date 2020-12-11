@@ -20,6 +20,7 @@ import com.example.swapibrowser.generators.factory.IGeneratorFactory;
 import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.utils.PageSaver;
+import com.google.android.material.tabs.TabLayout;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -52,6 +53,16 @@ public class FavoritePages extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+        });
+
+        TabLayout tabs = findViewById(R.id.menu_tabs);
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), FavoritePages.this); }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) { }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), FavoritePages.this); }
         });
     }
 
