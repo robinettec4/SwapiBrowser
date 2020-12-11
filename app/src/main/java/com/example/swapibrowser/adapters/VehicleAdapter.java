@@ -1,17 +1,16 @@
 package com.example.swapibrowser.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
+import com.example.swapibrowser.activities.factory.ActivityFactory;
 import com.example.swapibrowser.holders.VehicleHolder;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.vehicle.Vehicle;
@@ -24,6 +23,7 @@ public class VehicleAdapter  extends RecyclerView.Adapter<VehicleHolder> {
 
     List<ISingleModel> list = Collections.emptyList();
     Context context;
+    ActivityFactory activityFactory = new ActivityFactory();
 
     public VehicleAdapter(List<ISingleModel> list, Context context) {
         this.list = list;
@@ -39,8 +39,17 @@ public class VehicleAdapter  extends RecyclerView.Adapter<VehicleHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull VehicleHolder holder, int position) {
-        Vehicle vehicle = (Vehicle) list.get(position);
+        final Vehicle vehicle = (Vehicle) list.get(position);
         holder.vehicleCardName.setText(context.getString(R.string.name,  vehicle.getName()));
+
+        holder.vehicleCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, activityFactory.CreateActivity("vehicles"));
+                intent.putExtra("vehicles", vehicle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -79,4 +79,5 @@
     <string name="consumables">Consumables: %1$s</string>
     <string name="recently_viewed">Last Viewed</string>
     <string name="refresh">Refresh</string>
+    <string name="search_recently_created_entry_by">Search recently created entries by</string>
 </resources>

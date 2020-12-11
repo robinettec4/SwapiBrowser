@@ -16,7 +16,7 @@
             android:id="@+id/recently_updated_tip"
             android:layout_width="224dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="5dp"
             android:text="@string/search_recently_changed_entries_by"

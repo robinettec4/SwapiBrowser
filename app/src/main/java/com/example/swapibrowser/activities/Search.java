@@ -3,7 +3,9 @@ package com.example.swapibrowser.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -66,7 +68,7 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(IModel response) {
                 Log.d("progress", "onResponseReceived");
                 if (response != null) {
-                    items.add((ISingleModel) response.getResults().get(0));
+                    items.addAll(response.getResults());
                     save(items.get(0).getUrl(), itemType);
                     searchRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, Search.this));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));

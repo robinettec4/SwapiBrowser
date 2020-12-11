@@ -25,13 +25,14 @@ import com.example.swapibrowser.utils.CustomRVItemTouchListener;
 import com.example.swapibrowser.utils.RecyclerViewItemClickListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class RecentlyUpdated extends AppCompatActivity {
 
     RecyclerView recentlyUpdatedRecycler;
     GeneratorFactory generatorFactory = new GeneratorFactory();
     SearcherFactory searcherFactory = new SearcherFactory();
-    ActivityFactory activityFactory = new ActivityFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,49 +53,15 @@ public class RecentlyUpdated extends AppCompatActivity {
         });
     }
 
-    public void loadRecentItemData(ISingleModel item, final String itemType){
-
-        final ArrayList<ISingleModel> items = new ArrayList<>();
-        IGenerator generator = generatorFactory.CreateGenerator(itemType.toLowerCase());
-        final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
-
-            @Override
-            public void onResponseReceived(final ISingleModel response) {
-                items.add(response);
-                recentlyUpdatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyUpdated.this));
-                recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
-
-                recentlyUpdatedRecycler.setOnTouchListener((View.OnTouchListener) new CustomRVItemTouchListener(RecentlyUpdated.this, recentlyUpdatedRecycler, new RecyclerViewItemClickListener() {
-                    @Override
-                    public void onClick(View view, int position) {
-                        Intent intent = new Intent(RecentlyUpdated.this, activityFactory.CreateActivity(itemType));
-                        intent.putExtra(itemType, response);
-                        startActivity(intent);
-                        recentlyUpdatedRecycler.setOnClickListener(null);
-                    }
-
-                    @Override
-                    public void onLongClick(View view, int position) {
-
-                    }
-                }));
-
-            }
-
-            @Override
-            public void onError(Throwable error) {
-                Log.e("ResponseError", error.getMessage());
-            }
-        };
-        generator.getByFullUrl(item.getUrl(), listener);
-    }
-
     public void getMostRecentItem(final String itemType){
         ISearcher searcher = searcherFactory.CreateSearcher(itemType);
+        final ArrayList<ISingleModel> items = new ArrayList<>();
         ApiResponseListener<IModel> listener = new ApiResponseListener<IModel>() {
             @Override
             public void onResponseReceived(IModel response) {
-                loadRecentItemData((ISingleModel) response.getResults().get(0), itemType);
+                items.addAll(response.getResults());
+                recentlyUpdatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyUpdated.this));
+                recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
             }
 
             @Override

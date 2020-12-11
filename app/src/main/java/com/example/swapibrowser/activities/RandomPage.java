@@ -50,7 +50,7 @@ public class RandomPage extends AppCompatActivity {
             public void onResponseReceived(ISingleModel response) {
                 if (response!=null) {
                     items.add(response);
-                    save(items.get(0).getUrl(), itemType);
+                    save(response.getUrl(), itemType);
                     randomRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RandomPage.this));
                     randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                 }

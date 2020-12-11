@@ -1,23 +1,21 @@
 package com.example.swapibrowser.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
 
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
+import com.example.swapibrowser.activities.factory.ActivityFactory;
 import com.example.swapibrowser.holders.SpeciesResultHolder;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.species.SpeciesResult;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,6 +23,7 @@ public class SpeciesResultAdapter  extends RecyclerView.Adapter<SpeciesResultHol
 
     List<ISingleModel> list = Collections.emptyList();
     Context context;
+    ActivityFactory activityFactory = new ActivityFactory();
 
     public SpeciesResultAdapter(List<ISingleModel> list, Context context) {
         this.list = list;
@@ -40,8 +39,17 @@ public class SpeciesResultAdapter  extends RecyclerView.Adapter<SpeciesResultHol
 
     @Override
     public void onBindViewHolder(@NonNull SpeciesResultHolder holder, int position) {
-        SpeciesResult speciesResult = (SpeciesResult) list.get(position);
+        final SpeciesResult speciesResult = (SpeciesResult) list.get(position);
         holder.speciesCardName.setText(context.getString(R.string.name, speciesResult.getName()));
+
+        holder.speciesCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, activityFactory.CreateActivity("species"));
+                intent.putExtra("species", speciesResult);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

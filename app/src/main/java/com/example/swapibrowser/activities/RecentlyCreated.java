@@ -47,34 +47,16 @@ public class RecentlyCreated extends AppCompatActivity {
         });
     }
 
-    public void loadRecentItemData(ISingleModel item, final String itemType){
-
-        final ArrayList<ISingleModel> items = new ArrayList<>();
-        IGenerator generator = generatorFactory.CreateGenerator(itemType.toLowerCase());
-        final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
-
-            @Override
-            public void onResponseReceived(ISingleModel response) {
-                items.add(response);
-                recentlyCreatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyCreated.this));
-                recentlyCreatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyCreated.this));
-            }
-
-            @Override
-            public void onError(Throwable error) {
-                Log.e("ResponseError", error.getMessage());
-            }
-        };
-        generator.getByFullUrl(item.getUrl(), listener);
-    }
-
     public void getMostRecentItem(final String itemType){
 
         ISearcher searcher = searcherFactory.CreateSearcher(itemType);
+        final ArrayList<ISingleModel> items = new ArrayList<>();
         ApiResponseListener<IModel> listener = new ApiResponseListener<IModel>() {
             @Override
             public void onResponseReceived(IModel response) {
-                loadRecentItemData((ISingleModel) response.getResults().get(0), itemType);
+                items.addAll(response.getResults());
+                recentlyCreatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyCreated.this));
+                recentlyCreatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyCreated.this));
             }
 
             @Override

@@ -1,17 +1,16 @@
 package com.example.swapibrowser.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
+import com.example.swapibrowser.activities.factory.ActivityFactory;
 import com.example.swapibrowser.holders.PlanetHolder;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.planet.Planet;
@@ -23,6 +22,7 @@ public class PlanetAdapter  extends RecyclerView.Adapter<PlanetHolder> {
 
     List<ISingleModel> list = Collections.emptyList();
     Context context;
+    ActivityFactory activityFactory = new ActivityFactory();
 
     public PlanetAdapter(List<ISingleModel> list, Context context) {
         this.list = list;
@@ -38,8 +38,17 @@ public class PlanetAdapter  extends RecyclerView.Adapter<PlanetHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PlanetHolder holder, int position) {
-        Planet planet = (Planet) list.get(position);
+        final Planet planet = (Planet) list.get(position);
         holder.planetCardName.setText(context.getString(R.string.name, planet.getName()));
+
+        holder.planetCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, activityFactory.CreateActivity("planets"));
+                intent.putExtra("planets", planet);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

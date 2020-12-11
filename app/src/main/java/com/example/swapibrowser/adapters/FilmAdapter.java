@@ -1,25 +1,20 @@
 package com.example.swapibrowser.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
-import com.example.swapibrowser.adapters.min.MinPlanetAdapter;
-import com.example.swapibrowser.adapters.min.MinSpeciesResultAdapter;
-import com.example.swapibrowser.adapters.min.MinStarshipAdapter;
-import com.example.swapibrowser.adapters.min.MinVehicleAdapter;
+import com.example.swapibrowser.activities.factory.ActivityFactory;
 import com.example.swapibrowser.holders.FilmHolder;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.film.Film;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,8 +37,18 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FilmHolder holder, int position) {
-        Film film = (Film) list.get(position);
+        final ActivityFactory activityFactory = new ActivityFactory();
+        final Film film = (Film) list.get(position);
         holder.filmCardTitle.setText(context.getString(R.string.film_title, film.getTitle()));
+
+        holder.filmCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, activityFactory.CreateActivity("films"));
+                intent.putExtra("films", film);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
