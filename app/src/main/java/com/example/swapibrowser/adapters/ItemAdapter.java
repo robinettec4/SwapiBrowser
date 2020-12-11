@@ -13,6 +13,7 @@ import com.example.swapibrowser.R;
 import com.example.swapibrowser.activities.factory.ActivityFactory;
 import com.example.swapibrowser.holders.ItemHolder;
 import com.example.swapibrowser.models.ISingleModel;
+import com.example.swapibrowser.utils.PageSaver;
 
 import java.util.Collections;
 import java.util.List;
@@ -46,9 +47,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(context, activityFactory.CreateActivity(itemType));
                 intent.putExtra(itemType, item);
+                save(item);
                 context.startActivity(intent);
             }
         });
+    }
+
+    public void save(ISingleModel item){
+        PageSaver saver = new PageSaver();
+        saver.save(context, item.getUrl(), itemType);
     }
 
     @Override
