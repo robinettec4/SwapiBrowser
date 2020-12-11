@@ -82,4 +82,5 @@
     <string name="search_recently_created_entry_by">Search recently created entries by</string>
     <string name="search_favorite_pages_by">Search favorite pages by</string>
     <string name="favorites">Favorites</string>
+    <string name="favorite">Favorite</string>
 </resources>
