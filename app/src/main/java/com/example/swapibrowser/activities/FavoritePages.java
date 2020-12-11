@@ -46,7 +46,7 @@ public class FavoritePages extends AppCompatActivity {
         favoriteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                getMostRecentItem(favoriteSpinner.getSelectedItem().toString().toLowerCase());
+                getFavorites(favoriteSpinner.getSelectedItem().toString().toLowerCase());
             }
 
             @Override
@@ -66,34 +66,34 @@ public class FavoritePages extends AppCompatActivity {
         });
     }
 
-        public void getMostRecentItem(final String itemType){
+    public void getFavorites(final String itemType){
 
-            ArrayList<String> url = sort(favorites, itemType);
+        ArrayList<String> url = sort(favorites, itemType);
 
-            final IGenerator generator = new GeneratorFactory().CreateGenerator(itemType);
-            final ArrayList<ISingleModel> items = new ArrayList<>();
-            final ItemAdapter adapter = new ItemAdapter(items, FavoritePages.this, itemType.toLowerCase());
-            final LinearLayoutManager manager = new LinearLayoutManager(FavoritePages.this);
-            ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
-                @Override
-                public void onResponseReceived(ISingleModel response) {
-                    if (response != null) {
-                        items.add(response);
-                        recView.setAdapter(adapter);
-                        recView.setLayoutManager(manager);
-                    } else {
-                        Log.e("ResponseError", "Null Response");
-                    }
+        final IGenerator generator = new GeneratorFactory().CreateGenerator(itemType);
+        final ArrayList<ISingleModel> items = new ArrayList<>();
+        final ItemAdapter adapter = new ItemAdapter(items, FavoritePages.this, itemType.toLowerCase());
+        final LinearLayoutManager manager = new LinearLayoutManager(FavoritePages.this);
+        ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
+            @Override
+            public void onResponseReceived(ISingleModel response) {
+                if (response != null) {
+                    items.add(response);
+                    recView.setAdapter(adapter);
+                    recView.setLayoutManager(manager);
+                } else {
+                    Log.e("ResponseError", "Null Response");
                 }
-                @Override
-                public void onError (Throwable error){
-                    Log.e("ResponseError", error.getMessage());
-                }
-            };
-            for(String s : url) {
-                generator.getByFullUrl(s, listener);
             }
+            @Override
+            public void onError (Throwable error){
+                Log.e("ResponseError", error.getMessage());
+            }
+        };
+        for(String s : url) {
+            generator.getByFullUrl(s, listener);
         }
+    }
 
     public ArrayList<String> sort(ArrayList<String> favorites, String itemType){
         ArrayList<String> url = new ArrayList<>();
@@ -106,6 +106,24 @@ public class FavoritePages extends AppCompatActivity {
         return url;
     }
 
+    @Override
+    public void onResume() {
+        favorites = saver.readFavorite(this);
+        final Spinner favoriteSpinner = findViewById(R.id.favorite_spinner);
+        recView.setAdapter(null);
+        recView.setLayoutManager(null);
+        favoriteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                getFavorites(favoriteSpinner.getSelectedItem().toString().toLowerCase());
+            }
 
-    public void save(String url, String itemType){ saver.save(this, url, itemType); }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        getFavorites(favoriteSpinner.getSelectedItem().toString().toLowerCase());
+        super.onResume();
+    }
 }

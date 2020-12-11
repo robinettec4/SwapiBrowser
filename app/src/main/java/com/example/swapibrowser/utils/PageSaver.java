@@ -131,15 +131,12 @@ public class PageSaver {
             if (!page.equals(s)) {
                 sb.append(s);
                 sb.append("\n");
-                Log.d("fuck", sb.toString());
             }
-            Log.d("fuck", sb.toString());
         }
         try {
             fos = c.openFileOutput("favorites.txt", c.MODE_PRIVATE);
             fos.write(sb.toString().getBytes());
             for (String s : readFavorite(c)) {
-                Log.d("fuck", s);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

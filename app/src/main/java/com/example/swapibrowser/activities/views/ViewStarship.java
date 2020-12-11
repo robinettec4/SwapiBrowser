@@ -77,7 +77,7 @@ public class ViewStarship extends AppCompatActivity {
 
     public void editFavorite(View view) {
         PageSaver saver = new PageSaver();
-        if (favorite.getText().toString().equals(R.string.favorite)) {
+        if (favorite.getText().toString().equals(getString(R.string.favorite))) {
             favorite.setText(R.string.unfavorite);
             saver.saveFavorite(this);
         }

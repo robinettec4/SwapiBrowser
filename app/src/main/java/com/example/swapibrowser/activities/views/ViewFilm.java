@@ -76,9 +76,7 @@ public class ViewFilm extends AppCompatActivity {
 
     public void editFavorite(View view) {
         PageSaver saver = new PageSaver();
-        String test = favorite.getText().toString();
-        //String test2 = R.string.favorite;
-        if (favorite.getText().toString().equals("Favorite")) {
+        if (favorite.getText().toString().equals(getString(R.string.favorite))) {
             favorite.setText(R.string.unfavorite);
             saver.saveFavorite(this);
         }
