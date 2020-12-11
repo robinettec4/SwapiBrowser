@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 public class RecentlyCreated extends AppCompatActivity {
     RecyclerView recentlyCreatedRecycler;
-    GeneratorFactory generatorFactory = new GeneratorFactory();
     SearcherFactory searcherFactory = new SearcherFactory();
 
     @Override

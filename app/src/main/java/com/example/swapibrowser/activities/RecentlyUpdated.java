@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class RecentlyUpdated extends AppCompatActivity {
 
     RecyclerView recentlyUpdatedRecycler;
-    GeneratorFactory generatorFactory = new GeneratorFactory();
     SearcherFactory searcherFactory = new SearcherFactory();
 
     @Override
