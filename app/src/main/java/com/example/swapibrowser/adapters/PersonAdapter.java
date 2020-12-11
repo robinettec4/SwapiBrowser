@@ -49,17 +49,17 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonHolder> {
         MinVehicleAdapter minVehicleAdapter = new MinVehicleAdapter(person.getVehicles(), context);
         MinStarshipAdapter minStarshipAdapter = new MinStarshipAdapter(person.getStarships(), context);
 
-        holder.personName.setText(person.getName());
-        holder.personHeight.setText(person.getHeight());
-        holder.personMass.setText(person.getMass());
-        holder.personHairColor.setText(person.getHairColor());
-        holder.personSkinColor.setText(person.getSkinColor());
-        holder.personEyeColor.setText(person.getEyeColor());
-        holder.personBirthYear.setText(person.getBirthYear());
-        holder.personGender.setText(person.getGender());
-        holder.personHomeWorld.setText(person.getHomeworld());
-        holder.personCreated.setText(person.getCreated());
-        holder.personEdited.setText(person.getEdited());
+        holder.personName.setText(context.getString(R.string.name, person.getName()));
+        holder.personHeight.setText(context.getString(R.string.person_height, person.getHeight()));
+        holder.personMass.setText(context.getString(R.string.person_mass, person.getMass()));
+        holder.personHairColor.setText(context.getString(R.string.person_hair_color, person.getHairColor()));
+        holder.personSkinColor.setText(context.getString(R.string.person_skin_color, person.getSkinColor()));
+        holder.personEyeColor.setText(context.getString(R.string.person_eye_color, person.getEyeColor()));
+        holder.personBirthYear.setText(context.getString(R.string.person_birth_year, person.getBirthYear()));
+        holder.personGender.setText(context.getString(R.string.person_gender, person.getGender()));
+        holder.personHomeWorld.setText(context.getString(R.string.homeworld, person.getHomeworld()));
+        holder.personCreated.setText(context.getString(R.string.created, person.getCreated()));
+        holder.personEdited.setText(context.getString(R.string.edited, person.getEdited()));
 
         holder.personFilms.setAdapter(minFilmAdapter);
         holder.personSpecies.setAdapter(minSpeciesResultAdapter);

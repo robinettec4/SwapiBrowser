@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/recentlyUpdatedTip"
+            android:id="@+id/recently_updated_tip"
             android:layout_width="224dp"
             android:layout_height="40dp"
             android:layout_marginStart="15dp"
@@ -31,7 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recentlyUpdatedTip" />
+            app:layout_constraintTop_toBottomOf="@+id/recently_updated_tip" />
 
         <Button
             android:id="@+id/spinner"

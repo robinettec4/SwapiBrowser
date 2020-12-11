@@ -45,21 +45,21 @@ public class StarshipAdapter  extends RecyclerView.Adapter<StarshipHolder> {
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(starship.getFilms(), context);
         MinPersonAdapter minPersonAdapter = new MinPersonAdapter(starship.getPilots(), context);
 
-        holder.starshipName.setText(starship.getName());
-        holder.starshipModel.setText(starship.getModel());
-        holder.starshipManufacturer.setText(starship.getManufacturer());
-        holder.starshipCost.setText(starship.getCostInCredits());
-        holder.starshipLength.setText(starship.getLength());
-        holder.starshipMaxSpeed.setText(starship.getMaxAtmospheringSpeed());
-        holder.starshipCreated.setText(starship.getCrew());
-        holder.starshipPassengers.setText(starship.getPassengers());
-        holder.starshipCargo.setText(starship.getCargoCapacity());
-        holder.starshipConsumables.setText(starship.getConsumables());
-        holder.starshipHyperDriveRating.setText(starship.getHyperdriveRating());
-        holder.starshipMGLT.setText(starship.getMGLT());
-        holder.starshipClass.setText(starship.getStarshipClass());
-        holder.starshipEdited.setText(starship.getEdited());
-        holder.starshipCreated.setText(starship.getCreated());
+        holder.starshipName.setText(context.getString(R.string.name,  starship.getName()));
+        holder.starshipModel.setText(context.getString(R.string.model, starship.getModel()));
+        holder.starshipManufacturer.setText(context.getString(R.string.manufacturer, starship.getManufacturer()));
+        holder.starshipCost.setText(context.getString(R.string.cost, starship.getCostInCredits()));
+        holder.starshipLength.setText(context.getString(R.string.length, starship.getLength()));
+        holder.starshipMaxSpeed.setText(context.getString(R.string.max_speed, starship.getMaxAtmospheringSpeed()));
+        holder.starshipCrew.setText(context.getString(R.string.crew, starship.getCrew()));
+        holder.starshipPassengers.setText(context.getString(R.string.passengers, starship.getPassengers()));
+        holder.starshipCargo.setText(context.getString(R.string.cargo, starship.getCargoCapacity()));
+        holder.starshipConsumables.setText(context.getString(R.string.consumables, starship.getConsumables()));
+        holder.starshipHyperDriveRating.setText(context.getString(R.string.starship_hyper_drive_rating, starship.getHyperdriveRating()));
+        holder.starshipMGLT.setText(context.getString(R.string.starship_mglt, starship.getMGLT()));
+        holder.starshipClass.setText(context.getString(R.string.s_class, starship.getStarshipClass()));
+        holder.starshipEdited.setText(context.getString(R.string.edited, starship.getEdited()));
+        holder.starshipCreated.setText(context.getString(R.string.created, starship.getCreated()));
 
         holder.starshipFilms.setAdapter(minFilmAdapter);
         holder.starshipPilots.setAdapter(minPersonAdapter);

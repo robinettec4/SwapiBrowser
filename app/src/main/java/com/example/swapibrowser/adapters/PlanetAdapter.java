@@ -44,17 +44,17 @@ public class PlanetAdapter  extends RecyclerView.Adapter<PlanetHolder> {
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(planet.getFilms(), context);
         MinPersonAdapter minPersonAdapter = new MinPersonAdapter(planet.getResidents(), context);
 
-        holder.planetName.setText(planet.getName());
-        holder.planetRotationPeriod.setText(planet.getRotationPeriod());
-        holder.planetOrbitalPeriod.setText(planet.getOrbitalPeriod());
-        holder.planetDiameter.setText(planet.getDiameter());
-        holder.planetClimate.setText(planet.getClimate());
-        holder.planetGravity.setText(planet.getGravity());
-        holder.planetTerrain.setText(planet.getTerrain());
-        holder.planetSurfaceWater.setText(planet.getSurfaceWater());
-        holder.planetPopulation.setText(planet.getPopulation());
-        holder.planetEdited.setText(planet.getEdited());
-        holder.planetCreated.setText(planet.getCreated());
+        holder.planetName.setText(context.getString(R.string.name, planet.getName()));
+        holder.planetRotationPeriod.setText(context.getString(R.string.planet_rotational_period, planet.getRotationPeriod()));
+        holder.planetOrbitalPeriod.setText(context.getString(R.string.planet_orbital_period, planet.getOrbitalPeriod()));
+        holder.planetDiameter.setText(context.getString(R.string.planet_diameter, planet.getDiameter()));
+        holder.planetClimate.setText(context.getString(R.string.planet_climate, planet.getClimate()));
+        holder.planetGravity.setText(context.getString(R.string.planet_gravity, planet.getGravity()));
+        holder.planetTerrain.setText(context.getString(R.string.planet_terrain, planet.getTerrain()));
+        holder.planetSurfaceWater.setText(context.getString(R.string.planet_water, planet.getSurfaceWater()));
+        holder.planetPopulation.setText(context.getString(R.string.planet_population, planet.getPopulation()));
+        holder.planetEdited.setText(context.getString(R.string.edited, planet.getEdited()));
+        holder.planetCreated.setText(context.getString(R.string.created, planet.getCreated()));
 
         holder.planetFilms.setAdapter(minFilmAdapter);
         holder.planetResidents.setAdapter(minPersonAdapter);

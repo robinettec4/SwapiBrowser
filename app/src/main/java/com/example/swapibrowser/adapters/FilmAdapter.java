@@ -51,14 +51,14 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmHolder> {
         MinStarshipAdapter minStarshipAdapter = new MinStarshipAdapter(film.getStarships(), context);
         MinPlanetAdapter minPlanetAdapter = new MinPlanetAdapter(film.getPlanets(), context);
 
-        holder.filmTitle.setText(film.getTitle());
-        holder.filmEpisodeId.setText(film.getEpisodeId().toString());
-        holder.filmOpeningCrawl.setText(film.getOpeningCrawl());
-        holder.filmDirector.setText(film.getDirector());
-        holder.filmProducer.setText(film.getProducer());
-        holder.filmReleaseDate.setText(film.getReleaseDate());
-        holder.filmEdited.setText(film.getEdited());
-        holder.filmCreated.setText(film.getCreated());
+        holder.filmTitle.setText(context.getString(R.string.film_title, film.getTitle()));
+        holder.filmEpisodeId.setText(context.getString(R.string.film_episode_id, film.getEpisodeId()));
+        holder.filmOpeningCrawl.setText(context.getString(R.string.film_opening_crawl, film.getOpeningCrawl()));
+        holder.filmDirector.setText(context.getString(R.string.film_director, film.getDirector()));
+        holder.filmProducer.setText(context.getString(R.string.film_producer, film.getProducer()));
+        holder.filmReleaseDate.setText(context.getString(R.string.film_release_date, film.getReleaseDate()));
+        holder.filmEdited.setText(context.getString(R.string.edited, film.getEdited()));
+        holder.filmCreated.setText(context.getString(R.string.created, film.getCreated()));
 
         holder.filmCharacters.setAdapter(minPersonAdapter);
         holder.filmSpecies.setAdapter(minSpeciesResultAdapter);

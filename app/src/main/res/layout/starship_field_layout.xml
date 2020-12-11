@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/model"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/starship_name"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,9 +37,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/manufacturer"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/starship_name" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_class" />
 
         <TextView
             android:id="@+id/starhship_cost"
@@ -45,8 +48,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
-            app:layout_constraintStart_toEndOf="@+id/starship_manufacturer"
+            android:text="@string/cost"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintStart_toEndOf="@+id/starship_class"
             app:layout_constraintTop_toBottomOf="@+id/starship_model" />
 
         <TextView
@@ -55,9 +59,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/length"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/starship_manufacturer" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_crew" />
 
         <TextView
             android:id="@+id/starship_max_speed"
@@ -65,9 +70,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/max_speed"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/starship_length"
-            app:layout_constraintTop_toBottomOf="@+id/starhship_cost" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_passengers" />
 
         <TextView
             android:id="@+id/starship_crew"
@@ -75,9 +81,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/crew"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/starship_length" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_manufacturer" />
 
         <TextView
             android:id="@+id/starship_passengers"
@@ -85,9 +92,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/passengers"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/starship_crew"
-            app:layout_constraintTop_toBottomOf="@+id/starship_max_speed" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_manufacturer" />
 
         <TextView
             android:id="@+id/starship_cargo"
@@ -95,8 +103,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
-            app:layout_constraintStart_toEndOf="@+id/starship_passengers"
+            android:text="@string/cargo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintStart_toEndOf="@+id/starship_consumables"
             app:layout_constraintTop_toBottomOf="@+id/starship_max_speed" />
 
         <TextView
@@ -105,9 +114,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/consumables"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/starship_crew" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_length" />
 
         <TextView
             android:id="@+id/starship_hyperdrive_rating"
@@ -115,9 +125,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
-            app:layout_constraintStart_toEndOf="@+id/starship_consumables"
-            app:layout_constraintTop_toBottomOf="@+id/starship_passengers" />
+            android:text="@string/starship_hyper_drive_rating"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintStart_toEndOf="@+id/starship_mglt"
+            app:layout_constraintTop_toBottomOf="@+id/starship_consumables" />
 
         <TextView
             android:id="@+id/starship_mglt"
@@ -125,9 +136,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
-            app:layout_constraintStart_toEndOf="@+id/starship_hyperdrive_rating"
-            app:layout_constraintTop_toBottomOf="@+id/starship_cargo" />
+            android:text="@string/starship_mglt"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/starship_consumables" />
 
         <TextView
             android:id="@+id/starship_class"
@@ -135,9 +147,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
-            app:layout_constraintStart_toEndOf="@+id/starship_model"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/s_class"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/starship_name" />
 
         <TextView
             android:id="@+id/starship_pilots_label"
@@ -146,8 +159,9 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="30dp"
             android:text="@string/pilots"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/starship_consumables" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_mglt" />
 
         <TextView
             android:id="@+id/starship_films_label"
@@ -156,8 +170,9 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="15dp"
             android:text="@string/films"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/starship_consumables" />
+            app:layout_constraintTop_toBottomOf="@+id/starship_mglt" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/starship_people_recycler"
@@ -183,7 +198,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/edited"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/starship_people_recycler" />
 
@@ -193,7 +209,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/created"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/starship_edited" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="30dp"
             android:text="@string/vehicles"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_films_recycler" />
 
@@ -46,6 +47,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="15dp"
             android:text="@string/species"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_homeworld" />
 
@@ -56,6 +58,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="30dp"
             android:text="@string/films"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_homeworld" />
 
@@ -65,7 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/person_height"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_name" />
 
@@ -75,7 +79,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/edited"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_vehicles_recycler" />
 
@@ -85,7 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/created"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_edited" />
 
@@ -95,7 +101,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/homeworld"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_birth_year" />
 
@@ -105,7 +112,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/person_gender"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/person_birth_year"
             app:layout_constraintTop_toBottomOf="@+id/person_skin_color" />
 
@@ -115,7 +123,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/person_birth_year"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_hair_color" />
 
@@ -125,7 +134,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/person_eye_color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/person_skin_color"
             app:layout_constraintTop_toBottomOf="@+id/person_mass" />
 
@@ -135,7 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/person_skin_color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/person_hair_color"
             app:layout_constraintTop_toBottomOf="@+id/person_mass" />
 
@@ -145,7 +156,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,7 +167,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/person_hair_color"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_height" />
 
@@ -165,7 +178,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/person_mass"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/person_height"
             app:layout_constraintTop_toBottomOf="@+id/person_name" />
 
@@ -196,6 +210,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="5dp"
             android:text="@string/starships"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_species_recycler" />
 

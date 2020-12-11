@@ -9,7 +9,7 @@ import com.example.swapibrowser.models.species.SpeciesResult;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Planets implements IModel<Planets> {
+public class Planets implements IModel<Planet> {
 
     @SerializedName("count")
     @Expose
@@ -22,7 +22,7 @@ public class Planets implements IModel<Planets> {
     private Object previous;
     @SerializedName("results")
     @Expose
-    private List<Planets> planets = null;
+    private List<Planet> planets = null;
 
     public Integer getCount() {
         return count;
@@ -48,11 +48,11 @@ public class Planets implements IModel<Planets> {
         this.previous = previous;
     }
 
-    public List<Planets> getResults() {
+    public List<Planet> getResults() {
         return planets;
     }
 
-    public void setPlanets(List<Planets> planets) {
+    public void setPlanets(List<Planet> planets) {
         this.planets = planets;
     }
 

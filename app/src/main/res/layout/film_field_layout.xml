@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#0D00BCD4"
+    android:backgroundTint="#00BCD4"
     android:fillViewport="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/film_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/film_episode_id"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/film_title"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/film_director"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_title" />
 
@@ -45,10 +50,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/textview"
-            app:layout_constraintStart_toEndOf="@+id/film_director"
-            app:layout_constraintTop_toBottomOf="@+id/film_episode_id" />
+            android:layout_marginTop="15dp"
+            android:text="@string/film_producer"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/film_director" />
 
         <TextView
             android:id="@+id/film_release_date"
@@ -56,9 +62,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="@string/textview"
+            android:text="@string/film_release_date"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/film_director" />
+            app:layout_constraintTop_toBottomOf="@+id/film_producer" />
 
         <TextView
             android:id="@+id/film_edited"
@@ -66,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
-            android:text="@string/textview"
+            android:text="@string/edited"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_starships_recycler" />
 
@@ -76,7 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
-            android:text="@string/textview"
+            android:text="@string/created"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_edited" />
 
@@ -96,6 +105,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/characters"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_opening_crawl" />
 
@@ -106,6 +116,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:text="@string/starships"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_characters_recycler" />
 
@@ -116,6 +127,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:text="@string/planets"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_opening_crawl" />
 
@@ -126,6 +138,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:text="@string/species"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_planets_recycler" />
 
@@ -135,6 +148,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
+            android:backgroundTint="#F44336"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_planets_label" />
 
@@ -144,6 +158,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
+            android:backgroundTint="#F44336"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_species_label" />
 
@@ -153,6 +168,7 @@
             android:layout_height="100dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
+            android:backgroundTint="#F44336"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_starships_label" />
 
@@ -163,6 +179,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:text="@string/vehicles"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_species_recycler" />
 
@@ -172,6 +189,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
+            android:backgroundTint="#F44336"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_vehicles_label" />
 
@@ -182,7 +200,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
-            android:text="TextView"
+            android:text="@string/film_opening_crawl"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/film_release_date" />

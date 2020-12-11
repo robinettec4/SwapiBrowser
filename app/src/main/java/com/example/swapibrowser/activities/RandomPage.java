@@ -31,7 +31,7 @@ public class RandomPage extends AppCompatActivity {
         setContentView(R.layout.activity_random_page);
         randomRecycler = findViewById(R.id.recently_updated_recycler);
         int field = decideField();
-        String[] list = new String[]{"people", "films", "planets", "starships", "vehicles"};
+        String[] list = new String[]{"people", "films", "planets", "species", "starships", "vehicles"};
         getItemCount(list[field]);
     }
 
