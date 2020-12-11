@@ -19,20 +19,20 @@ public class ViewPlanet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet_field_layout);
 
-         TextView planetName = findViewById(R.id.planet_name);
-         TextView planetRotationPeriod = findViewById(R.id.planet_rotational_period);
-         TextView planetOrbitalPeriod = findViewById(R.id.planet_orbital_period);
-         TextView planetDiameter = findViewById(R.id.planet_diameter);
-         TextView planetClimate = findViewById(R.id.planet_climate);
-         TextView planetGravity = findViewById(R.id.planet_gravity);
-         TextView planetTerrain = findViewById(R.id.planet_terrain);
-         TextView planetSurfaceWater = findViewById(R.id. planet_surface_water);
-         TextView planetPopulation = findViewById(R.id.planet_population);
-         TextView planetCreated = findViewById(R.id.planet_created);
-         TextView planetEdited = findViewById(R.id.planet_edited);
+        TextView planetName = findViewById(R.id.planet_name);
+        TextView planetRotationPeriod = findViewById(R.id.planet_rotational_period);
+        TextView planetOrbitalPeriod = findViewById(R.id.planet_orbital_period);
+        TextView planetDiameter = findViewById(R.id.planet_diameter);
+        TextView planetClimate = findViewById(R.id.planet_climate);
+        TextView planetGravity = findViewById(R.id.planet_gravity);
+        TextView planetTerrain = findViewById(R.id.planet_terrain);
+        TextView planetSurfaceWater = findViewById(R.id. planet_surface_water);
+        TextView planetPopulation = findViewById(R.id.planet_population);
+        TextView planetCreated = findViewById(R.id.planet_created);
+        TextView planetEdited = findViewById(R.id.planet_edited);
 
-         RecyclerView planetResidents = findViewById(R.id.planet_residents_recycler);
-         RecyclerView planetFilms = findViewById(R.id.planet_films_recycler);
+        RecyclerView planetResidents = findViewById(R.id.planet_residents_recycler);
+        RecyclerView planetFilms = findViewById(R.id.planet_films_recycler);
 
         Intent intent = getIntent();
         Planet planet = (Planet) intent.getSerializableExtra("planets");

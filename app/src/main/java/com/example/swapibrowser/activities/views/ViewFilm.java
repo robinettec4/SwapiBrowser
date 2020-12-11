@@ -19,21 +19,20 @@ public class ViewFilm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.film_field_layout);
 
+        TextView filmTitle = findViewById(R.id.film_title);
+        TextView filmEpisodeId = findViewById(R.id.film_episode_id);
+        TextView filmOpeningCrawl = findViewById(R.id.film_opening_crawl);
+        TextView filmDirector = findViewById(R.id.film_director);
+        TextView filmProducer = findViewById(R.id.film_producer);
+        TextView filmReleaseDate = findViewById(R.id.film_release_date);
+        TextView filmEdited = findViewById(R.id.film_edited);
+        TextView filmCreated = findViewById(R.id.film_created);
 
-         TextView filmTitle = findViewById(R.id.film_title);
-         TextView filmEpisodeId = findViewById(R.id.film_episode_id);
-         TextView filmOpeningCrawl = findViewById(R.id.film_opening_crawl);
-         TextView filmDirector = findViewById(R.id.film_director);
-         TextView filmProducer = findViewById(R.id.film_producer);
-         TextView filmReleaseDate = findViewById(R.id.film_release_date);
-         TextView filmEdited = findViewById(R.id.film_edited);
-         TextView filmCreated = findViewById(R.id.film_created);
-
-         RecyclerView  filmCharacters = findViewById(R.id.film_characters_recycler);
-         RecyclerView filmPlanets = findViewById(R.id.film_planets_recycler);
-         RecyclerView filmStarships = findViewById(R.id.film_starships_recycler);
-         RecyclerView filmVehicles = findViewById(R.id.film_vehicles_recycler);
-         RecyclerView filmSpecies = findViewById(R.id.film_species_recycler);
+        RecyclerView  filmCharacters = findViewById(R.id.film_characters_recycler);
+        RecyclerView filmPlanets = findViewById(R.id.film_planets_recycler);
+        RecyclerView filmStarships = findViewById(R.id.film_starships_recycler);
+        RecyclerView filmVehicles = findViewById(R.id.film_vehicles_recycler);
+        RecyclerView filmSpecies = findViewById(R.id.film_species_recycler);
 
         Intent intent = getIntent();
         Film film = (Film) intent.getSerializableExtra("films");

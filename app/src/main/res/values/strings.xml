@@ -37,7 +37,7 @@
     <string name="film_director">Director: %1$s</string>
     <string name="film_producer">Producer: %1$s</string>
     <string name="film_release_date">Release Date: %1$s</string>
-    <string name="film_opening_crawl">Opening Crawl: %1$s</string>
+    <string name="film_opening_crawl">%1$s</string>
     <string name="person_height">Height: %1$s</string>
     <string name="person_mass">Mass: %1$s</string>
     <string name="person_hair_color">Hair Color: %1$s</string>
@@ -81,4 +81,6 @@
     <string name="refresh">Refresh</string>
     <string name="search_recently_created_entry_by">Search recently created entries by</string>
     <string name="search_favorite_pages_by">Search favorite pages by</string>
+    <string name="generate">Generate</string>
+    <string name="no_data">No Data</string>
 </resources>

@@ -19,24 +19,24 @@ public class ViewStarship extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.starship_field_layout);
 
-         TextView starshipName = findViewById(R.id.starship_name);
-         TextView starshipModel = findViewById(R.id.starship_model);
-         TextView starshipManufacturer = findViewById(R.id.starship_manufacturer);
-         TextView starshipCost = findViewById(R.id.starship_cost);
-         TextView starshipLength = findViewById(R.id.starship_length);
-         TextView starshipMaxSpeed = findViewById(R.id.starship_max_speed);
-         TextView starshipCrew = findViewById(R.id.starship_crew);
-         TextView starshipPassengers = findViewById(R.id.starship_passengers);
-         TextView starshipCargo = findViewById(R.id.starship_cargo);
-         TextView starshipConsumables = findViewById(R.id.starship_consumables);
-         TextView starshipHyperDriveRating = findViewById(R.id.starship_hyperdrive_rating);
-         TextView starshipMGLT = findViewById(R.id.starship_mglt);
-         TextView starshipClass = findViewById(R.id.starship_class);
-         TextView starshipCreated = findViewById(R.id.starship_created);
-         TextView starshipEdited = findViewById(R.id.starship_edited);
+        TextView starshipName = findViewById(R.id.starship_name);
+        TextView starshipModel = findViewById(R.id.starship_model);
+        TextView starshipManufacturer = findViewById(R.id.starship_manufacturer);
+        TextView starshipCost = findViewById(R.id.starship_cost);
+        TextView starshipLength = findViewById(R.id.starship_length);
+        TextView starshipMaxSpeed = findViewById(R.id.starship_max_speed);
+        TextView starshipCrew = findViewById(R.id.starship_crew);
+        TextView starshipPassengers = findViewById(R.id.starship_passengers);
+        TextView starshipCargo = findViewById(R.id.starship_cargo);
+        TextView starshipConsumables = findViewById(R.id.starship_consumables);
+        TextView starshipHyperDriveRating = findViewById(R.id.starship_hyperdrive_rating);
+        TextView starshipMGLT = findViewById(R.id.starship_mglt);
+        TextView starshipClass = findViewById(R.id.starship_class);
+        TextView starshipCreated = findViewById(R.id.starship_created);
+        TextView starshipEdited = findViewById(R.id.starship_edited);
 
-         RecyclerView starshipPilots = findViewById(R.id.starship_people_recycler);
-         RecyclerView starshipFilms = findViewById(R.id.starship_films_recycler);
+        RecyclerView starshipPilots = findViewById(R.id.starship_people_recycler);
+        RecyclerView starshipFilms = findViewById(R.id.starship_films_recycler);
 
         Intent intent = getIntent();
         Starship starship = (Starship) intent.getSerializableExtra("starships");
