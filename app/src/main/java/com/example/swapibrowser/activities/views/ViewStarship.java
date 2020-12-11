@@ -75,17 +75,25 @@ public class ViewStarship extends AppCompatActivity {
         starshipPilots.setLayoutManager(new LinearLayoutManager(ViewStarship.this));
     }
 
-    public void saveFavorite(View view) {
+    public void editFavorite(View view) {
         PageSaver saver = new PageSaver();
-        favorite.setText(R.string.favorited);
-        saver.saveFavorite(this);
+        if (favorite.getText().toString().equals(R.string.favorite)) {
+            favorite.setText(R.string.unfavorite);
+            saver.saveFavorite(this);
+        }
+        else {
+            favorite.setText(R.string.favorite);
+            saver.removeFavorite(this);
+        }
     }
 
     public void checkButton(){
         PageSaver saver = new PageSaver();
         if (!saver.check(saver.read(this), this)) {
-            favorite.setText(R.string.favorited);
+            favorite.setText(R.string.unfavorite);
         }
-
+        else {
+            favorite.setText(R.string.favorite);
+        }
     }
 }
