@@ -111,7 +111,7 @@ public class PageSaver {
         return "";
     }
 
-    private boolean check(String fav, Context c){
+    public boolean check(String fav, Context c){
         ArrayList<String> exists = readFavorite(c);
         for (String s : exists){
             if (s.equals(fav)){

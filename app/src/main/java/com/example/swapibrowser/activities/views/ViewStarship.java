@@ -3,6 +3,7 @@ package com.example.swapibrowser.activities.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import com.example.swapibrowser.models.starship.Starship;
 import com.example.swapibrowser.utils.PageSaver;
 
 public class ViewStarship extends AppCompatActivity {
+
+    Button favorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class ViewStarship extends AppCompatActivity {
 
         RecyclerView starshipPilots = findViewById(R.id.starship_people_recycler);
         RecyclerView starshipFilms = findViewById(R.id.starship_films_recycler);
+
+        favorite = findViewById(R.id.favorite);
+        checkButton();
 
         Intent intent = getIntent();
         Starship starship = (Starship) intent.getSerializableExtra("starships");
@@ -71,6 +77,15 @@ public class ViewStarship extends AppCompatActivity {
 
     public void saveFavorite(View view) {
         PageSaver saver = new PageSaver();
+        favorite.setText(R.string.favorited);
         saver.saveFavorite(this);
+    }
+
+    public void checkButton(){
+        PageSaver saver = new PageSaver();
+        if (!saver.check(saver.read(this), this)) {
+            favorite.setText(R.string.favorited);
+        }
+
     }
 }

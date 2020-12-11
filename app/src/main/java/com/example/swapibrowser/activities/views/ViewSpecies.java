@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,8 @@ import com.example.swapibrowser.models.species.SpeciesResult;
 import com.example.swapibrowser.utils.PageSaver;
 
 public class ViewSpecies extends AppCompatActivity {
+
+    Button favorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,9 @@ public class ViewSpecies extends AppCompatActivity {
 
         RecyclerView speciesPeople = findViewById(R.id.species_people_recycler);
         RecyclerView speciesFilms = findViewById(R.id.species_films_recycler);
+
+        favorite = findViewById(R.id.favorite);
+        checkButton();
 
         Intent intent = getIntent();
         SpeciesResult speciesResult = (SpeciesResult) intent.getSerializableExtra("species");
@@ -88,6 +94,15 @@ public class ViewSpecies extends AppCompatActivity {
 
     public void saveFavorite(View view) {
         PageSaver saver = new PageSaver();
+        favorite.setText(R.string.favorited);
         saver.saveFavorite(this);
+    }
+
+    public void checkButton(){
+        PageSaver saver = new PageSaver();
+        if (!saver.check(saver.read(this), this)) {
+            favorite.setText(R.string.favorited);
+        }
+
     }
 }
