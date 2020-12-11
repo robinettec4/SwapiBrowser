@@ -38,25 +38,28 @@ public class PageSaver {
     }
 
     public void saveFavorite(Context c, String url, String itemType) {
+
         FileOutputStream fos = null;
         StringBuilder builder = new StringBuilder();
         builder.append(url);
         builder.append(" :");
         builder.append(itemType);
-        builder.append("\n");
-        try {
-            fos = c.openFileOutput("favorites.txt", c.MODE_APPEND);
-            fos.write(builder.toString().getBytes());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fos != null) {
-                try{
-                    fos.close();
-                } catch (IOException e){
-                    e.printStackTrace();
+        if (check(builder.toString(), c)) {
+            builder.append("\n");
+            try {
+                fos = c.openFileOutput("favorites.txt", c.MODE_APPEND);
+                fos.write(builder.toString().getBytes());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fos != null) {
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -109,5 +112,15 @@ public class PageSaver {
             }
         }
         return "";
+    }
+
+    private boolean check(String url, Context c){
+        ArrayList<String> exists = readFavorite(c);
+        for (String s : exists){
+            if (s.equals(url)){
+                return false;
+            }
+        }
+        return true;
     }
 }
