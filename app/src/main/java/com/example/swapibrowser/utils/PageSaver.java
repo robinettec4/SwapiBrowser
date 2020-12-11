@@ -1,6 +1,7 @@
 package com.example.swapibrowser.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -119,5 +120,39 @@ public class PageSaver {
             }
         }
         return true;
+    }
+
+    public void removeFavorite(Context c){
+        FileOutputStream fos = null;
+        ArrayList<String> exists = readFavorite(c);
+        String page = read(c);
+        StringBuilder sb = new StringBuilder();
+        for (String s : exists) {
+            if (!page.equals(s)) {
+                sb.append(s);
+                sb.append("\n");
+                Log.d("fuck", sb.toString());
+            }
+            Log.d("fuck", sb.toString());
+        }
+        try {
+            fos = c.openFileOutput("favorites.txt", c.MODE_PRIVATE);
+            fos.write(sb.toString().getBytes());
+            for (String s : readFavorite(c)) {
+                Log.d("fuck", s);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

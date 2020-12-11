@@ -74,17 +74,27 @@ public class ViewFilm extends AppCompatActivity {
         filmPlanets.setLayoutManager(new LinearLayoutManager(ViewFilm.this));
     }
 
-    public void saveFavorite(View view) {
+    public void editFavorite(View view) {
         PageSaver saver = new PageSaver();
-        favorite.setText(R.string.favorited);
-        saver.saveFavorite(this);
+        String test = favorite.getText().toString();
+        //String test2 = R.string.favorite;
+        if (favorite.getText().toString().equals("Favorite")) {
+            favorite.setText(R.string.unfavorite);
+            saver.saveFavorite(this);
+        }
+        else {
+            favorite.setText(R.string.favorite);
+            saver.removeFavorite(this);
+        }
     }
 
     public void checkButton(){
         PageSaver saver = new PageSaver();
         if (!saver.check(saver.read(this), this)) {
-            favorite.setText(R.string.favorited);
+            favorite.setText(R.string.unfavorite);
         }
-
+        else {
+            favorite.setText(R.string.favorite);
+        }
     }
 }
