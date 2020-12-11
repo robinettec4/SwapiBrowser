@@ -30,16 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
         addNotification();
-
-        TabLayout tabs = findViewById(R.id.menu_tabs);
-        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), MainActivity.this); }
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) { }
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) { new TabsHelper(tab.getPosition(), MainActivity.this); }
-        });
     }
 
     private void addNotification() {
@@ -67,5 +57,35 @@ public class MainActivity extends AppCompatActivity {
             notificationChannel.setDescription("Gives you a daily notification that takes you to random page you might be interested in");
             mNotificationManager.createNotificationChannel(notificationChannel);
         }
+    }
+
+    public void goToRandomPageActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, RandomPage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void goToRecentActivity(View view){
+        Intent intent = new Intent(MainActivity.this, RecentPage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void goToSearchActivity(View view){
+        Intent intent = new Intent(MainActivity.this, Search.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void goToRecentlyViewedActivity(View view){
+        Intent intent = new Intent(MainActivity.this, LastVisited.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    public void goToFavorite(View view){
+        Intent intent = new Intent(MainActivity.this, FavoritePages.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
