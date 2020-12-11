@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.factory.AdapterFactory;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.IGenerator;
-import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;

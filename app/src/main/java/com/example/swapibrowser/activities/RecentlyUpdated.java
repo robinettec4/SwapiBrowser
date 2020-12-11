@@ -1,6 +1,5 @@
 package com.example.swapibrowser.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,21 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.activities.factory.ActivityFactory;
 import com.example.swapibrowser.adapters.factory.AdapterFactory;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;
-import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.searchers.ISearcher;
 import com.example.swapibrowser.searchers.factory.SearcherFactory;
-import com.example.swapibrowser.utils.CustomRVItemTouchListener;
-import com.example.swapibrowser.utils.RecyclerViewItemClickListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class RecentlyUpdated extends AppCompatActivity {
 

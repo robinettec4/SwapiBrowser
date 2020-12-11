@@ -15,7 +15,6 @@ import com.example.swapibrowser.holders.VehicleHolder;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.vehicle.Vehicle;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 

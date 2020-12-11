@@ -3,7 +3,6 @@ package com.example.swapibrowser.models.film;
 import java.util.List;
 
 import com.example.swapibrowser.models.IModel;
-import com.example.swapibrowser.models.ISingleModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
