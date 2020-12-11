@@ -1,10 +1,12 @@
 package com.example.swapibrowser.models.vehicle;
 
 import java.util.List;
+
+import com.example.swapibrowser.models.ISingleModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Vehicle {
+public class Vehicle implements ISingleModel {
 
     @SerializedName("name")
     @Expose

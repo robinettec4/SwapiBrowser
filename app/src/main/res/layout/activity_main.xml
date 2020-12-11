@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ConstraintLayout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".activities.MainActivity" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/randomButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:onClick="goToRandomPageActivity"
-        android:text="Button" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="@string/random_page" />
+
+    <Button
+        android:id="@+id/recentUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/randomButton"
+        android:layout_centerInParent="true"
+        android:onClick="goToRecentlyUpdatedActivity"
+        android:text="@string/recently_updated" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recentUpdate"
+        android:layout_centerInParent="true"
+        android:text="@string/search"
+        android:onClick="goToSearchActivity"/>
+    <Button
+        android:id="@+id/recentlyViewed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search"
+        android:layout_centerInParent="true"
+        android:text="@string/recently_viewed"
+        android:onClick="goToRecentlyViewedActivity"/>
+
+    <Button
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goToFavorite"
+        android:layout_below="@id/recentlyViewed"
+        android:layout_centerInParent="true"
+        android:text="@string/favorites" />
+</RelativeLayout>

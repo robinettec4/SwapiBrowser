@@ -8,7 +8,7 @@ import com.example.swapibrowser.api.ApiResponseListener;
 
 public class StarshipsSearcher implements ISearcher<Starships> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     public void getBySearch(String searchText, ApiResponseListener<Starships> listener){
         api.getStarships("starships/?search=" + searchText).enqueue(new ApiResponse<>(listener));
@@ -16,6 +16,11 @@ public class StarshipsSearcher implements ISearcher<Starships> {
 
     public void getByFullUrl(String url, ApiResponseListener<Starships> listener) {
         api.getStarships(url).enqueue(new ApiResponse<>(listener));
+    }
+
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Starships> listener) {
+        api.getStarships("starships/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
     }
 
     public void getById(String id, ApiResponseListener<Starships> listener){

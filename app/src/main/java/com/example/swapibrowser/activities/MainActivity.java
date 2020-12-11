@@ -18,8 +18,7 @@ import android.os.SystemClock;
 import android.view.View;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.models.person.People;
-import com.example.swapibrowser.models.person.Person;
+import com.example.swapibrowser.utils.PageSaver;
 
 import java.util.ArrayList;
 
@@ -35,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
         addnotification();
+        PageSaver saver = new PageSaver();
+
+        ArrayList<String> test = saver.readFavorite(this);
     }
 
     public void goToRandomPageActivity(View view) {
@@ -44,7 +46,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToRecentlyUpdatedActivity(View view){
         Intent intent = new Intent(MainActivity.this, RecentlyUpdated.class);
-        MainActivity.this.startActivity(intent);
+        startActivity(intent);
+    }
+
+    public void goToSearchActivity(View view){
+        Intent intent = new Intent(MainActivity.this, Search.class);
+        startActivity(intent);
+    }
+
+    public void goToRecentlyViewedActivity(View view){
+        Intent intent = new Intent(MainActivity.this, LastVisited.class);
+        startActivity(intent);
+    }
+
+    public void goToFavorite(View view){
+        Intent intent = new Intent(MainActivity.this, FavoritePages.class);
+        startActivity(intent);
     }
 
 

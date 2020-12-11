@@ -11,23 +11,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.FilmAdapter;
-import com.example.swapibrowser.adapters.PersonAdapter;
+import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.GeneratorFactory;
-import com.example.swapibrowser.generators.IGenerator;
-import com.example.swapibrowser.generators.IGeneratorFactory;
-import com.example.swapibrowser.models.film.Film;
-import com.example.swapibrowser.models.person.Person;
-import com.example.swapibrowser.generators.PersonGenerator;
+import com.example.swapibrowser.generators.factory.GeneratorFactory;
+import com.example.swapibrowser.models.IModel;
+import com.example.swapibrowser.models.ISingleModel;
+import com.example.swapibrowser.searchers.ISearcher;
+import com.example.swapibrowser.searchers.factory.SearcherFactory;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RecentlyUpdated extends AppCompatActivity {
 
     RecyclerView recentlyUpdatedRecycler;
-    IGeneratorFactory generatorFactory = new GeneratorFactory();
+    SearcherFactory searcherFactory = new SearcherFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +45,14 @@ public class RecentlyUpdated extends AppCompatActivity {
         });
     }
 
-    public void loadFilmData(String itemType){
-        final ArrayList<Film> items = new ArrayList<>();
-        IGenerator filmGenerator = generatorFactory.CreateGenerator(itemType);
-        final ApiResponseListener<Film> listener = new ApiResponseListener<Film>() {
-
+    public void getMostRecentItem(final String itemType){
+        ISearcher searcher = searcherFactory.CreateSearcher(itemType);
+        final ArrayList<ISingleModel> items = new ArrayList<>();
+        ApiResponseListener<IModel> listener = new ApiResponseListener<IModel>() {
             @Override
-            public void onResponseReceived(Film response) {
-                items.add(response);
-                Log.d("ResponseOutput", items.getClass().getName());
-                recentlyUpdatedRecycler.setAdapter(new FilmAdapter(items, RecentlyUpdated.this));
+            public void onResponseReceived(IModel response) {
+                items.addAll(response.getResults());
+                recentlyUpdatedRecycler.setAdapter(new ItemAdapter(items, RecentlyUpdated.this, itemType.toLowerCase()));
                 recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
             }
 
@@ -66,52 +61,6 @@ public class RecentlyUpdated extends AppCompatActivity {
                 Log.e("ResponseError", error.getMessage());
             }
         };
-        filmGenerator.getById("1", listener);
+        searcher.getByOrdering("edited", listener);
     }
-
-    public void loadPersonData(String itemUrl){
-        final ArrayList<Person> items = new ArrayList<>();
-        IGenerator personGenerator = generatorFactory.CreateGenerator("person");
-        final ApiResponseListener<Person> listener = new ApiResponseListener<Person>() {
-
-            @Override
-            public void onResponseReceived(Person response) {
-                items.add(response);
-                Log.d("ResponseOutput", items.getClass().getName());
-                recentlyUpdatedRecycler.setAdapter(new PersonAdapter(items, RecentlyUpdated.this));
-                recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
-            }
-
-            @Override
-            public void onError(Throwable error) {
-                Log.e("ResponseError", error.getMessage());
-            }
-        };
-        personGenerator.getByFullUrl("http://swapi.dev/api/people/1/", listener);
-    }
-
-    public void getMostRecentItem(String itemType){
-        if(itemType.equals("person")){
-            loadPersonData(itemType);
-        } else if (itemType.equals("film")){
-            loadFilmData(itemType);
-        }
-    }
-
-//    public void getMostRecentItem(final String itemType){
-//        IGenerator generator = generatorFactory.CreateGenerator(itemType);
-//
-//        ApiResponseListener<Serializable> listener = new ApiResponseListener<Serializable>() {
-//            @Override
-//            public void onResponseReceived(Serializable response) {
-//                loadPersonData(response);
-//            }
-//
-//            @Override
-//            public void onError(Throwable error) {
-//                Log.e("ResponseError", error.getMessage());
-//            }
-//        };
-//        generator.getByFullUrl("", listener);
-//    }
 }

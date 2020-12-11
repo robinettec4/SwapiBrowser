@@ -1,10 +1,12 @@
 package com.example.swapibrowser.models.planet;
 
 import java.util.List;
+
+import com.example.swapibrowser.models.IModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Planets {
+public class Planets implements IModel<Planet> {
 
     @SerializedName("count")
     @Expose
@@ -43,7 +45,7 @@ public class Planets {
         this.previous = previous;
     }
 
-    public List<Planet> getPlanets() {
+    public List<Planet> getResults() {
         return planets;
     }
 

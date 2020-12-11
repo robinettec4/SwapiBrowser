@@ -10,7 +10,7 @@ import retrofit2.Response;
 
 public class ApiResponse<ResponseType> implements Callback<ResponseType> {
 
-    private WeakReference<ApiResponseListener<ResponseType>> listener;
+    private final WeakReference<ApiResponseListener<ResponseType>> listener;
 
     public ApiResponse(ApiResponseListener<ResponseType> listener){
         this.listener = new WeakReference<>(listener);
