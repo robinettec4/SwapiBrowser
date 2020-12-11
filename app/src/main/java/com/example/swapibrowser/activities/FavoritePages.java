@@ -86,7 +86,7 @@ public class FavoritePages extends AppCompatActivity {
 
     public ArrayList<String> sort(ArrayList<String> favorites, String itemType){
         ArrayList<String> url = new ArrayList<>();
-        for(int i = 0; i < favorites.size() - 1; i++){
+        for(int i = 0; i < favorites.size(); i++){
             String[] temp = favorites.get(i).split(" :");
             if (temp[1].equals((itemType))){
                 url.add(temp[0]);

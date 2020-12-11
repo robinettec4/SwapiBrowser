@@ -52,6 +52,7 @@ public class RandomPage extends AppCompatActivity {
                     items.add(response);
                     save(response.getUrl(), itemType);
                     randomRecycler.setAdapter(new ItemAdapter(items, RandomPage.this, itemType.toLowerCase()));
+                    randomRecycler.setAdapter(new ItemAdapter(items, RandomPage.this, itemType.toLowerCase()));
                     randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                 }
             }
@@ -93,4 +94,6 @@ public class RandomPage extends AppCompatActivity {
     public void save(String url, String itemType){
         saver.save(this, url, itemType);
     }
+
+    public void saveFavorite(String url, String itemType){ saver.saveFavorite(this, url, itemType); }
 }
