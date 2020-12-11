@@ -22,23 +22,23 @@ import com.example.swapibrowser.searchers.SearcherFactory;
 
 import java.util.ArrayList;
 
-public class RecentlyUpdated extends AppCompatActivity {
-
-    RecyclerView recentlyUpdatedRecycler;
+public class RecentlyCreated extends AppCompatActivity {
+    RecyclerView recentlyCreatedRecycler;
     GeneratorFactory generatorFactory = new GeneratorFactory();
     SearcherFactory searcherFactory = new SearcherFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recently_updated);
-        recentlyUpdatedRecycler = findViewById(R.id.recently_updated_recycler);
-        final Spinner recentlyUpdatedSpinner = findViewById(R.id.recently_updated_spinner);
 
-        recentlyUpdatedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recently_created);
+        recentlyCreatedRecycler = findViewById(R.id.recently_created_recycler);
+        final Spinner recentlyCreatedSpinner = findViewById(R.id.recently_created_spinner);
+
+        recentlyCreatedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                getMostRecentItem(recentlyUpdatedSpinner.getSelectedItem().toString().toLowerCase());
+                getMostRecentItem(recentlyCreatedSpinner.getSelectedItem().toString().toLowerCase());
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -56,8 +56,8 @@ public class RecentlyUpdated extends AppCompatActivity {
             @Override
             public void onResponseReceived(ISingleModel response) {
                 items.add(response);
-                recentlyUpdatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyUpdated.this));
-                recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
+                recentlyCreatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyCreated.this));
+                recentlyCreatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyCreated.this));
             }
 
             @Override
@@ -69,6 +69,7 @@ public class RecentlyUpdated extends AppCompatActivity {
     }
 
     public void getMostRecentItem(final String itemType){
+
         ISearcher searcher = searcherFactory.CreateSearcher(itemType);
         ApiResponseListener<IModel> listener = new ApiResponseListener<IModel>() {
             @Override
@@ -81,6 +82,6 @@ public class RecentlyUpdated extends AppCompatActivity {
                 Log.e("ResponseError", error.getMessage());
             }
         };
-        searcher.getByOrdering("edited", listener);
+        searcher.getByOrdering("created", listener);
     }
 }

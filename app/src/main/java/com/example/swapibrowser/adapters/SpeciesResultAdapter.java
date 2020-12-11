@@ -46,18 +46,18 @@ public class SpeciesResultAdapter  extends RecyclerView.Adapter<SpeciesResultHol
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(speciesResult.getFilms(), context);
         MinPersonAdapter minPersonAdapter = new MinPersonAdapter(speciesResult.getPeople(), context);
 
-        holder.speciesName.setText(speciesResult.getName());
-        holder.speciesClassification.setText(speciesResult.getClassification());
-        holder.speciesDesignation.setText(speciesResult.getDesignation());
-        holder.speciesAvgHeight.setText(speciesResult.getAverageHeight());
-        holder.speciesSkinColors.setText(speciesResult.getSkinColors());
-        holder.speciesHairColors.setText(speciesResult.getHairColors());
-        holder.speciesEyeColors.setText(speciesResult.getEyeColors());
-        holder.speciesAvgLifespan.setText(speciesResult.getAverageLifespan());
-        holder.speciesHomeworld.setText(speciesResult.getHomeworld());
-        holder.speciesLanguage.setText(speciesResult.getLanguage());
-        holder.speciesEdited.setText(speciesResult.getEdited());
-        holder.speciesCreated.setText(speciesResult.getCreated());
+        holder.speciesName.setText(context.getString(R.string.name, speciesResult.getName()));
+        holder.speciesClassification.setText(context.getString(R.string.s_class, speciesResult.getClassification()));
+        holder.speciesDesignation.setText(context.getString(R.string.species_designation, speciesResult.getDesignation()));
+        holder.speciesAvgHeight.setText(context.getString(R.string.species_average_height, speciesResult.getAverageHeight()));
+        holder.speciesSkinColors.setText(context.getString(R.string.species_skin_colors, speciesResult.getSkinColors()));
+        holder.speciesHairColors.setText(context.getString(R.string.species_hair_colors, speciesResult.getHairColors()));
+        holder.speciesEyeColors.setText(context.getString(R.string.species_eye_colors, speciesResult.getEyeColors()));
+        holder.speciesAvgLifespan.setText(context.getString(R.string.species_average_lifespan, speciesResult.getAverageLifespan()));
+        holder.speciesHomeworld.setText(context.getString(R.string.homeworld, speciesResult.getHomeworld()));
+        holder.speciesLanguage.setText(context.getString(R.string.species_language, speciesResult.getLanguage()));
+        holder.speciesEdited.setText(context.getString(R.string.edited, speciesResult.getEdited()));
+        holder.speciesCreated.setText(context.getString(R.string.created, speciesResult.getCreated()));
 
         holder.speciesFilms.setAdapter(minFilmAdapter);
         holder.speciesPeople.setAdapter(minPersonAdapter);

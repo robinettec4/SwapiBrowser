@@ -45,19 +45,19 @@ public class VehicleAdapter  extends RecyclerView.Adapter<VehicleHolder> {
         MinFilmAdapter minFilmAdapter = new MinFilmAdapter(vehicle.getFilms(), context);
         MinPersonAdapter minPersonAdapter = new MinPersonAdapter(vehicle.getPilots(), context);
 
-        holder.vehicleName.setText(vehicle.getName());
-        holder.vehicleModel.setText(vehicle.getModel());
-        holder.vehicleManufacturer.setText(vehicle.getManufacturer());
-        holder.vehicleCost.setText(vehicle.getCostInCredits());
-        holder.vehicleLength.setText(vehicle.getLength());
-        holder.vehicleMaxSpeed.setText(vehicle.getMaxAtmospheringSpeed());
-        holder.vehicleCreated.setText(vehicle.getCrew());
-        holder.vehiclePassengers.setText(vehicle.getPassengers());
-        holder.vehicleCargo.setText(vehicle.getCargoCapacity());
-        holder.vehicleConsumables.setText(vehicle.getConsumables());
-        holder.vehicleClass.setText(vehicle.getVehicleClass());
-        holder.vehicleEdited.setText(vehicle.getEdited());
-        holder.vehicleCreated.setText(vehicle.getCreated());
+        holder.vehicleName.setText(context.getString(R.string.name,  vehicle.getName()));
+        holder.vehicleModel.setText(context.getString(R.string.model, vehicle.getModel()));
+        holder.vehicleManufacturer.setText(context.getString(R.string.manufacturer, vehicle.getManufacturer()));
+        holder.vehicleCost.setText(context.getString(R.string.cost, vehicle.getCostInCredits()));
+        holder.vehicleLength.setText(context.getString(R.string.length, vehicle.getLength()));
+        holder.vehicleMaxSpeed.setText(context.getString(R.string.max_speed, vehicle.getMaxAtmospheringSpeed()));
+        holder.vehicleCrew.setText(context.getString(R.string.crew, vehicle.getCrew()));
+        holder.vehiclePassengers.setText(context.getString(R.string.passengers, vehicle.getPassengers()));
+        holder.vehicleCargo.setText(context.getString(R.string.cargo, vehicle.getCargoCapacity()));
+        holder.vehicleConsumables.setText(context.getString(R.string.consumables, vehicle.getConsumables()));
+        holder.vehicleClass.setText(context.getString(R.string.s_class, vehicle.getVehicleClass()));
+        holder.vehicleEdited.setText(context.getString(R.string.edited, vehicle.getEdited()));
+        holder.vehicleCreated.setText(context.getString(R.string.created, vehicle.getCreated()));
 
         holder.vehicleFilms.setAdapter(minFilmAdapter);
         holder.vehiclePilots.setAdapter(minPersonAdapter);

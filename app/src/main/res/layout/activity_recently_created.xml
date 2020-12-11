@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/recently_updated_tip"
+            android:id="@+id/recently_created_tip"
             android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -20,12 +20,12 @@
             android:layout_marginEnd="5dp"
             android:text="@string/search_recently_changed_entries_by"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintEnd_toStartOf="@+id/recently_updated_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/recently_created_spinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
-            android:id="@+id/recently_updated_spinner"
+            android:id="@+id/recently_created_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -35,13 +35,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recently_updated_recycler"
+            android:id="@+id/recently_created_recycler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recently_updated_tip" />
+            app:layout_constraintTop_toBottomOf="@+id/recently_created_tip" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
