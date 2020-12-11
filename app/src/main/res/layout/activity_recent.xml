@@ -30,7 +30,7 @@
                 android:contentDescription="@string/favorites_page"
                 android:contextClickable="true"
                 android:focusable="true"
-                android:icon="@android:drawable/btn_star_big_on" />
+                android:icon="@android:drawable/btn_star_big_off" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/last_visited_tab"
@@ -40,7 +40,7 @@
                 android:contentDescription="@string/last_visited"
                 android:contextClickable="true"
                 android:focusable="true"
-                android:icon="@android:drawable/ic_menu_agenda" />
+                android:icon="@android:drawable/ic_menu_recent_history" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/search_tab"
@@ -60,7 +60,7 @@
                 android:contentDescription="@string/home"
                 android:contextClickable="true"
                 android:focusable="true"
-                android:icon="@android:drawable/ic_dialog_info" />
+                android:icon="@android:drawable/ic_menu_revert" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/recent_tab"
@@ -80,7 +80,7 @@
                 android:contentDescription="@string/random_page"
                 android:contextClickable="true"
                 android:focusable="true"
-                android:icon="@android:drawable/ic_delete" />
+                android:icon="@android:drawable/ic_menu_help" />
         </com.google.android.material.tabs.TabLayout>
 
         <Spinner

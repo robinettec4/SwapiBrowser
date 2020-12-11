@@ -88,7 +88,6 @@
     <string name="search_favorite_pages_by">Search favorite pages by</string>
     <string name="generate">Generate</string>
     <string name="no_data">No Data</string>
-    <string name="favorites">Favorites</string>
     <string name="favorite">Favorite</string>
     <string name="btn_star">btn_star</string>
     <string name="favorited">Favorited</string>
@@ -97,4 +96,10 @@
     <string name="home">Home</string>
     <string name="last_visited">Last Visited</string>
     <string name="favorites_page">Favorites Page</string>
+    <string name="swapibrowser">SwapiBrowser</string>
+    <string name="https_swapi_dev_api">https://swapi.dev/api/</string>
+    <string name="random">Random</string>
+    <string name="last_viewed">Last Viewed</string>
+    <string name="recent_pages">Recent Pages</string>
+    <string name="favorites">Favorites</string>
 </resources>
