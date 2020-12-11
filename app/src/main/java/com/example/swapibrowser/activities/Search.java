@@ -66,7 +66,6 @@ public class Search extends AppCompatActivity {
             public void onResponseReceived(IModel response) {
                 if (response != null) {
                     items.addAll(response.getResults());
-                    save(items.get(0).getUrl(), itemType);
                     searchRecycler.setAdapter(new ItemAdapter(items, Search.this, itemType.toLowerCase()));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
@@ -83,9 +82,4 @@ public class Search extends AppCompatActivity {
         searcher.getBySearch(input, listener);
     }
 
-    public void save(String url, String itemType){
-        saver.save(this, url, itemType);
-    }
-
-    public void saveFavorite(String url, String itemType){ saver.saveFavorite(this, url, itemType); }
 }
