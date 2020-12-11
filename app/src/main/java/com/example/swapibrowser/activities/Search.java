@@ -115,5 +115,5 @@ public class Search extends AppCompatActivity {
         saver.save(this, url, itemType);
     }
 
-    public void saveFavorite(String url){ saver.saveFavorite(this, url); }
+    public void saveFavorite(String url, String itemType){ saver.saveFavorite(this, url, itemType); }
 }

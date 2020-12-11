@@ -30,5 +30,6 @@
 
         </activity>
         <activity android:name=".activities.Search"></activity>
+        <activity android:name=".activities.LastVisited"></activity>
     </application>
 </manifest>

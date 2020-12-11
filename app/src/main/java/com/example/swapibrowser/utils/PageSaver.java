@@ -38,12 +38,16 @@ public class PageSaver {
         }
     }
 
-    public void saveFavorite(Context c, String url) {
+    public void saveFavorite(Context c, String url, String itemType) {
         FileOutputStream fos = null;
-        String urlN = url + "\n";
+        StringBuilder builder = new StringBuilder();
+        builder.append(url);
+        builder.append(" :");
+        builder.append(itemType);
+        builder.append("\n");
         try {
             fos = c.openFileOutput("favorites.txt", c.MODE_APPEND);
-            fos.write(urlN.getBytes());
+            fos.write(builder.toString().getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
