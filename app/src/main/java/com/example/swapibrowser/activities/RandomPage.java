@@ -26,7 +26,6 @@ import java.util.Random;
 
 public class RandomPage extends AppCompatActivity {
     RecyclerView randomRecycler;
-    PageSaver saver = new PageSaver();
     int field;
     String[] list = new String[]{"people", "films", "planets", "species", "starships", "vehicles"};
     GeneratorFactory generatorFactory = new GeneratorFactory();
@@ -35,6 +34,10 @@ public class RandomPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random_page);
+        randomRecycler = findViewById(R.id.random_recycler);
+
+        field = new Random().nextInt(6);
+        getItemCount(list[field]);
     }
 
     private void loadItemData(final String itemType, Integer entry) {
@@ -47,10 +50,9 @@ public class RandomPage extends AppCompatActivity {
                 if (response!=null) {
                     items.add(response);
                     randomRecycler.setAdapter(new ItemAdapter(items, RandomPage.this, itemType.toLowerCase()));
-                    randomRecycler.setAdapter(new ItemAdapter(items, RandomPage.this, itemType.toLowerCase()));
                     randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                 } else {
-                    Snackbar.make(findViewById(R.id.random_recycler), "Null response received", Snackbar.LENGTH_LONG).show();
+                    getItemCount(list[field]);
                 }
             }
 
