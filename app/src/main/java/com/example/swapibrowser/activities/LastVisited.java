@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.factory.AdapterFactory;
+import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.generators.IGenerator;
@@ -48,7 +48,7 @@ public class LastVisited extends AppCompatActivity {
                 Log.d("progress", "onResponseReceived");
                 if (response != null) {
                     items.add(response);
-                    recentlyViewedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, LastVisited.this));
+                    recentlyViewedRecycler.setAdapter(new ItemAdapter(items, LastVisited.this, itemType.toLowerCase()));
                     recentlyViewedRecycler.setLayoutManager(new LinearLayoutManager(LastVisited.this));
                 }
                 else{

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.factory.AdapterFactory;
+import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
@@ -70,7 +70,7 @@ public class Search extends AppCompatActivity {
                 if (response != null) {
                     items.addAll(response.getResults());
                     save(items.get(0).getUrl(), itemType);
-                    searchRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, Search.this));
+                    searchRecycler.setAdapter(new ItemAdapter(items, Search.this, itemType.toLowerCase()));
                     searchRecycler.setLayoutManager(new LinearLayoutManager(Search.this));
                 }
                 else{

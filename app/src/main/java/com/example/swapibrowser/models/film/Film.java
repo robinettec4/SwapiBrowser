@@ -51,11 +51,11 @@ public class Film implements ISingleModel {
     @Expose
     private String url;
 
-    public String getTitle() {
+    public String getName() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setName(String title) {
         this.title = title;
     }
 

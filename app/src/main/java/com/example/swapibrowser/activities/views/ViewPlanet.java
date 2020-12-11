@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
+import com.example.swapibrowser.adapters.ItemAdapterMin;
 import com.example.swapibrowser.models.planet.Planet;
 
 public class ViewPlanet extends AppCompatActivity {
@@ -38,8 +37,8 @@ public class ViewPlanet extends AppCompatActivity {
         Intent intent = getIntent();
         Planet planet = (Planet) intent.getSerializableExtra("planets");
 
-        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(planet.getFilms(), ViewPlanet.this);
-        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(planet.getResidents(), ViewPlanet.this);
+        ItemAdapterMin minFilmAdapter = new ItemAdapterMin(planet.getFilms(), ViewPlanet.this, "films");
+        ItemAdapterMin minPersonAdapter = new ItemAdapterMin(planet.getResidents(), ViewPlanet.this, "people");
 
         planetName.setText(getString(R.string.name, planet.getName()));
         planetRotationPeriod.setText(getString(R.string.planet_rotational_period, planet.getRotationPeriod()));

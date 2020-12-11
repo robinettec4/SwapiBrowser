@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.factory.AdapterFactory;
+import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;
 import com.example.swapibrowser.generators.IGenerator;
@@ -51,7 +51,7 @@ public class RandomPage extends AppCompatActivity {
                 if (response!=null) {
                     items.add(response);
                     save(response.getUrl(), itemType);
-                    randomRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RandomPage.this));
+                    randomRecycler.setAdapter(new ItemAdapter(items, RandomPage.this, itemType.toLowerCase()));
                     randomRecycler.setLayoutManager(new LinearLayoutManager(RandomPage.this));
                 }
             }

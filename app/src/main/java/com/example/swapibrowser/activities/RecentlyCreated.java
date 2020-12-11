@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.factory.AdapterFactory;
+import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;
 import com.example.swapibrowser.models.IModel;
@@ -54,7 +54,7 @@ public class RecentlyCreated extends AppCompatActivity {
             @Override
             public void onResponseReceived(IModel response) {
                 items.addAll(response.getResults());
-                recentlyCreatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyCreated.this));
+                recentlyCreatedRecycler.setAdapter(new ItemAdapter(items, RecentlyCreated.this, itemType.toLowerCase()));
                 recentlyCreatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyCreated.this));
             }
 

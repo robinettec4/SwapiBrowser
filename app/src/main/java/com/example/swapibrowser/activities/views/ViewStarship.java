@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
+import com.example.swapibrowser.adapters.ItemAdapterMin;
 import com.example.swapibrowser.models.starship.Starship;
 
 public class ViewStarship extends AppCompatActivity {
@@ -42,8 +41,8 @@ public class ViewStarship extends AppCompatActivity {
         Intent intent = getIntent();
         Starship starship = (Starship) intent.getSerializableExtra("starships");
 
-        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(starship.getFilms(), ViewStarship.this);
-        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(starship.getPilots(), ViewStarship.this);
+        ItemAdapterMin minFilmAdapter = new ItemAdapterMin(starship.getFilms(), ViewStarship.this, "films");
+        ItemAdapterMin minPersonAdapter = new ItemAdapterMin(starship.getPilots(), ViewStarship.this, "people");
 
         starshipName.setText(getString(R.string.name,  starship.getName()));
         starshipModel.setText(getString(R.string.model, starship.getModel()));

@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
+import com.example.swapibrowser.adapters.ItemAdapterMin;
 import com.example.swapibrowser.models.vehicle.Vehicle;
 
 public class ViewVehicle extends AppCompatActivity {
@@ -40,8 +39,8 @@ public class ViewVehicle extends AppCompatActivity {
         Intent intent = getIntent();
         Vehicle vehicle = (Vehicle) intent.getSerializableExtra("vehicles");
 
-        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(vehicle.getFilms(), ViewVehicle.this);
-        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(vehicle.getPilots(), ViewVehicle.this);
+        ItemAdapterMin minFilmAdapter = new ItemAdapterMin(vehicle.getFilms(), ViewVehicle.this, "films");
+        ItemAdapterMin minPersonAdapter = new ItemAdapterMin(vehicle.getPilots(), ViewVehicle.this, "people");
 
         vehicleName.setText(getString(R.string.name,  vehicle.getName()));
         vehicleModel.setText(getString(R.string.model, vehicle.getModel()));

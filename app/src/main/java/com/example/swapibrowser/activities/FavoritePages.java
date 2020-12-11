@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.factory.AdapterFactory;
+import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;
@@ -24,7 +24,6 @@ public class FavoritePages extends AppCompatActivity {
 
     private RecyclerView recView;
     private ArrayList<String> favorites;
-    AdapterFactory factory = new AdapterFactory();
     PageSaver saver = new PageSaver();
 
     @Override
@@ -60,7 +59,7 @@ public class FavoritePages extends AppCompatActivity {
                 if (response != null) {
                     items.add(response);
                     save(items.get(0).getUrl(), itemType);
-                    recView.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, FavoritePages.this));
+                    recView.setAdapter(new ItemAdapter(items, FavoritePages.this, itemType.toLowerCase()));
                     recView.setLayoutManager(new LinearLayoutManager(FavoritePages.this));
                 }
                 else{

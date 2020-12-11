@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
-import com.example.swapibrowser.adapters.min.MinPlanetAdapter;
-import com.example.swapibrowser.adapters.min.MinSpeciesResultAdapter;
-import com.example.swapibrowser.adapters.min.MinStarshipAdapter;
-import com.example.swapibrowser.adapters.min.MinVehicleAdapter;
+import com.example.swapibrowser.activities.RandomPage;
+import com.example.swapibrowser.adapters.ItemAdapter;
+import com.example.swapibrowser.adapters.ItemAdapterMin;
+import com.example.swapibrowser.api.ApiResponseListener;
+import com.example.swapibrowser.generators.IGenerator;
+import com.example.swapibrowser.generators.PlanetsGenerator;
+import com.example.swapibrowser.generators.factory.GeneratorFactory;
+import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.film.Film;
+
+import java.nio.channels.IllegalChannelGroupException;
+import java.util.ArrayList;
 
 public class ViewFilm extends AppCompatActivity {
 
@@ -42,13 +48,13 @@ public class ViewFilm extends AppCompatActivity {
         Intent intent = getIntent();
         Film film = (Film) intent.getSerializableExtra("films");
 
-        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(film.getCharacters(), ViewFilm.this);
-        MinSpeciesResultAdapter minSpeciesResultAdapter = new MinSpeciesResultAdapter(film.getSpecies(), ViewFilm.this);
-        MinVehicleAdapter minVehicleAdapter = new MinVehicleAdapter(film.getVehicles(), ViewFilm.this);
-        MinStarshipAdapter minStarshipAdapter = new MinStarshipAdapter(film.getStarships(), ViewFilm.this);
-        MinPlanetAdapter minPlanetAdapter = new MinPlanetAdapter(film.getPlanets(), ViewFilm.this);
+        ItemAdapterMin minPersonAdapter = new ItemAdapterMin(film.getCharacters(), ViewFilm.this, "people");
+        ItemAdapterMin minSpeciesResultAdapter = new ItemAdapterMin(film.getSpecies(), ViewFilm.this, "species");
+        ItemAdapterMin minVehicleAdapter = new ItemAdapterMin(film.getVehicles(), ViewFilm.this, "vehicles");
+        ItemAdapterMin minStarshipAdapter = new ItemAdapterMin(film.getStarships(), ViewFilm.this, "starships");
+        ItemAdapterMin minPlanetAdapter = new ItemAdapterMin(film.getPlanets(), ViewFilm.this, "planets");
 
-        filmTitle.setText(getString(R.string.film_title, film.getTitle()));
+        filmTitle.setText(getString(R.string.film_title, film.getName()));
         filmEpisodeId.setText(getString(R.string.film_episode_id, film.getEpisodeId()));
         filmOpeningCrawl.setText(getString(R.string.film_opening_crawl, film.getOpeningCrawl()));
         filmDirector.setText(getString(R.string.film_director, film.getDirector()));

@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinSpeciesResultAdapter;
-import com.example.swapibrowser.adapters.min.MinStarshipAdapter;
-import com.example.swapibrowser.adapters.min.MinVehicleAdapter;
+import com.example.swapibrowser.adapters.ItemAdapterMin;
+import com.example.swapibrowser.api.ApiResponseListener;
+import com.example.swapibrowser.generators.IGenerator;
+import com.example.swapibrowser.generators.factory.GeneratorFactory;
+import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.person.Person;
 
 public class ViewPerson extends AppCompatActivity {
@@ -42,10 +43,10 @@ public class ViewPerson extends AppCompatActivity {
         Intent intent = getIntent();
         Person person = (Person) intent.getSerializableExtra("people");
 
-        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(person.getFilms(), ViewPerson.this);
-        MinSpeciesResultAdapter minSpeciesResultAdapter = new MinSpeciesResultAdapter(person.getSpecies(), ViewPerson.this);
-        MinVehicleAdapter minVehicleAdapter = new MinVehicleAdapter(person.getVehicles(), ViewPerson.this);
-        MinStarshipAdapter minStarshipAdapter = new MinStarshipAdapter(person.getStarships(), ViewPerson.this);
+        ItemAdapterMin minFilmAdapter = new ItemAdapterMin(person.getFilms(), ViewPerson.this, "films");
+        ItemAdapterMin minSpeciesResultAdapter = new ItemAdapterMin(person.getSpecies(), ViewPerson.this, "species");
+        ItemAdapterMin minVehicleAdapter = new ItemAdapterMin(person.getVehicles(), ViewPerson.this, "vehicles");
+        ItemAdapterMin minStarshipAdapter = new ItemAdapterMin(person.getStarships(), ViewPerson.this, "starships");
 
         personName.setText(getString(R.string.name, person.getName()));
         personHeight.setText(getString(R.string.person_height, person.getHeight()));
@@ -55,7 +56,7 @@ public class ViewPerson extends AppCompatActivity {
         personEyeColor.setText(getString(R.string.person_eye_color, person.getEyeColor()));
         personBirthYear.setText(getString(R.string.person_birth_year, person.getBirthYear()));
         personGender.setText(getString(R.string.person_gender, person.getGender()));
-        personHomeWorld.setText(getString(R.string.homeworld, person.getHomeworld()));
+        setHomeworld(person.getHomeworld(), personHomeWorld);
         personCreated.setText(getString(R.string.created, person.getCreated()));
         personEdited.setText(getString(R.string.edited, person.getEdited()));
 
@@ -68,5 +69,23 @@ public class ViewPerson extends AppCompatActivity {
         personSpecies.setLayoutManager(new LinearLayoutManager(ViewPerson.this));
         personVehicles.setLayoutManager(new LinearLayoutManager(ViewPerson.this));
         personStarships.setLayoutManager(new LinearLayoutManager(ViewPerson.this));
+    }
+
+    private void setHomeworld(String url, final TextView homeworld){
+
+        IGenerator generator = new GeneratorFactory().CreateGenerator("planets");
+
+        final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
+            @Override
+            public void onResponseReceived(ISingleModel response) {
+                homeworld.setText(getString(R.string.homeworld, response.getName()));
+            }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        };
+        generator.getByFullUrl(url, listener);
     }
 }

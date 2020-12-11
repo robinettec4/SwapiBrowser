@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.min.MinFilmAdapter;
-import com.example.swapibrowser.adapters.min.MinPersonAdapter;
+import com.example.swapibrowser.adapters.ItemAdapterMin;
+import com.example.swapibrowser.api.ApiResponseListener;
+import com.example.swapibrowser.generators.IGenerator;
+import com.example.swapibrowser.generators.factory.GeneratorFactory;
+import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.species.SpeciesResult;
 
 public class ViewSpecies extends AppCompatActivity {
@@ -39,8 +42,8 @@ public class ViewSpecies extends AppCompatActivity {
         Intent intent = getIntent();
         SpeciesResult speciesResult = (SpeciesResult) intent.getSerializableExtra("species");
 
-        MinFilmAdapter minFilmAdapter = new MinFilmAdapter(speciesResult.getFilms(), ViewSpecies.this);
-        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(speciesResult.getPeople(), ViewSpecies.this);
+        ItemAdapterMin minFilmAdapter = new ItemAdapterMin(speciesResult.getFilms(), ViewSpecies.this, "films");
+        ItemAdapterMin minPersonAdapter = new ItemAdapterMin(speciesResult.getPeople(), ViewSpecies.this, "people");
 
         speciesName.setText(getString(R.string.name, speciesResult.getName()));
         speciesClassification.setText(getString(R.string.s_class, speciesResult.getClassification()));
@@ -50,7 +53,7 @@ public class ViewSpecies extends AppCompatActivity {
         speciesHairColors.setText(getString(R.string.species_hair_colors, speciesResult.getHairColors()));
         speciesEyeColors.setText(getString(R.string.species_eye_colors, speciesResult.getEyeColors()));
         speciesAvgLifespan.setText(getString(R.string.species_average_lifespan, speciesResult.getAverageLifespan()));
-        speciesHomeworld.setText(getString(R.string.homeworld, speciesResult.getHomeworld()));
+        setHomeworld(speciesResult.getHomeworld(), speciesHomeworld);
         speciesLanguage.setText(getString(R.string.species_language, speciesResult.getLanguage()));
         speciesEdited.setText(getString(R.string.edited, speciesResult.getEdited()));
         speciesCreated.setText(getString(R.string.created, speciesResult.getCreated()));
@@ -60,5 +63,23 @@ public class ViewSpecies extends AppCompatActivity {
 
         speciesFilms.setLayoutManager(new LinearLayoutManager(ViewSpecies.this));
         speciesPeople.setLayoutManager(new LinearLayoutManager(ViewSpecies.this));
+    }
+
+    private void setHomeworld(String url, final TextView homeworld){
+
+        IGenerator generator = new GeneratorFactory().CreateGenerator("planets");
+
+        final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
+            @Override
+            public void onResponseReceived(ISingleModel response) {
+                homeworld.setText(getString(R.string.homeworld, response.getName()));
+            }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        };
+        generator.getByFullUrl(url, listener);
     }
 }
