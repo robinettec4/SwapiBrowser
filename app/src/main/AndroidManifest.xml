@@ -30,5 +30,6 @@
         <activity android:name=".activities.views.ViewSpecies" />
         <activity android:name=".activities.views.ViewStarship" />
         <activity android:name=".activities.views.ViewVehicle" />
+        <activity android:name=".activities.FavoritePages"/>
     </application>
 </manifest>

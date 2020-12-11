@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PageSaver saver = new PageSaver();
+
+        ArrayList<String> test = saver.readFavorite(this);
+        Log.d("empty", "empty");
     }
 
     public void goToRandomPageActivity(View view) {
@@ -37,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToRecentlyViewedActivity(View view){
         Intent intent = new Intent(MainActivity.this, LastVisited.class);
+        startActivity(intent);
+    }
+
+    public void goToFavorite(View view){
+        Intent intent = new Intent(MainActivity.this, FavoritePages.class);
         startActivity(intent);
     }
 }
