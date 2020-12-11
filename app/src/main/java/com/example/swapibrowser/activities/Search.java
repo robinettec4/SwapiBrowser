@@ -3,45 +3,19 @@ package com.example.swapibrowser.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.AdapterFactory;
-import com.example.swapibrowser.adapters.FilmAdapter;
-import com.example.swapibrowser.adapters.PersonAdapter;
-import com.example.swapibrowser.adapters.PlanetAdapter;
-import com.example.swapibrowser.adapters.SpeciesResultAdapter;
-import com.example.swapibrowser.adapters.StarshipAdapter;
-import com.example.swapibrowser.adapters.VehicleAdapter;
+import com.example.swapibrowser.adapters.factory.AdapterFactory;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
-import com.example.swapibrowser.models.film.Film;
-import com.example.swapibrowser.models.film.Films;
-import com.example.swapibrowser.models.person.People;
-import com.example.swapibrowser.models.person.Person;
-import com.example.swapibrowser.models.planet.Planet;
-import com.example.swapibrowser.models.planet.Planets;
-import com.example.swapibrowser.models.species.Species;
-import com.example.swapibrowser.models.species.SpeciesResult;
-import com.example.swapibrowser.models.starship.Starship;
-import com.example.swapibrowser.models.starship.Starships;
-import com.example.swapibrowser.models.vehicle.Vehicle;
-import com.example.swapibrowser.models.vehicle.Vehicles;
-import com.example.swapibrowser.searchers.FilmsSearcher;
 import com.example.swapibrowser.searchers.ISearcher;
-import com.example.swapibrowser.searchers.PeopleSearcher;
-import com.example.swapibrowser.searchers.PlanetsSearcher;
-import com.example.swapibrowser.searchers.SearcherFactory;
-import com.example.swapibrowser.searchers.SpeciesSearcher;
-import com.example.swapibrowser.searchers.StarshipsSearcher;
-import com.example.swapibrowser.searchers.VehiclesSearcher;
+import com.example.swapibrowser.searchers.factory.SearcherFactory;
 import com.example.swapibrowser.utils.PageSaver;
 
 

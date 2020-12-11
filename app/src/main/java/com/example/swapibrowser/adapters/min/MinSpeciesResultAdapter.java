@@ -34,7 +34,7 @@ public class MinSpeciesResultAdapter extends RecyclerView.Adapter<SpeciesResultH
     @NonNull
     @Override
     public SpeciesResultHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.species_field_layout_min, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.species_recycler_layout_min, parent, false);
         return new SpeciesResultHolder(view);
     }
 

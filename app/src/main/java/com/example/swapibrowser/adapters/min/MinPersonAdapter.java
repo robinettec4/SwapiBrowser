@@ -33,7 +33,7 @@ public class MinPersonAdapter extends RecyclerView.Adapter<PersonHolder>{
     @NonNull
     @Override
     public PersonHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.person_field_layout_min, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.person_recycler_layout_min, parent, false);
         return new PersonHolder(view);
     }
 

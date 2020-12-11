@@ -19,17 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.RecentlyUpdated">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.RandomPage">
-
-        </activity>
-        <activity android:name=".activities.Search"></activity>
-        <activity android:name=".activities.LastVisited"></activity>
+        <activity android:name=".activities.RecentlyUpdated" />
+        <activity android:name=".activities.RandomPage"/>
+        <activity android:name=".activities.Search" />
+        <activity android:name=".activities.LastVisited" />
+        <activity android:name=".activities.views.ViewFilm" />
+        <activity android:name=".activities.views.ViewPerson" />
+        <activity android:name=".activities.views.ViewPlanet" />
+        <activity android:name=".activities.views.ViewSpecies" />
+        <activity android:name=".activities.views.ViewStarship" />
+        <activity android:name=".activities.views.ViewVehicle" />
     </application>
 </manifest>

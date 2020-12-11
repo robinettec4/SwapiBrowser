@@ -34,7 +34,7 @@ public class MinStarshipAdapter extends RecyclerView.Adapter<StarshipHolder> {
     @NonNull
     @Override
     public StarshipHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.starship_field_layout_min, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.starship_recycler_layout_min, parent, false);
         return new StarshipHolder(view);
     }
 

@@ -78,4 +78,5 @@
     <string name="cargo">Cargo: %1$s</string>
     <string name="consumables">Consumables: %1$s</string>
     <string name="recently_viewed">Last Viewed</string>
+    <string name="refresh">Refresh</string>
 </resources>

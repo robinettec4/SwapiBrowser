@@ -36,41 +36,14 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmHolder> {
     @NonNull
     @Override
     public FilmHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.film_field_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.film_recycler_layout, parent, false);
         return new FilmHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FilmHolder holder, int position) {
-
         Film film = (Film) list.get(position);
-        
-        MinPersonAdapter minPersonAdapter = new MinPersonAdapter(film.getCharacters(), context);
-        MinSpeciesResultAdapter minSpeciesResultAdapter = new MinSpeciesResultAdapter(film.getSpecies(), context);
-        MinVehicleAdapter minVehicleAdapter = new MinVehicleAdapter(film.getVehicles(), context);
-        MinStarshipAdapter minStarshipAdapter = new MinStarshipAdapter(film.getStarships(), context);
-        MinPlanetAdapter minPlanetAdapter = new MinPlanetAdapter(film.getPlanets(), context);
-
-        holder.filmTitle.setText(context.getString(R.string.film_title, film.getTitle()));
-        holder.filmEpisodeId.setText(context.getString(R.string.film_episode_id, film.getEpisodeId()));
-        holder.filmOpeningCrawl.setText(context.getString(R.string.film_opening_crawl, film.getOpeningCrawl()));
-        holder.filmDirector.setText(context.getString(R.string.film_director, film.getDirector()));
-        holder.filmProducer.setText(context.getString(R.string.film_producer, film.getProducer()));
-        holder.filmReleaseDate.setText(context.getString(R.string.film_release_date, film.getReleaseDate()));
-        holder.filmEdited.setText(context.getString(R.string.edited, film.getEdited()));
-        holder.filmCreated.setText(context.getString(R.string.created, film.getCreated()));
-
-        holder.filmCharacters.setAdapter(minPersonAdapter);
-        holder.filmSpecies.setAdapter(minSpeciesResultAdapter);
-        holder.filmVehicles.setAdapter(minVehicleAdapter);
-        holder.filmStarships.setAdapter(minStarshipAdapter);
-        holder.filmPlanets.setAdapter(minPlanetAdapter);
-
-        holder.filmCharacters.setLayoutManager(new LinearLayoutManager(context));
-        holder.filmSpecies.setLayoutManager(new LinearLayoutManager(context));
-        holder.filmVehicles.setLayoutManager(new LinearLayoutManager(context));
-        holder.filmStarships.setLayoutManager(new LinearLayoutManager(context));
-        holder.filmPlanets.setLayoutManager(new LinearLayoutManager(context));
+        holder.filmCardTitle.setText(context.getString(R.string.film_title, film.getTitle()));
     }
 
     @Override

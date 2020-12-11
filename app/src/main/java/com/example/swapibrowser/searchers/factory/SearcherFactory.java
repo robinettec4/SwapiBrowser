@@ -1,4 +1,12 @@
-package com.example.swapibrowser.searchers;
+package com.example.swapibrowser.searchers.factory;
+
+import com.example.swapibrowser.searchers.FilmsSearcher;
+import com.example.swapibrowser.searchers.ISearcher;
+import com.example.swapibrowser.searchers.PeopleSearcher;
+import com.example.swapibrowser.searchers.PlanetsSearcher;
+import com.example.swapibrowser.searchers.SpeciesSearcher;
+import com.example.swapibrowser.searchers.StarshipsSearcher;
+import com.example.swapibrowser.searchers.VehiclesSearcher;
 
 public class SearcherFactory implements ISearcherFactory {
     

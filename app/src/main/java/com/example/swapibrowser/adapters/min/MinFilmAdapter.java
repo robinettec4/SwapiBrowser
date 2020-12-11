@@ -35,7 +35,7 @@ public class MinFilmAdapter extends RecyclerView.Adapter<FilmHolder> {
     @NonNull
     @Override
     public FilmHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.film_field_layout_min, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.film_recycler_layout_min, parent, false);
         return new FilmHolder(view);
     }
 

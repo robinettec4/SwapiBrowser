@@ -1,5 +1,6 @@
 package com.example.swapibrowser.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,14 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.swapibrowser.R;
-import com.example.swapibrowser.adapters.AdapterFactory;
+import com.example.swapibrowser.activities.factory.ActivityFactory;
+import com.example.swapibrowser.adapters.factory.AdapterFactory;
 import com.example.swapibrowser.api.ApiResponseListener;
-import com.example.swapibrowser.generators.GeneratorFactory;
+import com.example.swapibrowser.generators.factory.GeneratorFactory;
 import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.searchers.ISearcher;
-import com.example.swapibrowser.searchers.SearcherFactory;
+import com.example.swapibrowser.searchers.factory.SearcherFactory;
+import com.example.swapibrowser.utils.CustomRVItemTouchListener;
+import com.example.swapibrowser.utils.RecyclerViewItemClickListener;
 
 import java.util.ArrayList;
 
@@ -27,6 +31,7 @@ public class RecentlyUpdated extends AppCompatActivity {
     RecyclerView recentlyUpdatedRecycler;
     GeneratorFactory generatorFactory = new GeneratorFactory();
     SearcherFactory searcherFactory = new SearcherFactory();
+    ActivityFactory activityFactory = new ActivityFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +59,26 @@ public class RecentlyUpdated extends AppCompatActivity {
         final ApiResponseListener<ISingleModel> listener = new ApiResponseListener<ISingleModel>() {
 
             @Override
-            public void onResponseReceived(ISingleModel response) {
+            public void onResponseReceived(final ISingleModel response) {
                 items.add(response);
                 recentlyUpdatedRecycler.setAdapter(new AdapterFactory().CreateAdapter(itemType.toLowerCase(), items, RecentlyUpdated.this));
                 recentlyUpdatedRecycler.setLayoutManager(new LinearLayoutManager(RecentlyUpdated.this));
+
+                recentlyUpdatedRecycler.setOnTouchListener((View.OnTouchListener) new CustomRVItemTouchListener(RecentlyUpdated.this, recentlyUpdatedRecycler, new RecyclerViewItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position) {
+                        Intent intent = new Intent(RecentlyUpdated.this, activityFactory.CreateActivity(itemType));
+                        intent.putExtra(itemType, response);
+                        startActivity(intent);
+                        recentlyUpdatedRecycler.setOnClickListener(null);
+                    }
+
+                    @Override
+                    public void onLongClick(View view, int position) {
+
+                    }
+                }));
+
             }
 
             @Override

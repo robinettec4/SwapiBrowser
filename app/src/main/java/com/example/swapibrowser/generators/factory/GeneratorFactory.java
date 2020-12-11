@@ -1,4 +1,12 @@
-package com.example.swapibrowser.generators;
+package com.example.swapibrowser.generators.factory;
+
+import com.example.swapibrowser.generators.FilmsGenerator;
+import com.example.swapibrowser.generators.IGenerator;
+import com.example.swapibrowser.generators.PeopleGenerator;
+import com.example.swapibrowser.generators.PlanetsGenerator;
+import com.example.swapibrowser.generators.SpeciesGenerator;
+import com.example.swapibrowser.generators.StarshipsGenerator;
+import com.example.swapibrowser.generators.VehiclesGenerator;
 
 public class GeneratorFactory implements IGeneratorFactory {
 

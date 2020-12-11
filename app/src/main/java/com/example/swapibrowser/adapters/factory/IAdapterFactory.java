@@ -1,4 +1,4 @@
-package com.example.swapibrowser.adapters;
+package com.example.swapibrowser.adapters.factory;
 
 import android.content.Context;
 

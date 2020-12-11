@@ -34,7 +34,7 @@ public class MinVehicleAdapter extends RecyclerView.Adapter<VehicleHolder> {
     @NonNull
     @Override
     public VehicleHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vehicle_field_layout_min, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vehicle_recycler_layout_min, parent, false);
         return new VehicleHolder(view);
     }
 
