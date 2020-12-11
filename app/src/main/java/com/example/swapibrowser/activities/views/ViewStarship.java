@@ -2,6 +2,7 @@ package com.example.swapibrowser.activities.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.ItemAdapterMin;
 import com.example.swapibrowser.models.starship.Starship;
+import com.example.swapibrowser.utils.PageSaver;
 
 public class ViewStarship extends AppCompatActivity {
 
@@ -65,5 +67,10 @@ public class ViewStarship extends AppCompatActivity {
 
         starshipFilms.setLayoutManager(new LinearLayoutManager(ViewStarship.this));
         starshipPilots.setLayoutManager(new LinearLayoutManager(ViewStarship.this));
+    }
+
+    public void saveFavorite(View view) {
+        PageSaver saver = new PageSaver();
+        saver.saveFavorite(this);
     }
 }

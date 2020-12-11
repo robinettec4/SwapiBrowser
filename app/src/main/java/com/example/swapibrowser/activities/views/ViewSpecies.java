@@ -3,6 +3,7 @@ package com.example.swapibrowser.activities.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.models.species.SpeciesResult;
+import com.example.swapibrowser.utils.PageSaver;
 
 public class ViewSpecies extends AppCompatActivity {
 
@@ -82,5 +84,10 @@ public class ViewSpecies extends AppCompatActivity {
             }
         };
         generator.getByFullUrl(url, listener);
+    }
+
+    public void saveFavorite(View view) {
+        PageSaver saver = new PageSaver();
+        saver.saveFavorite(this);
     }
 }

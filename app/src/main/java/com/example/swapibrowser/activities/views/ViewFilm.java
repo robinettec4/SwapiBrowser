@@ -2,6 +2,7 @@ package com.example.swapibrowser.activities.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.swapibrowser.R;
 import com.example.swapibrowser.adapters.ItemAdapterMin;
 import com.example.swapibrowser.models.film.Film;
+import com.example.swapibrowser.utils.PageSaver;
 
 public class ViewFilm extends AppCompatActivity {
 
@@ -63,5 +65,10 @@ public class ViewFilm extends AppCompatActivity {
         filmVehicles.setLayoutManager(new LinearLayoutManager(ViewFilm.this));
         filmStarships.setLayoutManager(new LinearLayoutManager(ViewFilm.this));
         filmPlanets.setLayoutManager(new LinearLayoutManager(ViewFilm.this));
+    }
+
+    public void saveFavorite(View view) {
+        PageSaver saver = new PageSaver();
+        saver.saveFavorite(this);
     }
 }
