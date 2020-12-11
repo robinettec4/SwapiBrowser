@@ -47,5 +47,5 @@
         android:onClick="goToFavorite"
         android:layout_below="@id/recentlyViewed"
         android:layout_centerInParent="true"
-        android:text="Button" />
+        android:text="@string/favorites" />
 </RelativeLayout>
