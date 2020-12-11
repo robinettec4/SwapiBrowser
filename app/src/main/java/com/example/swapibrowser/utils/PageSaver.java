@@ -37,14 +37,11 @@ public class PageSaver {
         }
     }
 
-    public void saveFavorite(Context c, String url, String itemType) {
-
+    public void saveFavorite(Context c){
         FileOutputStream fos = null;
         StringBuilder builder = new StringBuilder();
-        builder.append(url);
-        builder.append(" :");
-        builder.append(itemType);
-        if (check(builder.toString(), c)) {
+        builder.append(read(c));
+        if (check(builder.toString(), c)){
             builder.append("\n");
             try {
                 fos = c.openFileOutput("favorites.txt", c.MODE_APPEND);
@@ -114,10 +111,10 @@ public class PageSaver {
         return "";
     }
 
-    private boolean check(String url, Context c){
+    private boolean check(String fav, Context c){
         ArrayList<String> exists = readFavorite(c);
         for (String s : exists){
-            if (s.equals(url)){
+            if (s.equals(fav)){
                 return false;
             }
         }
