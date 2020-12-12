@@ -70,6 +70,8 @@ public class FavoritePages extends AppCompatActivity {
 
         ArrayList<String> url = sort(favorites, itemType);
 
+        recView.setAdapter(null);
+        recView.setLayoutManager(null);
         final IGenerator generator = new GeneratorFactory().CreateGenerator(itemType);
         final ArrayList<ISingleModel> items = new ArrayList<>();
         final ItemAdapter adapter = new ItemAdapter(items, FavoritePages.this, itemType.toLowerCase());
