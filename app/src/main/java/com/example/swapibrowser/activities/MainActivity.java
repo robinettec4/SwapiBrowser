@@ -1,7 +1,5 @@
 package com.example.swapibrowser.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -12,11 +10,9 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 
-import com.example.swapibrowser.R;
-import com.example.swapibrowser.utils.PageSaver;
-import com.google.android.material.tabs.TabLayout;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
+import com.example.swapibrowser.R;
 
 public class MainActivity extends AppCompatActivity {
 

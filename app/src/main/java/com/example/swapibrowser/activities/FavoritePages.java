@@ -1,6 +1,5 @@
 package com.example.swapibrowser.activities;
 
-import android.content.ClipData;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,13 +15,10 @@ import com.example.swapibrowser.adapters.ItemAdapter;
 import com.example.swapibrowser.api.ApiResponseListener;
 import com.example.swapibrowser.generators.IGenerator;
 import com.example.swapibrowser.generators.factory.GeneratorFactory;
-import com.example.swapibrowser.generators.factory.IGeneratorFactory;
-import com.example.swapibrowser.models.IModel;
 import com.example.swapibrowser.models.ISingleModel;
 import com.example.swapibrowser.utils.PageSaver;
 import com.google.android.material.tabs.TabLayout;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FavoritePages extends AppCompatActivity {

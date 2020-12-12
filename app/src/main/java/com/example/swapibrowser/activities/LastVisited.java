@@ -71,8 +71,4 @@ public class LastVisited extends AppCompatActivity {
         };
         generator.getByFullUrl(url, listener);
     }
-
-    public void save(String url, String itemType){
-        saver.save(this, url, itemType);
-    }
 }

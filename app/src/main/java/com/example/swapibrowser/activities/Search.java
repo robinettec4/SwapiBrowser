@@ -31,7 +31,6 @@ public class Search extends AppCompatActivity {
     EditText inputText;
     private String field;
     private String input;
-    PageSaver saver = new PageSaver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
