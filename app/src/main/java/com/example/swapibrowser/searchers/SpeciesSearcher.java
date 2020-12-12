@@ -8,7 +8,7 @@ import com.example.swapibrowser.api.ApiResponseListener;
 
 public class SpeciesSearcher implements ISearcher<Species> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     public void getBySearch(String searchText, ApiResponseListener<Species> listener){
         api.getSpecies("species/?search=" + searchText).enqueue(new ApiResponse<>(listener));
@@ -24,6 +24,11 @@ public class SpeciesSearcher implements ISearcher<Species> {
 
     public void getByFullUrl(String url, ApiResponseListener<Species> listener) {
         api.getSpecies(url).enqueue(new ApiResponse<>(listener));
+    }
+
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Species> listener) {
+        api.getSpecies("species/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
     }
 
     public void getAll(ApiResponseListener<Species> listener) {

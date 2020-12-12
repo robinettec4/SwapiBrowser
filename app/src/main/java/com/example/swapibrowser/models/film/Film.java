@@ -1,12 +1,12 @@
 package com.example.swapibrowser.models.film;
 
-import java.io.Serializable;
 import java.util.List;
 
+import com.example.swapibrowser.models.ISingleModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Film {
+public class Film implements ISingleModel {
 
     @SerializedName("title")
     @Expose
@@ -51,11 +51,11 @@ public class Film {
     @Expose
     private String url;
 
-    public String getTitle() {
+    public String getName() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setName(String title) {
         this.title = title;
     }
 

@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">SwapiBrowser</string>
+    <string name="default_notification_channel_id">alarm_channel_id_01</string>
     <string-array name="topicArray">
-        <item>Film</item>
-        <item>Person</item>
-        <item>Planet</item>
+        <item>Films</item>
+        <item>People</item>
+        <item>Planets</item>
         <item>Species</item>
-        <item>Starship</item>
-        <item>Vehicle</item>
+        <item>Starships</item>
+        <item>Vehicles</item>
+    </string-array>
+    <string-array name="recentArray">
+        <item>Created</item>
+        <item>Edited</item>
     </string-array>
     <string name="title_activity_recently_updated">RecentlyUpdated</string>
     <!--
@@ -14,11 +19,87 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
-    <string name="search_recently_changed_entries_by">Search recently changed entries by</string>
     <string name="vehicles">Vehicles</string>
     <string name="species">Species</string>
     <string name="films">Films</string>
     <string name="starships">Starships</string>
     <string name="textview">TextView</string>
     <string name="random_page">Random Page</string>
+    <string name="notification_title">Recommendations for you</string>
+    <string name="notification_text">Gives you a daily notification that takes you to random page you might be interested in</string>
+    <string name="recently_updated">Recently Updated</string>
+    <string name="search">Search</string>
+    <string name="search_entries_by">Search entries by</string>
+    <string name="search_button">Search</string>
+    <string name="search_hint">Search</string>
+    <string name="planets">Planets</string>
+    <string name="characters">Characters</string>
+    <string name="residents">Residents</string>
+    <string name="people">People</string>
+    <string name="pilots">Pilots</string>
+    <string name="title">Title</string>
+    <string name="film_title">Title: %1$s</string>
+    <string name="film_episode_id">Episode Id: %1$d</string>
+    <string name="film_director">Director: %1$s</string>
+    <string name="film_producer">Producer: %1$s</string>
+    <string name="film_release_date">Release Date: %1$s</string>
+    <string name="film_opening_crawl">%1$s</string>
+    <string name="person_height">Height: %1$s</string>
+    <string name="person_mass">Mass: %1$s</string>
+    <string name="person_hair_color">Hair Color: %1$s</string>
+    <string name="person_skin_color">Skin Color: %1$s</string>
+    <string name="person_eye_color">Eye Color: %1$s</string>
+    <string name="person_birth_year">Birth Year: %1$s</string>
+    <string name="person_gender">Gender: %1$s</string>
+    <string name="planet_rotational_period">Rotational Period: %1$s</string>
+    <string name="planet_orbital_period">Orbital Period: %1$s</string>
+    <string name="planet_gravity">Gravity: %1$s</string>
+    <string name="planet_diameter">Diameter: %1$s</string>
+    <string name="planet_climate">Climate: %1$s</string>
+    <string name="planet_terrain">Terrain: %1$s</string>
+    <string name="planet_water">Water: %1$s</string>
+    <string name="planet_population">Population: %1$s</string>
+    <string name="species_class">Class: %1$s</string>
+    <string name="species_designation">Designation: %1$s</string>
+    <string name="species_average_height">Average Height: %1$s</string>
+    <string name="species_skin_colors">Skin Colors: %1$s</string>
+    <string name="species_hair_colors">Hair Colors: %1$s</string>
+    <string name="species_eye_colors">Eye Colors: %1$s</string>
+    <string name="species_average_lifespan">Average Lifespan: %1$s</string>
+    <string name="homeworld">Homeworld: %1$s</string>
+    <string name="species_language">Language: %1$s</string>
+    <string name="starship_hyper_drive_rating">Hyper Drive Rating: %1$s</string>
+    <string name="starship_mglt">MGLT: %1$s</string>
+    <string name="edited">Edited: %1$s</string>
+    <string name="created">Created: %1$s</string>
+    <string name="name">Name: %1$s</string>
+    <string name="model">Model: %1$s</string>
+    <string name="s_class">Class: %1$s</string>
+    <string name="manufacturer">Manufacturer: %1$s</string>
+    <string name="cost">Cost: %1$s</string>
+    <string name="length">Length: %1$s</string>
+    <string name="max_speed">Max Speed: %1$s</string>
+    <string name="crew">Crew: %1$s</string>
+    <string name="passengers">Passengers: %1$s</string>
+    <string name="cargo">Cargo: %1$s</string>
+    <string name="consumables">Consumables: %1$s</string>
+    <string name="recently_viewed">Last Viewed</string>
+    <string name="refresh">Refresh</string>
+    <string name="search_favorite_pages_by">Search favorite pages by</string>
+    <string name="generate">Generate</string>
+    <string name="no_data">No Data</string>
+    <string name="favorite">Favorite</string>
+    <string name="btn_star">btn_star</string>
+    <string name="unfavorite">Unfavorite</string>
+    <string name="search_recently">Search recently</string>
+    <string name="recent_page">Recent Page</string>
+    <string name="home">Home</string>
+    <string name="last_visited">Last Visited</string>
+    <string name="favorites_page">Favorites Page</string>
+    <string name="swapibrowser">SwapiBrowser</string>
+    <string name="https_swapi_dev_api">https://swapi.dev/api/</string>
+    <string name="random">Random</string>
+    <string name="last_viewed">Last Viewed</string>
+    <string name="recent_pages">Recent Pages</string>
+    <string name="favorites">Favorites</string>
 </resources>

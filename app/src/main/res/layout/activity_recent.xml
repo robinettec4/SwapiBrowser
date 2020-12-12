@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DDDDDD"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".activities.RecentPage">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/menu_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/favorite_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/favorites_page"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:icon="@android:drawable/btn_star_big_off" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/last_visited_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/last_visited"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:icon="@android:drawable/ic_menu_recent_history" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/search_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/search"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:icon="@android:drawable/ic_menu_search" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/home_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/home"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:icon="@android:drawable/ic_menu_revert" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/recent_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/recent_page"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:icon="@android:drawable/ic_menu_rotate" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/random_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/random_page"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:icon="@android:drawable/ic_menu_help" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:entries="@array/recentArray"
+            app:layout_constraintEnd_toStartOf="@+id/topic_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/menu_tabs" />
+
+        <Spinner
+            android:id="@+id/topic_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:entries="@array/topicArray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_tabs" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recent_recycler"
+            android:layout_width="0dp"
+            android:layout_height="697dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/type_spinner">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/recent_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/search_recently"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintEnd_toStartOf="@+id/type_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/menu_tabs" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

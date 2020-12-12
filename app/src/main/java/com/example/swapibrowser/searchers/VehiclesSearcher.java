@@ -8,7 +8,7 @@ import com.example.swapibrowser.api.ApiResponseListener;
 
 public class VehiclesSearcher implements ISearcher<Vehicles> {
 
-    private ApiService api = RetroClient.getApiService();
+    private final ApiService api = RetroClient.getApiService();
 
     public void getBySearch(String searchText, ApiResponseListener<Vehicles> listener){
         api.getVehicles("vehicles/?search=" + searchText).enqueue(new ApiResponse<>(listener));
@@ -16,6 +16,11 @@ public class VehiclesSearcher implements ISearcher<Vehicles> {
 
     public void getByFullUrl(String url, ApiResponseListener<Vehicles> listener) {
         api.getVehicles(url).enqueue(new ApiResponse<>(listener));
+    }
+
+    @Override
+    public void getByOrdering(String orderingField, ApiResponseListener<Vehicles> listener) {
+        api.getVehicles("vehicles/?ordering=" + orderingField).enqueue(new ApiResponse<>(listener));
     }
 
     public void getById(String id, ApiResponseListener<Vehicles> listener){

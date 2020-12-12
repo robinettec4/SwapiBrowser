@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <receiver
+            android:name=".activities.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,15 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.RecentlyUpdated">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.RandomPage">
-
-        </activity>
+        <activity android:name=".activities.RandomPage" />
+        <activity android:name=".activities.RecentPage" />
+        <activity android:name=".activities.Search" />
+        <activity android:name=".activities.LastVisited" />
+        <activity android:name=".activities.views.ViewFilm" />
+        <activity android:name=".activities.views.ViewPerson" />
+        <activity android:name=".activities.views.ViewPlanet" />
+        <activity android:name=".activities.views.ViewSpecies" />
+        <activity android:name=".activities.views.ViewStarship" />
+        <activity android:name=".activities.views.ViewVehicle" />
+        <activity android:name=".activities.FavoritePages"/>
     </application>
 </manifest>

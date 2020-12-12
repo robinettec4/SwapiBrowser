@@ -1,12 +1,12 @@
 package com.example.swapibrowser.models.film;
 
-import java.io.Serializable;
 import java.util.List;
 
+import com.example.swapibrowser.models.IModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Films {
+public class Films implements IModel<Film> {
 
     @SerializedName("count")
     @Expose
@@ -45,7 +45,7 @@ public class Films {
         this.previous = previous;
     }
 
-    public List<Film> getFilms() {
+    public List<Film> getResults() {
         return films;
     }
 
