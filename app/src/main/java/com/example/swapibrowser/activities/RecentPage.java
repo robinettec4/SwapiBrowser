@@ -37,12 +37,12 @@ public class RecentPage extends AppCompatActivity {
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                recentlyUpdatedRecycler.setAdapter(null);
+                recentlyUpdatedRecycler.setLayoutManager(null);
                 getMostRecentItem(topicSpinner.getSelectedItem().toString().toLowerCase(), typeSpinner.getSelectedItem().toString().toLowerCase());
             }
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         };
         topicSpinner.setOnItemSelectedListener(listener);
         typeSpinner.setOnItemSelectedListener(listener);
