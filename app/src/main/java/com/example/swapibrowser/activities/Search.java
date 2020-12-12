@@ -69,6 +69,8 @@ public class Search extends AppCompatActivity {
     }
 
     private void searchItems(final String itemType) {
+        searchRecycler.setAdapter(null);
+        searchRecycler.setLayoutManager(null);
         final ISearcher searcher = new SearcherFactory().CreateSearcher(itemType);
         final ArrayList<ISingleModel> items = new ArrayList<>();
         final ApiResponseListener<IModel> listener = new ApiResponseListener<IModel>() {
